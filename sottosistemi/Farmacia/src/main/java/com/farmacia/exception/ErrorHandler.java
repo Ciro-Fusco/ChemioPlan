@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
+ * <p>Questa classe gestisce le eccezioni del sistema.</p>
  *
+ * @author Francesco Pio di Pippa
+ * @version 0.1
  */
 @ControllerAdvice
 public class ErrorHandler {

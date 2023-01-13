@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,14 +60,24 @@ public class PrenotazioneController {
     prenotazioneService.deletePrenotazione(codice);
   }
 
-  @GetMapping("/findByDate/")
-  public void findByDate(@RequestParam String data) {
-    prenotazioneService.findByData(data);
+  @GetMapping("/getByData/{data}")
+  public List<PrenotazioneResponse> getByData(@PathVariable String data) {
+    return prenotazioneService.getByData(data);
   }
 
-  @GetMapping("/{sala}")
-  public List<PrenotazioneResponse> findBySala(@PathVariable String sala) {
-    return prenotazioneService.findBySala(sala);
+  @GetMapping("/getBySala/{sala}")
+  public List<PrenotazioneResponse> getBySala(@PathVariable String sala) {
+    return prenotazioneService.getBySala(sala);
+  }
+
+  @GetMapping("/getById/{codice}")
+  public PrenotazioneResponse getById(@PathVariable String codice) {
+    return  prenotazioneService.getById(codice);
+  }
+
+  @GetMapping("/getByPoltrona/{poltrona}")
+  public List<PrenotazioneResponse> getByPoltrona(@PathVariable String poltrona) {
+    return  prenotazioneService.getByPoltrona(poltrona);
   }
 
 

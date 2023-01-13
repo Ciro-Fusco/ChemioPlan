@@ -21,4 +21,7 @@ public interface PrenotazioneRepository extends MongoRepository<Prenotazione, St
 
   @Query(value = "{ 'data' :?0}")
   List<Prenotazione> findByData(String data);
+
+  @Query(value = "{ 'poltrona' :?0}")
+  List<Prenotazione> findByPoltrona(String poltrona);
 }

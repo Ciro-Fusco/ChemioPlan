@@ -6,6 +6,7 @@ import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
 import com.example.prenotazione.repository.PrenotazioneRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -93,7 +94,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    */
   @Override
   public void deletePrenotazione(String codice) {
-    Prenotazione p = prenotazioneRepository.findById(codice).orElseThrow(
+    Prenotazione prenotazione = prenotazioneRepository.findById(codice).orElseThrow(
         () -> new PrenotazioneNotFoundException(
             "Prenotazione con CODICE: |" + codice + "| non trovata"));
     prenotazioneRepository.deleteById(codice);
@@ -106,7 +107,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    * @return restituisce una lista di prenotazioni.
    */
   @Override
-  public List<PrenotazioneResponse> findByData(String data) {
+  public List<PrenotazioneResponse> getByData(String data) {
     List<Prenotazione> list = prenotazioneRepository.findByData(data);
     return list.stream().map(this::mapToPrenotazioneResponse).toList();
   }
@@ -117,9 +118,35 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    * @param sala sala con cui voglio avere le prenotazioni.
    * @return restituisce una lista di prenotazioni.
    */
-  @Override
-  public List<PrenotazioneResponse> findBySala(String sala) {
+
+  public List<PrenotazioneResponse> getBySala(String sala) {
     List<Prenotazione> list = prenotazioneRepository.findBySala(sala);
+    return list.stream().map(this::mapToPrenotazioneResponse).toList();
+  }
+
+  /**
+   * <p>Questo metodo restituisce una prenotazione con un determinato codice.</p>
+   *
+   * @param codice identificativo della prenotazione
+   * @return una prenotazione
+   */
+  @Override
+  public PrenotazioneResponse getById(String codice) {
+    Prenotazione prenotazione = prenotazioneRepository.findById(codice).orElseThrow(
+        () -> new PrenotazioneNotFoundException(
+            "Prenotazione con CODICE: |" + codice + "| non trovata"));
+    return mapToPrenotazioneResponse(prenotazione);
+  }
+
+  /**
+   * <p>Questo metodo è usato per ottenere le prenotazioni con una determinata poltrona.</p>
+   *
+   * @param poltrona poltrona con cui voglio avere le prenotazioni.
+   * @return restituisce una lista di prenotazioni.
+   */
+
+  public List<PrenotazioneResponse> getByPoltrona(String poltrona) {
+    List<Prenotazione> list = prenotazioneRepository.findByPoltrona(poltrona);
     return list.stream().map(this::mapToPrenotazioneResponse).toList();
   }
 }

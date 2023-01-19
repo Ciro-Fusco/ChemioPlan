@@ -6,7 +6,6 @@ import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
 import com.example.prenotazione.repository.PrenotazioneRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,10 +77,18 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     Prenotazione prenotazioneSalvata = prenotazioneRepository.findById(codice).orElseThrow(
         () -> new PrenotazioneNotFoundException(
             "Prenotazione con CODICE: |" + codice + "| non trovata"));
-    prenotazioneSalvata.setData(prenotazione.getData());
-    prenotazioneSalvata.setSala(prenotazione.getSala());
-    prenotazioneSalvata.setPoltrona(prenotazione.getPoltrona());
-    prenotazioneSalvata.setCodiceFarmaci(prenotazione.getCodiceFarmaci());
+    if (prenotazione.getData() != null) {
+      prenotazioneSalvata.setData(prenotazione.getData());
+    }
+    if (prenotazione.getSala() != null) {
+      prenotazioneSalvata.setSala(prenotazione.getSala());
+    }
+    if (prenotazione.getPoltrona() != null) {
+      prenotazioneSalvata.setPoltrona(prenotazione.getPoltrona());
+    }
+    if (prenotazione.getCodiceFarmaci() != null) {
+      prenotazioneSalvata.setCodiceFarmaci(prenotazione.getCodiceFarmaci());
+    }
     prenotazioneRepository.save(prenotazioneSalvata);
   }
 

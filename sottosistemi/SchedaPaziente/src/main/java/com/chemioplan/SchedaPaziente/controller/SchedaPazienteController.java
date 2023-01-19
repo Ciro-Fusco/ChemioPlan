@@ -38,7 +38,7 @@ public class SchedaPazienteController {
      * @Return la schedaPaziente con l'id dato in input
      */
 
-    @GetMapping("/{Id}")
+    @GetMapping("/{id}")
     public SchedaPaziente ottieniSchedaPaziente(@PathVariable int id){
         return schedaPazienteService.ottieniSchedaPazientePerId(id);
     }

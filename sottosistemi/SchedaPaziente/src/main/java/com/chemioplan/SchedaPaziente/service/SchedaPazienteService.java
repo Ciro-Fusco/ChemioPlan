@@ -52,7 +52,7 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
     public SchedaPaziente ottieniSchedaPazientePerCodiceFiscale(String CodiceFiscale) {
 
         SchedaPaziente scheda = schedaPazienteRepository.findByCodiceFiscale(CodiceFiscale);
-            if(scheda.getCodiceFiscale() == null){
+            if(scheda == null){
                throw  new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale "+CodiceFiscale+" non trovata");
             }
             return scheda;

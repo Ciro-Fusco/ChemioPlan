@@ -19,31 +19,31 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "Pazienti")
+@Document(collection = "pazienti")
 
 public class SchedaPaziente {
     /**
      * <p> Id della schedaPaziente</p>
      */
     @Id
-    @Field(name ="_id")
-    private int Id;
+    @Field(name ="id")
+    private int id;
 
     /**
      * <p>CodiceFiscale dell paziente</p>
      */
-    @Field(name ="CodiceFiscale")
-    private String CodiceFiscale;
+    @Field(name ="codiceFiscale")
+    private String codiceFiscale;
 
     /**
      *<p>Codice dei farmaci che il paziente assume</p>
      */
-    @Field(name="CodiceFarmaci")
+    @Field(name="codiceFarmaci")
     private List<String> codiceFarmaci;
 
     /**
      * <p>nome delle malattie da cui è affetto il paziente</p>
      */
-    @Field(name="MalattieList")
+    @Field(name="malattie")
     private List<String> malattie;
 }

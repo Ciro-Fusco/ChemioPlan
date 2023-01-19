@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 public interface SchedaPazienteRepository extends MongoRepository<SchedaPaziente, Integer> {
 
-     @Query("{'pazienti.CodiceFiscale' :  ?0}")
+
      SchedaPaziente findByCodiceFiscale(String CodiceFiscale);
 
 

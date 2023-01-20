@@ -197,7 +197,7 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   @Override
   public Ordine ottieniOrdine(String id) {
     return repoOrdine.findById(id).orElseThrow(
-            () -> new OrdineNotFoundException("Ordine con ID: |" + id + "| non trovato")
+            () -> new OrdineNotFoundException("Scheda Farmaco con ID: |" + id + "| non trovato")
     );
   }
 

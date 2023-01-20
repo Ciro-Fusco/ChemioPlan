@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Data
 @Builder
-@Document(collection = "ordini")
+@Document(collection = "Ordini")
 public class Ordine {
   /**
    * <p>Stringa costante che indica lo stato 'da acquistare' dell'ordine.</p>

@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "farmacia")
+@Document(collection = "Farmacia")
 public class SchedaFarmaco {
 
   /**

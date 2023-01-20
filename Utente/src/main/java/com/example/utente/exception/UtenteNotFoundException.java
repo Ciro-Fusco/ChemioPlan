@@ -7,16 +7,16 @@ package com.example.utente.exception;
  * @version  1.0
  */
 public class UtenteNotFoundException extends RuntimeException {
-    public UtenteNotFoundException() {
-    }
+  public UtenteNotFoundException() {
+  }
 
-    /**
-     * <p>Stampa il messaggio di errore per un utente non trovato.</p>
-     *
-     * @param message messaggio di errore da stampare
-     * @since 1.0
-     */
-    public UtenteNotFoundException(String message) {
-        super(message);
-    }
+  /**
+   * <p>Stampa il messaggio di errore per un utente non trovato.</p>
+   *
+   * @param message messaggio di errore da stampare
+   * @since 1.0
+  */
+  public UtenteNotFoundException(String message) {
+    super(message);
+  }
 }

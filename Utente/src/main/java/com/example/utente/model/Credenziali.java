@@ -10,13 +10,12 @@ import lombok.Data;
  */
 @Data
 public class Credenziali {
-    /**
-     * <p>Username.</p>
-     */
-
-    private String user;
-    /**
-     * <p>Password.</p>
-     */
-    private String pass;
+  /**
+  * <p>Username.</p>
+  */
+  private String user;
+  /**
+  * <p>Password.</p>
+  */
+  private String pass;
 }

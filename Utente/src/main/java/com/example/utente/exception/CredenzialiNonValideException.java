@@ -7,17 +7,17 @@ package com.example.utente.exception;
  * @version 1.0
  */
 public class CredenzialiNonValideException extends RuntimeException {
-    public CredenzialiNonValideException() {
-    }
+  public CredenzialiNonValideException() {
+  }
 
-    /**
-     * <p>Stampa il messaggio di errore per le crendenziali non valide.</p>
-     *
-     *
-     * @param message messaggio di errore da stampare
-     * @since 1.0
-     */
-    public CredenzialiNonValideException(String message) {
-        super(message);
-    }
+  /**
+  * <p>Stampa il messaggio di errore per le crendenziali non valide.</p>
+  *
+  *
+  * @param message messaggio di errore da stampare
+  * @since 1.0
+  */
+  public CredenzialiNonValideException(String message) {
+    super(message);
+  }
 }

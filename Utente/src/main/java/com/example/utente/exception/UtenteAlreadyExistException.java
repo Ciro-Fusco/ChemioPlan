@@ -7,16 +7,16 @@ package com.example.utente.exception;
  * @version 1.0
  */
 public class UtenteAlreadyExistException extends RuntimeException {
-    public UtenteAlreadyExistException() {
-    }
+  public UtenteAlreadyExistException() {
+  }
 
-    /**
-     * <p>Stampa il messaggio di errore passato in input.</p>
-     *
-     * @param message messaggio di errore
-     * @since 1.0
-     */
-    public UtenteAlreadyExistException(String message) {
-        super(message);
-    }
+  /**
+   * <p>Stampa il messaggio di errore passato in input.</p>
+   *
+   * @param message messaggio di errore
+   * @since 1.0
+  */
+  public UtenteAlreadyExistException(String message) {
+    super(message);
+  }
 }

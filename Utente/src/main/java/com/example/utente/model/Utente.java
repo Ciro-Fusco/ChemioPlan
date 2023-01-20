@@ -22,25 +22,25 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @ToString
 @Document(collection = "Utente")
 public class Utente {
-    /**
-     * <p>id dell' Utente.</p>
-     */
-    @Id @Field("_id")
-    private Integer id;
-    /**
-     * <p>nome dell' Utente.</p>
-     */
-    private String nome;
-    /**
-     * <p>cognome dell' Utente.</p>
-     */
-    private String cognome;
-    /**
-     * <p>credenziali dell' Utente.</p>
-     */
-    private Credenziali credenziali;
-    /**
-     * <p>ruolo dell' Utente.</p>
-     */
-    private String ruolo;
+  /**
+   * <p>id dell' Utente.</p>
+   */
+  @Id @Field("_id")
+  private Integer id;
+  /**
+   * <p>nome dell' Utente.</p>
+   */
+  private String nome;
+  /**
+   * <p>cognome dell' Utente.</p>
+   */
+  private String cognome;
+  /**
+   * <p>credenziali dell' Utente.</p>
+  */
+  private Credenziali credenziali;
+  /**
+   * <p>ruolo dell' Utente.</p>
+  */
+  private String ruolo;
 }

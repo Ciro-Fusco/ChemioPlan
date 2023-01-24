@@ -23,4 +23,5 @@ public class Utente_Service implements IUtente_Service {
         Utente[] u = restTemplate.getForObject(UtenteResourceUrl, Utente[].class);
         return u;
     }
+
 }

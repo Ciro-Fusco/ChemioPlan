@@ -6,8 +6,8 @@
         </div>
 
         <div class="footer_menu">
-            <a class="footer_link footer_head" href="">Farmacia</a>
-            <a class="footer_link" href="">Farmaci In Magazzino</a>
+            <a class="footer_link footer_head" href="/farmacia">Farmacia</a>
+            <a class="footer_link" href="/farmacia/magazzino">Farmaci In Magazzino</a>
             <a class="footer_link" href="">Inserimento Lotto</a>
             <a class="footer_link" href="">Inserimento Nuovo Lotto</a>
             <a class="footer_link" href="">Visualizza Quantita`</a>

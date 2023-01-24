@@ -333,7 +333,7 @@ table tbody {
 }
 
 .tablink {
-    color: var(--color_text) !important;
+    color: var(--colo) !important;
 }
 
 @media screen and (max-width: 800px) {

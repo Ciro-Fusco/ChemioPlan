@@ -332,8 +332,8 @@ table tbody {
     font-weight: bold;
 }
 
-table a:visited {
-    color: var(--color_text);
+.tablink {
+    color: var(--color_text) !important;
 }
 
 @media screen and (max-width: 800px) {

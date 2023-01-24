@@ -9,7 +9,8 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 /**
- * <p>Questa interfaccia fornisce alcuni metodi search.</p>
+ * <p>Questa interfaccia fornisce tutte le funzionalità dell'interfaccia MongoRepository
+ *  * per la collezione Prenotazione del database.</p>
  *
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)

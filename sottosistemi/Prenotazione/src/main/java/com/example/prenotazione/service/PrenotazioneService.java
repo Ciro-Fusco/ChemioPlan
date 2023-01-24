@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * <p>Questa classa fornisce alcune funzionalità aziendali relative alle prenotazioni.</p>
+ * <p>Questa interfaccia fornisce le funzionalità per il controller.</p>
  *
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)

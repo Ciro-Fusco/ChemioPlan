@@ -1,7 +1,7 @@
 package com.example.prenotazione.exception;
 
 /**
- * <p>Classe per gestire una particolare eccezione.</p>
+ * <p>Questa classe crea un eccezione per una prenotazione già esistente.</p>
  *
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)

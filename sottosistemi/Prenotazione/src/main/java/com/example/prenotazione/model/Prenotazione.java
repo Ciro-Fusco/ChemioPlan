@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 
 /**
- * <p>Questa classe rappresenta l'entità Prenotazione.</p>
+ * <p>uesta classe modella l'entità Prenotazione.</p>
  *
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)

@@ -1,0 +1,6 @@
+com\example\FrontEnd\FrontEnd\service\IUtente_Service.class
+com\example\FrontEnd\FrontEnd\model\Utente.class
+com\example\FrontEnd\FrontEnd\controller\Utente_Controller.class
+com\example\FrontEnd\FrontEnd\model\Credenziali.class
+com\example\FrontEnd\FrontEnd\FrontEndApplication.class
+com\example\FrontEnd\FrontEnd\service\Utente_Service.class

@@ -97,19 +97,6 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     if (schedaFarmaco.getNome() != null) {
       scheda.setNome(schedaFarmaco.getNome());
     }
-
-    if (schedaFarmaco.getQuantita() != null || schedaFarmaco.getQuantita() >= 0) {
-      scheda.setQuantita(schedaFarmaco.getQuantita());
-    }
-
-    if (schedaFarmaco.getNumeroLotto() != null) {
-      scheda.setNumeroLotto(schedaFarmaco.getNumeroLotto());
-    }
-
-    if (schedaFarmaco.getScadenzaLotto() != null) {
-      scheda.setScadenzaLotto(schedaFarmaco.getScadenzaLotto());
-    }
-
     repo.save(scheda);
   }
 
@@ -131,30 +118,43 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   }
 
   /**
-   * <p>Questo metodo modifica una SchedaFarmaco nel database con un nuovo lotto.
+   * <p>Questo metodo inserisce nella SchedaFarmaco un nuovo lotto.
    * Se la scheda non è presente nel database solleva un'eccezione.</p>
    *
+   * @param codiceFarmaco codice della scheda a cui aggiungere il lotto
    * @param lotto il lotto con tutte le nuove informazioni
    */
   @Override
-  public void nuovoLotto(Lotto lotto) {
-    var optional = repo.findById(lotto.getCodiceFarmaco());
+  public void nuovoLotto(String codiceFarmaco, Lotto lotto) {
+    var optional = repo.findById(codiceFarmaco);
 
     if (optional.isEmpty()) {
       throw new SchedaFarmacoNotFoundException("Scheda Farmaco con CODICE: |"
-                + lotto.getCodiceFarmaco() + "| non trovato");
+                + codiceFarmaco + "| non trovato");
     }
 
     var scheda = optional.get();
-    if (lotto.getNumeroLotto() != null) {
-      scheda.setNumeroLotto(lotto.getNumeroLotto());
+    if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null ) {
+      scheda.addLotto(lotto);
     }
-
-    if (lotto.getScadenzaLotto() != null) {
-      scheda.setScadenzaLotto(lotto.getScadenzaLotto());
-    }
-
     repo.save(scheda);
+  }
+
+  /**
+   * <p>Questo metodo fornisce i lotti di uno speficico farmaco</p>
+   *
+   * @param codiceFarmaco codice del farmaco
+   */
+  @Override
+  public List<Lotto> ottieniLotti(String codiceFarmaco) {
+    var optional = repo.findById(codiceFarmaco);
+
+    if (optional.isEmpty()){
+      throw new SchedaFarmacoNotFoundException("Scheda Farmaco con CODICE: |"
+              + codiceFarmaco + "| non trovato");
+    }
+    var scheda = optional.get();
+    return scheda.getLotti();
   }
 
   /**

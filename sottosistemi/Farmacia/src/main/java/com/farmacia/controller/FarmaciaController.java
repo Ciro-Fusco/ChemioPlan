@@ -95,15 +95,16 @@ public class FarmaciaController {
   }
 
   /**
-   * <p>Questo metodo modifica il lotto di un farmaco.</p>
+   * <p>Questo metodo inserisce un nuovo lotto nel farmaco.</p>
    *
+   * @param codice codice della scheda a cui aggiungere il lotto
    * @param lotto il lotto che contiene le informazioni da modificare
    * @return un ResponseEntity con un messaggio
    */
-  @PostMapping("/nuovo-lotto")
-  public ResponseEntity<?> nuovoLotto(@RequestBody Lotto lotto) {
-    service.nuovoLotto(lotto);
-    return ResponseEntity.ok("Nuovo lotto modificato correttamente sulla Scheda Farmaco " + lotto.getCodiceFarmaco());
+  @PostMapping("/nuovo-lotto/{codice}")
+  public ResponseEntity<?> nuovoLotto(@PathVariable String codice, @RequestBody Lotto lotto) {
+    service.nuovoLotto(codice, lotto);
+    return ResponseEntity.ok("Nuovo lotto modificato correttamente sulla Scheda Farmaco " + codice);
   }
 
   /**

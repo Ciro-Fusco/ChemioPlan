@@ -1,6 +1,7 @@
 package com.farmacia.model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,17 +33,30 @@ public class SchedaFarmaco {
   private String nome;
 
   /**
-   * <p>Quantità di farmaco presente in farmacia.</p>
+   * <p>Dosaggio del farmaco per un paziente</p>
    */
-  private Integer quantita;
+  private Double dosaggio;
 
   /**
-   * <p>Numero del lotto presente in farmacia.</p>
+   * <p>Lotti dei farmaci</p>
    */
-  private Integer numeroLotto;
+  private List<Lotto> lotti = new ArrayList<>();
 
   /**
-   * <p>Scadenza del lotto.</p>
+   * <p>Aggiunge un nuovo lotto per il farmaco</p>
+   *
+   * @param lotto
    */
-  private Date scadenzaLotto;
+  public void addLotto(Lotto lotto) {
+    this.lotti.add(lotto);
+  }
+
+  /**
+   * <p>Rimuove un lotto per il farmaco</p>
+   *
+   * @param lotto
+   */
+  public void removeLotto(Lotto lotto) {
+    this.lotti.remove(lotto);
+  }
 }

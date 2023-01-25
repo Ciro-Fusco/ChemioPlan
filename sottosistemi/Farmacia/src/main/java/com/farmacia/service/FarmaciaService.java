@@ -51,12 +51,20 @@ public interface FarmaciaService {
   void eliminaFarmaco(String codice);
 
   /**
-   * <p>Questo metodo modifica una SchedaFarmaco nel database con un nuovo lotto.</p>
+   * <p>Questo metodo inserisce nella SchedaFarmaco un nuovo lotto.</p>
    *
+   * @param codiceFarmaco codice della scheda a cui aggiungere il lotto
    * @param lotto il lotto con tutte le nuove informazioni
+   *
    */
-  void nuovoLotto(Lotto lotto);
+  void nuovoLotto(String codiceFarmaco, Lotto lotto);
 
+  /**
+   * <p>Questo metodo fornisce i lotti di uno speficico farmaco</p>
+   *
+   * @param codiceFarmaco codice del farmaco
+   */
+  List<Lotto> ottieniLotti(String codiceFarmaco);
   /**
    * <p>Questo metodo inserisce un nuovo Ordine nel database.</p>
    *

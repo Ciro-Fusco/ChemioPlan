@@ -1,5 +1,6 @@
-package com.example.FrontEnd.FrontEnd.controller;
+package com.example.FrontEnd.FrontEnd.Controller;
 
+import com.example.FrontEnd.FrontEnd.model.Lotto;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.service.IFarmacia_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,27 @@ public class Farmacia_Controller {
     }
 
     @RequestMapping(value = {"/add-farmaco"}, method = RequestMethod.POST)
-    public String insertFarmaco(@ModelAttribute SchedaFarmaco scheda, ModelMap model){
+    public String insertFarmaco(@ModelAttribute SchedaFarmaco scheda, ModelMap model) {
         System.out.println(scheda);
         model.addAttribute("message", service.addFarmaco(scheda));
         model.addAttribute("scheda", scheda);
         return "AggiungiFarmaco";
+    }
+
+    @RequestMapping(value = {"/add-lotto-page/{codice}"}, method = RequestMethod.GET)
+    public String insertLottoPage(@ModelAttribute Lotto lotto, ModelMap model, @PathVariable String codice) {
+        model.addAttribute("codice", codice);
+        model.addAttribute("lotto", lotto);
+        return "AggiungiLotto";
+    }
+
+    @RequestMapping(value = {"/add-lotto/{codice}"}, method = RequestMethod.POST)
+    public String insertLotto(@ModelAttribute Lotto lotto, ModelMap model, @PathVariable String codice) {
+        System.out.println(lotto);
+        System.out.println(codice);
+        model.addAttribute("message", service.nuovoLotto(codice, lotto));
+        model.addAttribute("Farmaco", service.getFarmaco(codice));
+        return "Farmaco";
     }
 
 }

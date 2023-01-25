@@ -21,16 +21,30 @@
     <%@include file="/Content/header.jsp" %>
 
     <!-- Content -->
-
-    <h1>Nome Farmaco: ${Farmaco.nome}</h1>
+    <h2>${message}</h2>
+    <h3>Nome Farmaco: ${Farmaco.nome}</h3>
     <h4>Codica Farmaco: ${Farmaco.codice}</h4>
     <h4>Dosaggio: ${Farmaco.dosaggio}</h4>
-
-    <c:forEach items="${Farmaco.lotti}" var="lotto">
-        <h4>Numero lotto: ${lotto.numeroLotto} </h4>
-        <h4>Scadenza: <fmt:formatDate value="${lotto.scadenzaLotto}" pattern="yyyy-MM-dd"/></h4>
-        <h4>Quantità: ${lotto.quantita}</h4>
-    </c:forEach>
+    <br>
+    <table>
+        <thead>
+            <th>Numero Lotto</th>
+            <th>Scadenza</th>
+            <th>Quantità</th>
+        </thead>
+        <tbody>
+        <c:forEach items="${Farmaco.lotti}" var="lotto">
+            <tr>
+                <td>${lotto.numeroLotto} </td>
+                <td><fmt:formatDate value="${lotto.scadenzaLotto}" pattern="yyyy-MM-dd"/></td>
+                <td>${lotto.quantita}</td>
+            </tr>
+        </c:forEach>
+        <tr>
+            <td colspan="3"><a class="button button_outline menu" href="/farmacia/add-lotto-page/${Farmaco.codice}">Aggiungi Lotto</a></td>
+        </tr>
+        </tbody>
+    </table>
 
     <!-- Header -->
     <%@include file="/Content/footer.jsp" %>

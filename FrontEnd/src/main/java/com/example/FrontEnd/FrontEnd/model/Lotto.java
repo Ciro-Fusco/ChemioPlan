@@ -3,6 +3,7 @@ package com.example.FrontEnd.FrontEnd.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class Lotto {
   /**
    * <p>Data di scadenza del lotto.</p>
    */
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date scadenzaLotto;
 
   /**

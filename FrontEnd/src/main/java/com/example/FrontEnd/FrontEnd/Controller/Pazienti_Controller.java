@@ -19,9 +19,6 @@ public class Pazienti_Controller {
   @RequestMapping(value= {"/pazienti"}, method = RequestMethod.GET)
   public String showUtentiPage(ModelMap model){
     SchedaPaziente[] schede = service.getPazienti();
-
-//        System.out.println(u.length);
-
     model.addAttribute("Pazienti", schede);
     return "Pazienti";
   }
@@ -29,10 +26,13 @@ public class Pazienti_Controller {
   @RequestMapping(value= {"/pazienti/{cf}"}, method = RequestMethod.GET)
   public String showUtentiPage(ModelMap model, @PathVariable String cf){
     SchedaPaziente scheda = service.getPazienteByCF(cf);
-
-//        System.out.println(u.length);
-
     model.addAttribute("Paziente", scheda);
     return "Paziente";
   }
+
+  @RequestMapping(value= {"/pazientihome"}, method = RequestMethod.GET)
+  public String showPazientiHomePage(ModelMap model){
+    return "Pazienti_Home";
+  }
+
 }

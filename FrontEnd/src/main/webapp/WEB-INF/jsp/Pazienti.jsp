@@ -21,7 +21,7 @@
 <%@include file="/Content/header.jsp"%>
 
 <!-- Content -->
-<h1>Utenti</h1>
+<h1>Pazienti</h1>
 
 <table>
     <thead>

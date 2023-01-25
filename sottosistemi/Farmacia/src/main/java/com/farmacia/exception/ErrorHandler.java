@@ -38,4 +38,9 @@ public class ErrorHandler {
   public ResponseEntity<String> handleOrdineNotFoundException(OrdineNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
+
+  @ExceptionHandler(LottoAlreadyExistException.class)
+  public ResponseEntity<String> handleLottoArleadyExistException(LottoAlreadyExistException exception){
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
 }

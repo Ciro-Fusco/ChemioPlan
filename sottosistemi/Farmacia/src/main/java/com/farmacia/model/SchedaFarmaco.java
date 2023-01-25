@@ -2,6 +2,8 @@ package com.farmacia.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.farmacia.exception.LottoAlreadyExistException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,5 +60,18 @@ public class SchedaFarmaco {
    */
   public void removeLotto(Lotto lotto) {
     this.lotti.remove(lotto);
+  }
+
+  /**
+   * <p>Ci dice se un lotto è già presente nella lista</p>
+   * @param lotto
+   * @return true se il lotto è già contenuto, false altrimenti
+   */
+  public boolean lottiContains(Lotto lotto){
+    List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
+    if (numeriLotti.contains(lotto.getNumeroLotto())){
+      return true;
+    }
+    return false;
   }
 }

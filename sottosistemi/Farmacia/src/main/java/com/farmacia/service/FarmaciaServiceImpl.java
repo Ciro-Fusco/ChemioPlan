@@ -1,10 +1,7 @@
 package com.farmacia.service;
 
 import com.farmacia.dto.OrdineRequest;
-import com.farmacia.exception.OrdineFormatoQuantitaNonCorrettaException;
-import com.farmacia.exception.OrdineNotFoundException;
-import com.farmacia.exception.SchedaFarmacoAlreadyExistException;
-import com.farmacia.exception.SchedaFarmacoNotFoundException;
+import com.farmacia.exception.*;
 import com.farmacia.model.Lotto;
 import com.farmacia.model.Ordine;
 import com.farmacia.model.SchedaFarmaco;
@@ -134,6 +131,9 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     }
 
     var scheda = optional.get();
+    if (scheda.lottiContains(lotto)){
+      throw new LottoAlreadyExistException("Lotto numero |" + lotto.getNumeroLotto() + "| già presente nella lista");
+    }
     if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null ) {
       scheda.addLotto(lotto);
     }

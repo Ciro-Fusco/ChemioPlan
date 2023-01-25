@@ -33,29 +33,19 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
         return schedaPazienteRepository.findAll();
     }
 
-    /**
-     * <p> Questo metodo restituisce una schedaPaziente con un determinato ID</p>
-     * @param Id l'id della schedaPaziente da cercare
-     * @return la schedaPaziente trovata
-     */
-    @Override
-    public SchedaPaziente ottieniSchedaPazientePerId(int Id) {
-        return schedaPazienteRepository.findById(Id).orElseThrow(()->new SchedaPazienteNotFoundException("SchedaPaziente con id "+Id+" non trovata"));
-    }
 
     /**
      * <p> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale</p>
-     * @param CodiceFiscale il CodiceFiscale della schedaPaziente da cercare
+     * @param codiceFiscale il CodiceFiscale della schedaPaziente da cercare
      * @return la schedaPaziente trovata
      */
     @Override
-    public SchedaPaziente ottieniSchedaPazientePerCodiceFiscale(String CodiceFiscale) {
-
-        SchedaPaziente scheda = schedaPazienteRepository.findByCodiceFiscale(CodiceFiscale);
-            if(scheda == null){
-               throw  new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale "+CodiceFiscale+" non trovata");
-            }
-            return scheda;
+    public SchedaPaziente ottieniSchedaPazientePerCodiceFiscale(String codiceFiscale) {
+        var optional = schedaPazienteRepository.findById(codiceFiscale);
+        if(optional.isEmpty()){
+           throw  new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale " + codiceFiscale + " non trovata");
+        }
+        return optional.get();
     }
 
     /**
@@ -64,43 +54,35 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
      */
     @Override
     public void aggiungiSchedaPaziente(SchedaPaziente schedaPaziente) {
-        if(schedaPazienteRepository.existsById(schedaPaziente.getId())) {
-            throw new SchedaPazienteAlredyExistException("SchedaPaziente con id " + schedaPaziente.getId() + " non trovata");
+        if(schedaPazienteRepository.existsById(schedaPaziente.getCodiceFiscale())){
+            throw new SchedaPazienteAlredyExistException("Scheda Paziente con codiceFiscale: |"
+            + schedaPaziente.getCodiceFiscale() + " | già esistente" );
         }
         schedaPazienteRepository.save(schedaPaziente);
-
     }
 
     /**
      * <p>Questo metodo modifica una schedaPaziente presente nel DB</p>
-     * @param Id l'id della schedaPaziente da modificare
+     * @param codiceFiscale il codiceFiscale della schedaPaziente da modificare
      * @param schedaPaziente la schedaPaziente con le modifiche
      */
     @Override
-    public void modificaSchedaPaziente(int Id, SchedaPaziente schedaPaziente) {
-        var optional = schedaPazienteRepository.findById(Id);
+    public void modificaSchedaPaziente(String codiceFiscale, SchedaPaziente schedaPaziente) {
 
-        if(optional.isEmpty()){
-            throw new SchedaPazienteNotFoundException("SchedaPaziente con id"+ Id+ "non trovata");
-        }
-        var scheda =optional.get();
-        if(schedaPaziente.getCodiceFiscale() != null){
-            scheda.setCodiceFiscale(schedaPaziente.getCodiceFiscale());
-        }
     }
 
     /**
      *<p> Questo metodo elimina una schedaPaziente presente nel DB</p>
-     * @param Id l'id della schedaPaziente da eliminare
+     * @param codiceFiscale il codiceFiscale della schedaPaziente da eliminare
      */
     @Override
-    public void eliminaSchedaPaziente(int Id) {
-        var optional = schedaPazienteRepository.findById(Id);
-
+    public void eliminaSchedaPaziente(String codiceFiscale) {
+        var optional = schedaPazienteRepository.findById(codiceFiscale);
         if(optional.isEmpty()){
-            throw new SchedaPazienteNotFoundException("Scheda Paziente con ID: " +Id + "non torvato ");
+            throw  new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale " + codiceFiscale + " non trovata");
         }
-        schedaPazienteRepository.deleteById(Id);
+        schedaPazienteRepository.deleteById(codiceFiscale);
+
 
     }
 }

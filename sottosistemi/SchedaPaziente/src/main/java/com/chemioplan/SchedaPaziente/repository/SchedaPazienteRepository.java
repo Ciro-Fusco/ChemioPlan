@@ -10,10 +10,4 @@ import java.util.Optional;
  *<p>Questa interfaccia fornisce tutte le funzionalità dell'interfaccia MongoRepository
  * per la collezione pazienti del DB</p>
  */
-public interface SchedaPazienteRepository extends MongoRepository<SchedaPaziente, Integer> {
-
-
-     SchedaPaziente findByCodiceFiscale(String CodiceFiscale);
-
-
-}
+public interface SchedaPazienteRepository extends MongoRepository<SchedaPaziente, String> {}

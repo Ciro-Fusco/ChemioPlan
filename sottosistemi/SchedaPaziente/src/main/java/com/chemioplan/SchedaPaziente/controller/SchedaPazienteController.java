@@ -32,16 +32,6 @@ public class SchedaPazienteController {
         return schedaPazienteService.ottieniSchedePazienti();
     }
 
-    /**
-     * Questo metodo , con chiamata Get, restituisce una determinata scheda paziente
-     * con un id presente nell'url
-     * @Return la schedaPaziente con l'id dato in input
-     */
-
-    @GetMapping("/{id}")
-    public SchedaPaziente ottieniSchedaPaziente(@PathVariable int id){
-        return schedaPazienteService.ottieniSchedaPazientePerId(id);
-    }
 
     /**
      * Questo metodo , con chiamata Get, restituisce una determinata scheda paziente
@@ -62,31 +52,31 @@ public class SchedaPazienteController {
     @PostMapping
     public ResponseEntity<?> aggiungiSchedaPaziente(@RequestBody SchedaPaziente schedaPaziente){
         schedaPazienteService.aggiungiSchedaPaziente(schedaPaziente);
-        return new ResponseEntity<String>("SchedaPaziente salvata "+ schedaPaziente.getId(), HttpStatus.CREATED);
+        return new ResponseEntity<String>("SchedaPaziente salvata "+ schedaPaziente.getCodiceFiscale(), HttpStatus.CREATED);
     }
 
     /**
-     * <p>Questo metodo modifica una schedaPaziente presente nel DB con uno specifico ID</p>
-     * @param Id l'id della schedaPaziente passato nell'url
+     * <p>Questo metodo modifica una schedaPaziente presente nel DB </p>
+     * @param codiceFiscale il codiceFiscale della schedaPaziente passato nell'url
      * @param schedaPaziente la schedaPaziente con le modifiche passata nel body della richiesta
      * @return una ResponseEntity con un messaggio e lo status HTTP
      */
-    @PutMapping("/{Id}")
-    public ResponseEntity<?> modificaSchedaPaziente(@PathVariable int Id, @RequestBody SchedaPaziente schedaPaziente){
-        schedaPazienteService.modificaSchedaPaziente(Id, schedaPaziente);
-        return ResponseEntity.ok("SchedaPaziente modificata correttamente" +schedaPaziente.getId());
+    @PutMapping("/{codiceFiscale}")
+    public ResponseEntity<?> modificaSchedaPaziente(@PathVariable String codiceFiscale, @RequestBody SchedaPaziente schedaPaziente){
+        schedaPazienteService.modificaSchedaPaziente(codiceFiscale, schedaPaziente);
+        return ResponseEntity.ok("SchedaPaziente modificata correttamente" +schedaPaziente.getCodiceFiscale());
     }
 
     /**
-     * <p>Questo metodo elimina la schedaPaziente con un determinato Id</p>
+     * <p>Questo metodo elimina la schedaPaziente con un determinato codiceFiscaòe</p>
      *
-     * @param Id l'ID della schedaPaziente da eliminare
+     * @param codiceFiscale il codiceFiscale della schedaPaziente da eliminare
      * @return una ResponseEntity con un messaggio
      */
-    @DeleteMapping("/{Id}")
-    public ResponseEntity<?> eliminaSchedaPaziente(@PathVariable int Id){
-        schedaPazienteService.eliminaSchedaPaziente(Id);
-        return ResponseEntity.ok("Scheda farmaco eliminata correttamente" +Id);
+    @DeleteMapping("/{codiceFiscale}")
+    public ResponseEntity<?> eliminaSchedaPaziente(@PathVariable String codiceFiscale){
+        schedaPazienteService.eliminaSchedaPaziente(codiceFiscale);
+        return ResponseEntity.ok("Scheda farmaco eliminata correttamente" +codiceFiscale);
     }
 
 

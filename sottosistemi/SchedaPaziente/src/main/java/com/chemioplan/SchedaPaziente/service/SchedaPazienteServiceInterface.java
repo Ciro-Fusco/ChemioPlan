@@ -14,19 +14,14 @@ public interface SchedaPazienteServiceInterface {
      */
     List<SchedaPaziente> ottieniSchedePazienti();
 
-    /**
-     * <p> Questo metodo restituisce una schedaPaziente con un determinato ID</p>
-     * @param id l'id della schedaPaziente da cercare
-     * @return la schedaPaziente trovata
-     */
-    SchedaPaziente ottieniSchedaPazientePerId(int id);
+
 
     /**
      * <p> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale</p>
-     * @param CodiceFiscale il CodiceFiscale della schedaPaziente da cercare
+     * @param codiceFiscale il CodiceFiscale della schedaPaziente da cercare
      * @return la schedaPaziente trovata
      */
-    SchedaPaziente ottieniSchedaPazientePerCodiceFiscale(String CodiceFiscale);
+    SchedaPaziente ottieniSchedaPazientePerCodiceFiscale(String codiceFiscale);
 
     /**
      * <p> Questo metodo inserisce una nuova schedaPaziente nel DB</p>
@@ -36,16 +31,16 @@ public interface SchedaPazienteServiceInterface {
 
     /**
      * <p>Questo metodo modifica una schedaPaziente presente nel DB</p>
-     * @param id l'id della schedaPaziente da modificare
+     * @param codiceFiscale l'id della schedaPaziente da modificare
      * @param schedaPaziente la schedaPaziente con le modifiche
      */
-    void modificaSchedaPaziente(int id, SchedaPaziente schedaPaziente);
+    void modificaSchedaPaziente(String codiceFiscale, SchedaPaziente schedaPaziente);
 
     /**
      *<p> Questo metodo elimina una schedaPaziente presente nel DB</p>
-     * @param id l'id della schedaPaziente da eliminare
+     * @param codiceFiscale il codiceFiscale della schedaPaziente da eliminare
      */
-    void eliminaSchedaPaziente(int id);
+    void eliminaSchedaPaziente(String codiceFiscale);
 
 
 

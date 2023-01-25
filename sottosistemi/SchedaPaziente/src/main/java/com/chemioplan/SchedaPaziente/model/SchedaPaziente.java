@@ -22,17 +22,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "pazienti")
 
 public class SchedaPaziente {
-    /**
-     * <p> Id della schedaPaziente</p>
-     */
-    @Id
-    @Field(name ="id")
-    private int id;
 
     /**
      * <p>CodiceFiscale dell paziente</p>
      */
-    @Field(name ="codiceFiscale")
+    @Id @Field("_id")
     private String codiceFiscale;
 
     /**

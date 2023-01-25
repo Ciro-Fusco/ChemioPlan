@@ -28,9 +28,8 @@
                 <tr>
                     <th>Codice</th>
                     <th>Nome</th>
-                    <th>Quantita`</th>
-                    <th>Codica</th>
-                    <th>Scadenza</th>
+                    <th>Dosaggio</th>
+                    <th>Lotti</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +38,12 @@
                     <tr>
                         <td data-label="Codice"><a href="/farmacia/magazzino/${farmaco.codice}" class="tablink">${farmaco.codice}</a></td>
                         <td data-label="Nome">${farmaco.nome}</td>
-                        <td data-label="Quantita`">${farmaco.quantita}</td>
-                        <td data-label="Codice">${farmaco.numeroLotto}</td>
-                        <td data-label="Scadenza"><fmt:formatDate value="${farmaco.scadenzaLotto}" pattern="yyyy-MM-dd"/></td>
-
+                        <td data-label="Dosaggio">${farmaco.dosaggio}</td>
+                        <td>
+                            <c:forEach items="${farmaco.lotti}" var="lotto">
+                                ${lotto.numeroLotto}
+                            </c:forEach>
+                        </td>
                     </tr>
                 </c:forEach>
 

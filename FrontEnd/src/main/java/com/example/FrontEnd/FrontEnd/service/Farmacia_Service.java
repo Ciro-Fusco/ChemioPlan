@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +20,22 @@ public class Farmacia_Service implements IFarmacia_Service {
     public SchedaFarmaco[] getAllFarmaci() {
         SchedaFarmaco[] s = restTemplate.getForObject(UtenteResourceUrl , SchedaFarmaco[].class);
         return s;
+    }
+
+    @Override
+    public String addFarmaco(SchedaFarmaco scheda) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<SchedaFarmaco> entity = new HttpEntity<>(scheda, headers);
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.postForEntity(UtenteResourceUrl, entity, String.class);
+            return response.getBody();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
     }
 
 }

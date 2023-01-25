@@ -1,36 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-    <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-        <!DOCTYPE html>
-        <html lang="en">
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!DOCTYPE html>
+<html lang="en">
 
-        <head>
+<head>
 
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Farmacia</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia</title>
 
-            <link rel="stylesheet" href="/css/style.css">
-            <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
 
-        </head>
+</head>
 
-        <body>
-            <!-- Header -->
-            <%@include file="/Content/header.jsp" %>
+<body>
+<!-- Header -->
+    <%@include file="/Content/header.jsp" %>
 
-                <!-- Content -->
+    <!-- Content -->
 
-                <h1>Nome Farmaco: ${Farmaco.nome}</h1>
-                <h4>Codica Farmaco: ${Farmaco.codice}</h4>
-                <h4>Quantita`: ${Farmaco.quantita}</h4>
-                <h4>Numero Lotto: ${Farmaco.numeroLotto}</h4>
-                <h4>Data Scadenza:<fmt:formatDate value="${Farmaco.scadenzaLotto}" pattern="yyyy-MM-dd"/></h4>
+    <h1>Nome Farmaco: ${Farmaco.nome}</h1>
+    <h4>Codica Farmaco: ${Farmaco.codice}</h4>
+    <h4>Dosaggio: ${Farmaco.dosaggio}</h4>
 
-                <!-- Header -->
-                <%@include file="/Content/footer.jsp" %>
+    <c:forEach items="${Farmaco.lotti}" var="lotto">
+        <h4>Numero lotto: ${lotto.numeroLotto} </h4>
+        <h4>Scadenza: <fmt:formatDate value="${lotto.scadenzaLotto}" pattern="yyyy-MM-dd"/></h4>
+        <h4>Quantità: ${lotto.quantita}</h4>
+    </c:forEach>
 
-        </body>
+    <!-- Header -->
+    <%@include file="/Content/footer.jsp" %>
 
-        </html>
+</body>
+
+</html>

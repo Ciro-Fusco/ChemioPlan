@@ -17,11 +17,6 @@ import java.util.Date;
 @Data
 public class Lotto {
   /**
-   * <p>Codice della scheda farmaco.</p>
-   */
-  private String codiceFarmaco;
-
-  /**
    * <p>Numero del lotto.</p>
    */
   private Integer numeroLotto;
@@ -30,4 +25,9 @@ public class Lotto {
    * <p>Data di scadenza del lotto.</p>
    */
   private Date scadenzaLotto;
+
+  /**
+   * <p>Quantità di farmaco presente in farmacia per il relativo lotto.</p>
+   */
+  private Integer quantita;
 }

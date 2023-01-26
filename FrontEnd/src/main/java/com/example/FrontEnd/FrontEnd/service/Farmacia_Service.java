@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.Lotto;
+import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -92,6 +93,19 @@ public class Farmacia_Service implements IFarmacia_Service {
             return response.getBody();
         } catch (Exception e){
             System.out.println(e.getMessage());
+            return e.getMessage();
+        }
+    }
+
+    @Override
+    public String nuovoOrdine(OrdineRequest ordine) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<OrdineRequest> entity = new HttpEntity<>(ordine, headers);
+        try {
+            return restTemplate.postForEntity(farmaciaResourceUrl + "/nuovo-ordine", entity, String.class).getBody();
+        } catch (Exception e){
             return e.getMessage();
         }
     }

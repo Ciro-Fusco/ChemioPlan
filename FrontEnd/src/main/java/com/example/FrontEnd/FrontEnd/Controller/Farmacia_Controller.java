@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.Controller;
 
 import com.example.FrontEnd.FrontEnd.model.Lotto;
+import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.service.IFarmacia_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class Farmacia_Controller {
     public String insertFarmaco(@ModelAttribute SchedaFarmaco scheda, ModelMap model) {
         System.out.println(scheda);
         model.addAttribute("message", service.addFarmaco(scheda));
-        model.addAttribute("scheda", scheda);
+        model.addAttribute("scheda", new SchedaFarmaco());
         return "AggiungiFarmaco";
     }
 
@@ -102,5 +103,18 @@ public class Farmacia_Controller {
         model.addAttribute("message", service.modificaLotto(codice, lotto));
         model.addAttribute("Farmaco", service.getFarmaco(codice));
         return "Farmaco";
+    }
+
+    @RequestMapping(value = {"/nuovo-ordine-page"}, method = RequestMethod.GET)
+    public String nuovoOrdinePage(@ModelAttribute OrdineRequest ordine, ModelMap model) {
+        model.addAttribute("ordine", ordine);
+        return "NuovoOrdine";
+    }
+
+    @RequestMapping(value = {"/nuovo-ordine"}, method = RequestMethod.POST)
+    public String nuovoOrdine(@ModelAttribute OrdineRequest ordine, ModelMap model) {
+        model.addAttribute("message", service.nuovoOrdine(ordine));
+        model.addAttribute("ordine", new OrdineRequest());
+        return "NuovoOrdine";
     }
 }

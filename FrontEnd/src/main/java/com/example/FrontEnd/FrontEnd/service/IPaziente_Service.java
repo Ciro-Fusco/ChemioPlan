@@ -4,6 +4,6 @@ import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 
 public interface IPaziente_Service {
   SchedaPaziente[] getPazienti();
-
-  SchedaPaziente getPazienteByCF(String cf);
+  SchedaPaziente getPaziente(String cf);
+  String addPaziente(SchedaPaziente paziente);
 }

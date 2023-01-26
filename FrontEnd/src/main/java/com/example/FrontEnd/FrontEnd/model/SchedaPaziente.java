@@ -1,5 +1,6 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,11 +18,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class SchedaPaziente {
   /**
-   * <p> Id della schedaPaziente</p>
-   */
-  private int id;
-
-  /**
    * <p>CodiceFiscale dell paziente</p>
    */
   private String codiceFiscale;
@@ -29,10 +25,10 @@ public class SchedaPaziente {
   /**
    *<p>Codice dei farmaci che il paziente assume</p>
    */
-  private List<String> codiceFarmaci;
+  private List<String> codiceFarmaci = new ArrayList<>();
 
   /**
    * <p>nome delle malattie da cui è affetto il paziente</p>
    */
-  private List<String> malattie;
+  private List<String> malattie = new ArrayList<>();
 }

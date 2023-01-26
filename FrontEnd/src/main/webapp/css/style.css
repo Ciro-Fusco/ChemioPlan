@@ -145,6 +145,10 @@ input {
     margin-left: auto;
 }
 
+input .check {
+    border: red;
+}
+
 input:hover {
     border-color: var(--color_primary);
 }

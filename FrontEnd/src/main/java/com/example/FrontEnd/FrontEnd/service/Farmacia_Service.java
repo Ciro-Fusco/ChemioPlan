@@ -9,17 +9,17 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class Farmacia_Service implements IFarmacia_Service {
     private RestTemplate restTemplate = new RestTemplate();
-    private String UtenteResourceUrl = "http://localhost:8080/farmacia";
+    private String farmaciaResourceUrl = "http://localhost:8080/farmacia";
 
     @Override
     public SchedaFarmaco getFarmaco(String id) {
-        SchedaFarmaco s = restTemplate.getForObject(UtenteResourceUrl+"/"+id , SchedaFarmaco.class);
+        SchedaFarmaco s = restTemplate.getForObject(farmaciaResourceUrl + "/" + id , SchedaFarmaco.class);
         return s;
     }
 
     @Override
     public SchedaFarmaco[] getAllFarmaci() {
-        SchedaFarmaco[] s = restTemplate.getForObject(UtenteResourceUrl , SchedaFarmaco[].class);
+        SchedaFarmaco[] s = restTemplate.getForObject(farmaciaResourceUrl , SchedaFarmaco[].class);
         return s;
     }
 
@@ -31,7 +31,7 @@ public class Farmacia_Service implements IFarmacia_Service {
         HttpEntity<SchedaFarmaco> entity = new HttpEntity<>(scheda, headers);
         ResponseEntity<String> response = null;
         try {
-            response = restTemplate.postForEntity(UtenteResourceUrl, entity, String.class);
+            response = restTemplate.postForEntity(farmaciaResourceUrl, entity, String.class);
             return response.getBody();
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -47,7 +47,7 @@ public class Farmacia_Service implements IFarmacia_Service {
         HttpEntity<Lotto> entity = new HttpEntity<>(lotto, headers);
         ResponseEntity<String> response = null;
         try {
-            response = restTemplate.postForEntity(UtenteResourceUrl + "/nuovo-lotto/" + codice, entity, String.class);
+            response = restTemplate.postForEntity(farmaciaResourceUrl + "/nuovo-lotto/" + codice, entity, String.class);
             return response.getBody();
         } catch (Exception e){
             System.out.println(e.getMessage());

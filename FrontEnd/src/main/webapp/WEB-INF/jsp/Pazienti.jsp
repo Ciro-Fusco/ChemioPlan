@@ -26,7 +26,6 @@
 <table>
     <thead>
     <tr>
-        <th>Id</th>
         <th>Codice Fiscale</th>
         <th>Farmaci</th>
         <th>Malatie</th>
@@ -36,7 +35,6 @@
 
     <c:forEach items="${Pazienti}" var="paziente">
         <tr>
-            <td data-label="Id">${paziente.id}</td>
             <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>
             <td data-label="Farmaci">${paziente.codiceFarmaci}</td>
             <td data-label="Malattie">${paziente.malattie}</td>

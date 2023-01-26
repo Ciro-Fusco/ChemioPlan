@@ -14,18 +14,17 @@
 </head>
 
 <body>
-<!-- Header -->
-<%@include file="/Content/header.jsp"%>
+    <!-- Header -->
+    <%@include file="/Content/header.jsp"%>
 
-<!-- Content -->
+    <!-- Content -->
 
-<h1>Id: ${Paziente.id}</h1>
-<h1>${Paziente.codiceFiscale}</h1>
-<h3>${Paziente.codiceFarmaci}</h3>
-<h3>${Paziente.malattie}</h3>
+    <h1>${Paziente.codiceFiscale}</h1>
+    <h3>${Paziente.codiceFarmaci}</h3>
+    <h3>${Paziente.malattie}</h3>
 
-<!-- Header -->
-<%@include file="/Content/footer.jsp"%>
+    <!-- Header -->
+    <%@include file="/Content/footer.jsp"%>
 
 </body>
 

@@ -8,7 +8,7 @@
             <div class="container_nav" id="header_nav">
                 <a class="link" href="/farmacia">Farmacia</a>
                 <a class="link" href="">Prenotazioni</a>
-                <a class="link" href="/pazientihome">Pazienti</a>
+                <a class="link" href="/pazienti">Pazienti</a>
                 <a class="button button_outline margins" href="">Log In</a>
                 <a class="button button_fill margins" href="">Sing Up</a>
             </div>

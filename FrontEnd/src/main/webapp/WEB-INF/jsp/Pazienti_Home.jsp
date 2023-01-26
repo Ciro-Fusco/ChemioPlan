@@ -21,8 +21,8 @@
 
         <h1>Pazienti</h1>
         <div class="filter_content">
-            <a class="button button_outline menu" href="/pazienti">Visualizza Pazienti</a>
-            <a class="button button_outline menu" href="">Aggiungi Paziente</a>
+            <a class="button button_outline menu" href="/pazienti/all">Visualizza Pazienti</a>
+            <a class="button button_outline menu" href="/pazienti/add-paziente-page">Aggiungi Paziente</a>
             <a class="button button_outline menu" href="" style="max-width:200px;min-width:200px;">Modifica Trattamento</a>
         </div>
 

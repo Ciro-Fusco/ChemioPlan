@@ -47,7 +47,7 @@ public class SchedaFarmaco {
   /**
    * <p>Aggiunge un nuovo lotto per il farmaco</p>
    *
-   * @param lotto
+   * @param lotto lotto da aggiungere
    */
   public void addLotto(Lotto lotto) {
     this.lotti.add(lotto);
@@ -56,15 +56,16 @@ public class SchedaFarmaco {
   /**
    * <p>Rimuove un lotto per il farmaco</p>
    *
-   * @param lotto
+   * @param lotto lotto da rimuovere
    */
   public void removeLotto(Lotto lotto) {
     this.lotti.remove(lotto);
   }
 
   /**
-   * <p>Ci dice se un lotto è già presente nella lista</p>
-   * @param lotto
+   * <p>Ci dice se un lotto è già presente nella lista.</p>
+   *
+   * @param lotto lotto che dovrebbe essere contenuto
    * @return true se il lotto è già contenuto, false altrimenti
    */
   public boolean lottiContains(Lotto lotto){
@@ -73,5 +74,23 @@ public class SchedaFarmaco {
       return true;
     }
     return false;
+  }
+
+  /**
+   * <p>Questo metodo restituisce il lotto cercato.</p>
+   *
+   * @param numeroLotto numero del lotto da cercare
+   * @return lotto con il numero specificato, altrimenti null
+   */
+  public Lotto getLotto(Integer numeroLotto) {
+    List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
+    if (!numeriLotti.contains(numeroLotto))
+      return null;
+    return lotti.get(numeriLotti.indexOf(numeroLotto));
+  }
+
+  public void replaceLotto(Lotto lotto){
+    List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
+    lotti.set(numeriLotti.indexOf(lotto.getNumeroLotto()), lotto);
   }
 }

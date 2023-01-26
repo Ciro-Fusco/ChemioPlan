@@ -107,6 +107,17 @@ public class FarmaciaController {
     return ResponseEntity.ok("Nuovo lotto modificato correttamente sulla Scheda Farmaco " + codice);
   }
 
+  @GetMapping("/get-lotto/{codice}/{num}")
+  public Lotto ottieniLotto(@PathVariable String codice, @PathVariable Integer num) {
+    return service.ottieniLotto(codice, num);
+  }
+
+  @PutMapping("/modifica-lotto/{codice}")
+  public ResponseEntity<?> modificaLotto(@PathVariable String codice, @RequestBody Lotto lotto) {
+    service.modificaLotto(codice, lotto.getNumeroLotto(), lotto);
+    return ResponseEntity.ok("Lotto scheda farmaco modificata correttamente" + codice);
+  }
+
   /**
    * <p>Questo metodo inserisce un nuovo ordine nel database.</p>
    *

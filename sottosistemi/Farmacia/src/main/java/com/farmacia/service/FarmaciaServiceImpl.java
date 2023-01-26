@@ -94,6 +94,9 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     if (schedaFarmaco.getNome() != null) {
       scheda.setNome(schedaFarmaco.getNome());
     }
+    if (schedaFarmaco.getDosaggio() != null) {
+      scheda.setDosaggio(schedaFarmaco.getDosaggio());
+    }
     repo.save(scheda);
   }
 
@@ -155,6 +158,41 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     }
     var scheda = optional.get();
     return scheda.getLotti();
+  }
+
+  /**
+   * <p>Questo metodo fornisce il lotto cercato</p>
+   *
+   * @param codiceFarmaco codice del farmaco in cui si cerca il lotto
+   * @param numeroLotto lotto da ricercare
+   * @return lotto cercato
+   */
+  @Override
+  public Lotto ottieniLotto(String codiceFarmaco, Integer numeroLotto) {
+    var optional = repo.findById(codiceFarmaco);
+    if (optional.isEmpty())
+      throw new SchedaFarmacoNotFoundException("Scheda farmaco " + codiceFarmaco + " non trovata");
+
+    SchedaFarmaco s = optional.get();
+
+    Lotto l = s.getLotto(numeroLotto);
+    if (l == null)
+      throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
+    return l;
+  }
+
+  @Override
+  public void modificaLotto(String codiceFarmaco, Integer numeroLotto, Lotto lotto) {
+    var optional = repo.findById(codiceFarmaco);
+    if (optional.isEmpty())
+      throw new SchedaFarmacoNotFoundException("Scheda farmaco " + codiceFarmaco + " non trovata");
+
+    SchedaFarmaco s = optional.get();
+    System.out.println(s.getLotti());
+    if (!(s.lottiContains(lotto)))
+      throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
+    s.replaceLotto(lotto);
+    repo.save(s);
   }
 
   /**

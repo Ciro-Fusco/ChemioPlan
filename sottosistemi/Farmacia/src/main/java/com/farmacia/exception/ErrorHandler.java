@@ -43,4 +43,9 @@ public class ErrorHandler {
   public ResponseEntity<String> handleLottoArleadyExistException(LottoAlreadyExistException exception){
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
+
+  @ExceptionHandler(LottoNotFoundException.class)
+  public ResponseEntity<String> handleLottoNotFoundException(LottoNotFoundException exception){
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+  }
 }

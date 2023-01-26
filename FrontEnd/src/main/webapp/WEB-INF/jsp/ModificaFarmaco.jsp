@@ -10,52 +10,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aggiungi Paziente</title>
+    <title>Aggiungi Farmaco</title>
 
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/script.js"></script>
 
 </head>
 
-    <body>
-    <!-- Header -->
+<body>
+<!-- Header -->
     <%@include file="/Content/header.jsp" %>
 
     <!-- Content -->
     <h2>${message}</h2>
 
-    <h1>Aggiungi Paziente</h1>
+    <h1>Modifica Farmaco</h1>
 
-    <form:form action="/pazienti/add-paziente" method="post" modelAttribute="scheda">
+    <form:form action="/farmacia/modifica-farmaco/${codice}" method="post" modelAttribute="scheda">
         <div class="page_content">
             <div class="filter_content">
                 <div class="filter_screen">
-                    <h4>Codice Fiscale</h4>
-                    <form:input class="inp_filter" path="codiceFiscale" placeholder="Codice"/>
-                </div>
-
-                <div class="filter_screen" id="farmaci">
-                    <h4>Codici Farmaci</h4>
-                    <c:forEach items="${farmaci}" var = "f">
-                        <label>
-                            <form:checkbox path="codiceFarmaci" value="${f.codice}" class="check"></form:checkbox>
-                            ${f.nome}
-                        </label>
-                    </c:forEach>
+                    <h4>Codice Farmaco</h4>
+                    <form:input class="inp_filter" path="codice" placeholder="Codice" readonly="true"/>
                 </div>
 
                 <div class="filter_screen">
-                    <h4>Malattie</h4>
-                    <form:input class="inp_filter" path="malattie" placeholder="Malattie"/>
+                    <h4>Nome Farmaco</h4>
+                    <form:input class="inp_filter" path="nome" placeholder="Nome"/>
+                </div>
+
+                <div class="filter_screen">
+                    <h4>Dosaggio</h4>
+                    <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio"/>
                 </div>
             </div>
-            <form:button class="button button_fill menu" href="">Aggiungi</form:button>
+            <form:button class="button button_fill menu" href="">Modifica</form:button>
         </div>
     </form:form>
 
     <!-- Footer -->
     <%@include file="/Content/footer.jsp" %>
 
-    </body>
+</body>
 
 </html>

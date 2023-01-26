@@ -23,7 +23,6 @@
         <div class="filter_content">
             <a class="button button_outline menu" href="/farmacia/magazzino">Magazzino</a>
             <a class="button button_outline menu" href="/farmacia/add-farmaco-page">Aggiungi Farmco</a>
-            <a class="button button_outline menu" href="">Modifica Farmaco</a>
             <a class="button button_outline menu" href="">Ordina Farmaco</a>
         </div>
 

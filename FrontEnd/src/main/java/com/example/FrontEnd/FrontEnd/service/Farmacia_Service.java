@@ -54,4 +54,45 @@ public class Farmacia_Service implements IFarmacia_Service {
             return e.getMessage();
         }
     }
+
+    @Override
+    public String modificaFarmaco(String codice, SchedaFarmaco schedaFarmaco) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<SchedaFarmaco> entity = new HttpEntity<>(schedaFarmaco, headers);
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(farmaciaResourceUrl + "/" + codice, HttpMethod.PUT, entity, String.class);
+            return response.getBody();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
+    }
+
+    @Override
+    public Lotto getLotto(String codiceFarmaco, Integer numeroLotto) {
+        Lotto l = restTemplate.getForObject(
+                farmaciaResourceUrl + "/get-lotto/" + codiceFarmaco + "/" + numeroLotto,
+                Lotto.class
+        );
+        return l;
+    }
+
+    @Override
+    public String modificaLotto(String codiceFarmaco, Lotto lotto) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Lotto> entity = new HttpEntity<>(lotto, headers);
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.exchange(farmaciaResourceUrl + "/modifica-lotto/" + codiceFarmaco, HttpMethod.PUT, entity, String.class);
+            return response.getBody();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
+    }
 }

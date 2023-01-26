@@ -36,12 +36,18 @@
         <c:forEach items="${Farmaco.lotti}" var="lotto">
             <tr>
                 <td>${lotto.numeroLotto} </td>
-                <td><fmt:formatDate value="${lotto.scadenzaLotto}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value="${lotto.scadenzaLotto}" pattern="dd-MM-yyyy"/></td>
                 <td>${lotto.quantita}</td>
+                <td>
+                    <a class="button button_outline menu" href="/farmacia/modifica-lotto-page/${Farmaco.codice}/${lotto.numeroLotto}">Modifica</a>
+                </td>
             </tr>
         </c:forEach>
         <tr>
-            <td colspan="3"><a class="button button_outline menu" href="/farmacia/add-lotto-page/${Farmaco.codice}">Aggiungi Lotto</a></td>
+            <td colspan="4"><a class="button button_outline menu" href="/farmacia/add-lotto-page/${Farmaco.codice}">Aggiungi Lotto</a></td>
+        </tr>
+        <tr>
+            <td colspan="4"><a class="button button_outline menu" href="/farmacia/modifica-farmaco-page/${Farmaco.codice}">Modifica Farmaco</a></td>
         </tr>
         </tbody>
     </table>

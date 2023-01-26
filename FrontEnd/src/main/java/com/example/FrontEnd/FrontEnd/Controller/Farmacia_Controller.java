@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @SessionAttributes("name")
 @RequestMapping(value = { "/farmacia" }, method = RequestMethod.GET)
@@ -67,4 +69,38 @@ public class Farmacia_Controller {
         return "Farmaco";
     }
 
+    @RequestMapping(value = {"/modifica-farmaco-page/{codice}"}, method = RequestMethod.GET)
+    public String modificaFarmacoPage(@ModelAttribute SchedaFarmaco scheda, @PathVariable String codice, ModelMap model) {
+        scheda = service.getFarmaco(codice);
+        System.out.println(scheda);
+        model.addAttribute("codice", codice);
+        model.addAttribute("scheda", scheda);
+        return "ModificaFarmaco";
+    }
+
+    @RequestMapping(value = {"/modifica-farmaco/{codice}"}, method = RequestMethod.POST)
+    public String modificaFarmaco(@ModelAttribute SchedaFarmaco scheda, ModelMap model, @PathVariable String codice) {
+        System.out.println(scheda);
+        scheda.setLotti((List<Lotto>) model.getAttribute("lotti"));
+        model.addAttribute("message", service.modificaFarmaco(codice, scheda));
+        model.addAttribute("Farmaco", service.getFarmaco(codice));
+        return "Farmaco";
+    }
+
+    @RequestMapping(value = {"/modifica-lotto-page/{codice}/{num}"}, method = RequestMethod.GET)
+    public String modificaLottoPage(@PathVariable Integer num, @PathVariable String codice, ModelMap model) {
+        Lotto lotto = service.getLotto(codice, num);
+        System.out.println(lotto);
+        model.addAttribute("codice", codice);
+        model.addAttribute("lotto", lotto);
+        return "ModificaLotto";
+    }
+
+    @RequestMapping(value = {"/modifica-lotto/{codice}"}, method = RequestMethod.POST)
+    public String modificaLotto(@ModelAttribute Lotto lotto, @PathVariable String codice, ModelMap model) {
+        System.out.println(lotto);
+        model.addAttribute("message", service.modificaLotto(codice, lotto));
+        model.addAttribute("Farmaco", service.getFarmaco(codice));
+        return "Farmaco";
+    }
 }

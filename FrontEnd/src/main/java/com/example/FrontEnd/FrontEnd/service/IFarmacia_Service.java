@@ -8,4 +8,7 @@ public interface IFarmacia_Service {
     SchedaFarmaco[] getAllFarmaci();
     String addFarmaco(SchedaFarmaco scheda);
     String nuovoLotto(String codice, Lotto lotto);
+    String modificaFarmaco(String codice, SchedaFarmaco schedaFarmaco);
+    Lotto getLotto(String codiceFarmaco, Integer numeroLotto);
+    String modificaLotto(String codiceFarmaco, Lotto lotto);
 }

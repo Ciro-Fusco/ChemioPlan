@@ -1,3 +1,5 @@
+   <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+   <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
    <!-- Header -->
     <div class="header">
         <div class="container_header">
@@ -6,10 +8,21 @@
                     src="/Content/Logo.png">
             </a>
             <div class="container_nav" id="header_nav">
-                <a class="link" href="/farmacia">Farmacia</a>
-                <a class="link" href="">Prenotazioni</a>
-                <a class="link" href="/pazienti">Pazienti</a>
-                <a class="button button_outline margins" href="/utente/login">Log In</a>
+                <c:choose>
+                    <c:when test="${ruolo=='Dottore'}">
+                        <a class="link" href="/farmacia">Farmacia</a>
+                        <a class="link" href="">Prenotazioni</a>
+                        <a class="link" href="/pazienti">Pazienti</a>
+                        <a class="button button_fill margins" href="">Log Out</a>
+                    </c:when>
+                    <c:when test="${ruolo=='Responsabile Farmacia'}">
+                        <a class="link" href="/farmacia">Farmacia</a>
+                         <a class="button button_fill margins" href="">Log Out</a>
+                    </c:when>
+                    <c:otherwise>
+                         <a class="button button_outline margins" href="/utente/login">Log In</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="hamburger" id="hamburger_button" onclick="menu_show(this)">
                 <div class="bar1"></div>

@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.Lotto;
+import com.example.FrontEnd.FrontEnd.model.Ordine;
 import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import org.springframework.http.*;
@@ -109,4 +110,21 @@ public class Farmacia_Service implements IFarmacia_Service {
             return e.getMessage();
         }
     }
+
+    @Override
+    public Ordine[] getAllOrdini() {
+        return restTemplate.getForObject(farmaciaResourceUrl + "/ordini", Ordine[].class);
+    }
+
+    @Override
+    public String eliminaFarmaco(String codice) {
+        try {
+            restTemplate.delete(farmaciaResourceUrl + "/" + codice, getFarmaco(codice));
+            return "Scheda " + codice + " eliminata";
+        } catch (Exception e){
+            return e.getMessage();
+        }
+    }
+
+
 }

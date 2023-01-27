@@ -117,4 +117,17 @@ public class Farmacia_Controller {
         model.addAttribute("ordine", new OrdineRequest());
         return "NuovoOrdine";
     }
+
+    @RequestMapping(value = {"/ordini-page"}, method = RequestMethod.GET)
+    public String ordiniPage(ModelMap model) {
+        model.addAttribute("ordini", service.getAllOrdini());
+        return "Ordini";
+    }
+
+    @RequestMapping(value = {"/elimina/{codice}"}, method = RequestMethod.DELETE)
+    public String eliminaFarmaco(ModelMap model, @PathVariable String codice) {
+        model.addAttribute("message", service.eliminaFarmaco(codice));
+        model.addAttribute("Farmaci", service.getAllFarmaci());
+        return "Magazzino";
+    }
 }

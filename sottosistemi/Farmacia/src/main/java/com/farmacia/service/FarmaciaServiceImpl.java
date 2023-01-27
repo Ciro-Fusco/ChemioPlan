@@ -226,18 +226,12 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   }
 
   /**
-   * <p>Questo metodo restituisce un Ordine con uno specifico id.
-   * Se l'ordine non è presente nel database solleva un'eccezione.</p>
+   * <p>Questo metodo restituisce tutti gli ordini.</p>
    *
-   * @param id l'id dell'ordine da cercare
-   * @return l'ordine con l'id
+   * @return lista di ordini
    */
   @Override
-  public Ordine ottieniOrdine(String id) {
-    return repoOrdine.findById(id).orElseThrow(
-            () -> new OrdineNotFoundException("Ordine con ID: |" + id + "| non trovato")
-    );
-  }
+  public List<Ordine> ottieniOrdini() { return repoOrdine.findAll();}
 
   /**
    * <p>Questo metodo modifica lo stato dell'Ordine.
@@ -256,5 +250,13 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     Ordine o = ordine.get();
     o.setStato(Ordine.STATO_CONSEGNATO);
     repoOrdine.save(o);
+  }
+
+  @Override
+  public Ordine ottieniOrdine(String id) {
+    var optional = repoOrdine.findById(id);
+    if (optional.isEmpty())
+      throw new OrdineNotFoundException();
+    return optional.get();
   }
 }

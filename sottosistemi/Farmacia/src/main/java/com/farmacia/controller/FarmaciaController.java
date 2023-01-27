@@ -6,6 +6,8 @@ import com.farmacia.model.Ordine;
 import com.farmacia.model.SchedaFarmaco;
 import com.farmacia.service.FarmaciaService;
 import java.util.List;
+
+import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -131,13 +133,17 @@ public class FarmaciaController {
   }
 
   /**
-   * <p>Questo metodo restituisce l'ordine con uno specifico id.</p>
+   * <p>Questo metodo restituisce tutti gli ordini.</p>
    *
-   * @param id l'id del farmaco da cercare passato nell'url
-   * @return l'ordine con l'id specificato
+   * @return lista di ordini
    */
-  @GetMapping("/ordine")
-  public Ordine ottieniOrdine(@RequestParam String id) {
+  @GetMapping("/ordini")
+  public List<Ordine> ottieniOrdini() {
+    return service.ottieniOrdini();
+  }
+
+  @GetMapping("/ordine/{id}")
+  public Ordine ottieniOrdini(@PathVariable String id) {
     return service.ottieniOrdine(id);
   }
 

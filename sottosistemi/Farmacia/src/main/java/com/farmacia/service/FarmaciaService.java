@@ -93,12 +93,11 @@ public interface FarmaciaService {
   Ordine nuovoOrdine(OrdineRequest ordine);
 
   /**
-   * <p>Questo metodo restituisce un Ordine con uno specifico id.</p>
+   * <p>Questo metodo restituisce tutti gli ordini.</p>
    *
-   * @param id l'id dell'ordine da cercare
-   * @return l'ordine con l'id
+   * @return lista di ordini
    */
-  Ordine ottieniOrdine(String id);
+  List<Ordine> ottieniOrdini();
 
   /**
    * <p>Questo metodo modifica lo stato dell'Ordine.</p>
@@ -106,4 +105,6 @@ public interface FarmaciaService {
    * @param id l'id dell'ordine da modificare
    */
   void ordineConsegnato(String id);
+
+  Ordine ottieniOrdine(String id);
 }

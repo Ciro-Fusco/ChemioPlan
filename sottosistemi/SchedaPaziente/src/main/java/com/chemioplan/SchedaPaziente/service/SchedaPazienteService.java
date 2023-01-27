@@ -68,7 +68,16 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
      */
     @Override
     public void modificaSchedaPaziente(String codiceFiscale, SchedaPaziente schedaPaziente) {
+        var optional = schedaPazienteRepository.findById(codiceFiscale);
+        if (optional.isEmpty())
+            throw new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale " + codiceFiscale + " non trovata");
 
+        var scheda = optional.get();
+        if (schedaPaziente.getCodiceFarmaci() != null)
+            scheda.setCodiceFarmaci(schedaPaziente.getCodiceFarmaci());
+        if (schedaPaziente.getMalattie() != null)
+            scheda.setMalattie(schedaPaziente.getMalattie());
+        schedaPazienteRepository.save(scheda);
     }
 
     /**

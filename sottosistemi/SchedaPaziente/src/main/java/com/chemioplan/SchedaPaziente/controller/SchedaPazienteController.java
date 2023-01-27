@@ -78,6 +78,4 @@ public class SchedaPazienteController {
         schedaPazienteService.eliminaSchedaPaziente(codiceFiscale);
         return ResponseEntity.ok("Scheda farmaco eliminata correttamente" +codiceFiscale);
     }
-
-
 }

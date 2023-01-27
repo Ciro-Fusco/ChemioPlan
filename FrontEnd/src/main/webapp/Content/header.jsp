@@ -3,7 +3,7 @@
    <!-- Header -->
     <div class="header">
         <div class="container_header">
-            <a href="/index">
+            <a href="/logo">
                 <img alt="Logo" class="logo"
                     src="/Content/Logo.png">
             </a>

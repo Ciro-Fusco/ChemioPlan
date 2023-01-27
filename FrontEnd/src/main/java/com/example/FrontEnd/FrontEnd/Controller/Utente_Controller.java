@@ -23,6 +23,15 @@ public class Utente_Controller {
         return "Login";
     }
 
+    @RequestMapping(value = {"/logo"}, method = RequestMethod.GET)
+    public String clickLogo(ModelMap model){
+        if(model.getAttribute("ruolo") == "") {
+            model.addAttribute("credenziali", new Credenziali());
+            return "Login";
+        }
+        return "Index";
+    }
+
     @RequestMapping(value= {"/utente/login"}, method = RequestMethod.GET)
     public String showLoginPage(ModelMap model, @ModelAttribute Credenziali credenziali){
         model.addAttribute("message", null);

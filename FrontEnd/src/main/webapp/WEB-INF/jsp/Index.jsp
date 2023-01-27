@@ -25,7 +25,7 @@
              src="/Content/Logo.png">
 
         <h1></h1>
-        <h1><br>Benvenuto in ChemioPlan</h1>
+        <h1><br>Benvenuto ${ruolo} in ChemioPlan</h1>
         <h3>${message}</h3>
     </div>
     <div class="home_image" style="background-image: url('/Content/Home_Image.jpg');"> </div>

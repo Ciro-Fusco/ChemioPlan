@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@SessionAttributes("ruolo")
 public class Utente_Controller {
 
     @Autowired

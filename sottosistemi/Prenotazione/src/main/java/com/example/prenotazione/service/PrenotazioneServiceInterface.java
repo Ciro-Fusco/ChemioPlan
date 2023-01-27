@@ -4,7 +4,6 @@ import com.example.prenotazione.dto.PrenotazioneRequest;
 import com.example.prenotazione.dto.PrenotazioneResponse;
 import com.example.prenotazione.model.Prenotazione;
 import java.util.List;
-import java.util.Optional;
 
 
 /**
@@ -23,12 +22,7 @@ public interface PrenotazioneServiceInterface {
 
   void deletePrenotazione(String codice);
 
-  List<PrenotazioneResponse> getBySala(String data);
-
-  List<PrenotazioneResponse> getByData(String data);
-
   PrenotazioneResponse getById(String codice);
 
-  List<PrenotazioneResponse> getByPoltrona(String poltrona);
 }
 

@@ -60,24 +60,9 @@ public class PrenotazioneController {
     prenotazioneService.deletePrenotazione(codice);
   }
 
-  @GetMapping("/getByData/{data}")
-  public List<PrenotazioneResponse> getByData(@PathVariable String data) {
-    return prenotazioneService.getByData(data);
-  }
-
-  @GetMapping("/getBySala/{sala}")
-  public List<PrenotazioneResponse> getBySala(@PathVariable String sala) {
-    return prenotazioneService.getBySala(sala);
-  }
-
-  @GetMapping("/getById/{codice}")
+  @GetMapping("/{codice}")
   public PrenotazioneResponse getById(@PathVariable String codice) {
     return  prenotazioneService.getById(codice);
-  }
-
-  @GetMapping("/getByPoltrona/{poltrona}")
-  public List<PrenotazioneResponse> getByPoltrona(@PathVariable String poltrona) {
-    return  prenotazioneService.getByPoltrona(poltrona);
   }
 
 

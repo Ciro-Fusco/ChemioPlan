@@ -1,13 +1,17 @@
 package com.example.prenotazione.service;
 
+
 import com.example.prenotazione.dto.PrenotazioneRequest;
 import com.example.prenotazione.dto.PrenotazioneResponse;
 import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
+import com.example.prenotazione.model.SchedaPaziente;
 import com.example.prenotazione.repository.PrenotazioneRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 
 
 /**
@@ -30,7 +34,8 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    * @return restituisce l'oggetto prenotazione trasformato in un oggetto prenotazioneResponse
    */
   private PrenotazioneResponse mapToPrenotazioneResponse(Prenotazione prenotazione) {
-    return PrenotazioneResponse.builder().codice(prenotazione.getCodice())
+    return PrenotazioneResponse.builder().codiceFiscale(prenotazione.getCodiceFiscale())
+        .codice(prenotazione.getCodice())
         .data(prenotazione.getData()).sala(prenotazione.getSala())
         .poltrona(prenotazione.getPoltrona()).codiceFarmaci(prenotazione.getCodiceFarmaci())
         .build();
@@ -45,7 +50,13 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    */
   @Override
   public void addPrenotazione(PrenotazioneRequest prenotazioneRequest) {
-    Prenotazione p = Prenotazione.builder().data(prenotazioneRequest.getData())
+    RestTemplate restTemplate = new RestTemplate();
+    String uri = "http://localhost:8084/pazienti/";
+    SchedaPaziente  response = restTemplate.getForObject(
+        uri + prenotazioneRequest.getCodiceFiscale(), SchedaPaziente.class);
+
+    Prenotazione p = Prenotazione.builder().codiceFiscale(prenotazioneRequest.getCodiceFiscale())
+        .data(prenotazioneRequest.getData())
         .sala(prenotazioneRequest.getSala()).poltrona(prenotazioneRequest.getPoltrona())
         .codiceFarmaci(prenotazioneRequest.getCodiceFarmaci()).build();
     prenotazioneRepository.insert(p);
@@ -108,30 +119,6 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
   }
 
   /**
-   * <p>Questo metodo è utilizzato per ottenere le prenotazione con una determinata data.</p>
-   *
-   * @param data data con cui voglio le prenotazioni.
-   * @return restituisce una lista di prenotazioni.
-   */
-  @Override
-  public List<PrenotazioneResponse> getByData(String data) {
-    List<Prenotazione> list = prenotazioneRepository.findByData(data);
-    return list.stream().map(this::mapToPrenotazioneResponse).toList();
-  }
-
-  /**
-   * <p>Questo metodo è usato per ottenere le prenotazioni con una determinata sala.</p>
-   *
-   * @param sala sala con cui voglio avere le prenotazioni.
-   * @return restituisce una lista di prenotazioni.
-   */
-
-  public List<PrenotazioneResponse> getBySala(String sala) {
-    List<Prenotazione> list = prenotazioneRepository.findBySala(sala);
-    return list.stream().map(this::mapToPrenotazioneResponse).toList();
-  }
-
-  /**
    * <p>Questo metodo restituisce una prenotazione con un determinato codice.</p>
    *
    * @param codice identificativo della prenotazione
@@ -145,15 +132,4 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     return mapToPrenotazioneResponse(prenotazione);
   }
 
-  /**
-   * <p>Questo metodo è usato per ottenere le prenotazioni con una determinata poltrona.</p>
-   *
-   * @param poltrona poltrona con cui voglio avere le prenotazioni.
-   * @return restituisce una lista di prenotazioni.
-   */
-
-  public List<PrenotazioneResponse> getByPoltrona(String poltrona) {
-    List<Prenotazione> list = prenotazioneRepository.findByPoltrona(poltrona);
-    return list.stream().map(this::mapToPrenotazioneResponse).toList();
-  }
 }

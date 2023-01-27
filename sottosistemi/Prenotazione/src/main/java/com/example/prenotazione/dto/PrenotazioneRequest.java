@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PrenotazioneRequest {
 
+  private String codiceFiscale;
   private String data;
   private String sala;
   private String poltrona;

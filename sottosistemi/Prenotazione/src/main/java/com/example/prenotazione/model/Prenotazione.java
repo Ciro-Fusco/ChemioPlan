@@ -24,8 +24,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Prenotazione {
 
   @Id
-  @Field(name = "id")
   private String codice;
+  @Field(name = "codiceFiscale")
+  private String codiceFiscale;
   @Field(name = "data")
   private String data;
   @Field(name = "sala")

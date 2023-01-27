@@ -21,6 +21,7 @@ public class PrenotazioneResponse {
 
   @Id
   private String codice;
+  private String codiceFiscale;
   private String data;
   private String sala;
   private String poltrona;

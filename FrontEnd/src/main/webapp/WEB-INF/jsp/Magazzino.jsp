@@ -21,6 +21,7 @@
     <%@include file="/Content/header.jsp" %>
 
         <!-- Content -->
+        <h2>${message}</h2>
 
         <h1>Magazzino</h1>
         <table>
@@ -44,6 +45,7 @@
                                 ${lotto.numeroLotto}
                             </c:forEach>
                         </td>
+                        <td><a class="button button_outline menu" href="/farmacia/elimina/${farmaco.codice}" class="tablink">Elimina</a></td>
                     </tr>
                 </c:forEach>
 

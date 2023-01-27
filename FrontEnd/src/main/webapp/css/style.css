@@ -381,7 +381,8 @@ table tbody {
 /* Home */
 .home_container {
     display: flex;
-    min-height: 300px;
+    /* min-height: 300px; */
+    min-height: 70vh;
 }
 
 .login_box {
@@ -424,4 +425,8 @@ table tbody {
     .home_container {
         display: block;
     }
+}
+
+.wrapper {
+    min-height: 50vh;
 }

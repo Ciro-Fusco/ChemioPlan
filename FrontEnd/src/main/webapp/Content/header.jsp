@@ -9,8 +9,7 @@
                 <a class="link" href="/farmacia">Farmacia</a>
                 <a class="link" href="">Prenotazioni</a>
                 <a class="link" href="/pazienti">Pazienti</a>
-                <a class="button button_outline margins" href="">Log In</a>
-                <a class="button button_fill margins" href="">Sing Up</a>
+                <a class="button button_outline margins" href="/utente/login">Log In</a>
             </div>
             <div class="hamburger" id="hamburger_button" onclick="menu_show(this)">
                 <div class="bar1"></div>

@@ -2,10 +2,7 @@ package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,8 +20,11 @@ public class Paziente_Service implements IPaziente_Service {
 
   @Override
   public SchedaPaziente getPaziente(String cf) {
-    SchedaPaziente paziente = restTemplate.getForObject(pazienteResourceUrl + "/" + cf, SchedaPaziente.class);
-    return paziente;
+    try {
+      return restTemplate.getForObject(pazienteResourceUrl + "/" + cf, SchedaPaziente.class);
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   @Override
@@ -36,6 +36,22 @@ public class Paziente_Service implements IPaziente_Service {
     ResponseEntity<String> response = null;
     try {
       response = restTemplate.postForEntity(pazienteResourceUrl, entity, String.class);
+      return response.getBody();
+    } catch (Exception e){
+      System.out.println(e.getMessage());
+      return e.getMessage();
+    }
+  }
+
+  @Override
+  public String modificaPaziente(SchedaPaziente scheda) {
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    HttpEntity<SchedaPaziente> entity = new HttpEntity<>(scheda, headers);
+    ResponseEntity<String> response = null;
+    try {
+      response = restTemplate.exchange(pazienteResourceUrl + "/" + scheda.getCodiceFiscale(), HttpMethod.PUT, entity, String.class);
       return response.getBody();
     } catch (Exception e){
       System.out.println(e.getMessage());

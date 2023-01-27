@@ -6,4 +6,6 @@ public interface IPaziente_Service {
   SchedaPaziente[] getPazienti();
   SchedaPaziente getPaziente(String cf);
   String addPaziente(SchedaPaziente paziente);
+
+  String modificaPaziente(SchedaPaziente scheda);
 }

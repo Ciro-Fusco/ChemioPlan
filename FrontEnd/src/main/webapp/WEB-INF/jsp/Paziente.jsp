@@ -18,11 +18,13 @@
     <%@include file="/Content/header.jsp"%>
 
     <!-- Content -->
-
+    <h3>${message}</h3>
     <h1>${Paziente.codiceFiscale}</h1>
     <h3>${Paziente.codiceFarmaci}</h3>
     <h3>${Paziente.malattie}</h3>
-
+    <div class="filter_content">
+        <a class="button button_outline menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">Cambia Trattamento</a>
+    </div>
     <!-- Header -->
     <%@include file="/Content/footer.jsp"%>
 

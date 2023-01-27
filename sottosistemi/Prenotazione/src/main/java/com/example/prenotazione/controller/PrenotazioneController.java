@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version n.1 (10-01-2023)
  */
 @RestController
-@RequestMapping("prenotazione")
+@RequestMapping("prenotazioni")
 public class PrenotazioneController {
 
   /**
@@ -54,7 +54,7 @@ public class PrenotazioneController {
     prenotazioneService.updatePrenotazione(codice, prenotazione);
   }
 
-  @DeleteMapping("/{codice}")
+  @DeleteMapping("/elimina/{codice}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deletePrenotazione(@PathVariable String codice) {
     prenotazioneService.deletePrenotazione(codice);

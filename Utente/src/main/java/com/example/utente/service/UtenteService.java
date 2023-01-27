@@ -3,10 +3,13 @@ package com.example.utente.service;
 import com.example.utente.exception.CredenzialiNonValideException;
 import com.example.utente.exception.UtenteAlreadyExistException;
 import com.example.utente.exception.UtenteNotFoundException;
+import com.example.utente.model.Credenziali;
 import com.example.utente.model.Utente;
 import com.example.utente.repository.UtenteRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -103,8 +106,9 @@ public class UtenteService implements IutenteService {
    * @since 1.0
      */
   @Override
-  public void verificaCredenziali(String user, String pass) {
+  public ResponseEntity<?> verificaCredenziali(String user, String pass) {
     Utente u = repository.findByUser(user);
+    System.out.println(u.toString());
     if (u == null) {
       throw new CredenzialiNonValideException("User Errato");
     }
@@ -112,5 +116,12 @@ public class UtenteService implements IutenteService {
     if (!u.getCredenziali().getPass().equals(pass)) {
       throw new CredenzialiNonValideException("Credenziali non valide");
     }
+    //System.out.println(ResponseEntity.ok("Login effettuato con successo!").getBody());
+    return ResponseEntity.ok("Login effettuato con successo!");
+  }
+
+  @Override
+  public String getRuoloByUser(String user){
+    return repository.findByUser(user).getRuolo();
   }
 }

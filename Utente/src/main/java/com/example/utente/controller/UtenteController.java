@@ -103,7 +103,12 @@ public class UtenteController {
    */
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody Credenziali credenziali) {
-    service.verificaCredenziali(credenziali.getUser(), credenziali.getPass());
-    return ResponseEntity.ok("Login effettuato con succeso!");
+    //System.out.println(credenziali.toString());
+    return service.verificaCredenziali(credenziali.getUser(), credenziali.getPass());
+  }
+
+  @PostMapping("/ruolo")
+  public String getRuoloByUser(@RequestBody String user){
+    return service.getRuoloByUser(user);
   }
 }

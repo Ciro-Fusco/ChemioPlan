@@ -1,6 +1,8 @@
 package com.example.utente.service;
 
 import com.example.utente.model.Utente;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 /**
@@ -59,5 +61,7 @@ public interface IutenteService {
    * @param pass Password dell'utente
    * @since 1.0
   */
-  void verificaCredenziali(String user, String pass);
+  ResponseEntity<?> verificaCredenziali(String user, String pass);
+
+  String getRuoloByUser(String user);
 }

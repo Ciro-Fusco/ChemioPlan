@@ -44,6 +44,13 @@ public class Utente_Controller {
         }
     }
 
+    @RequestMapping(value="/utente/logout", method = RequestMethod.GET)
+    public String logout(ModelMap model){
+        model.addAttribute("ruolo", "");
+        model.addAttribute("credenziali", new Credenziali());
+        return "Login";
+    }
+
     @RequestMapping(value= {"/utenti"}, method = RequestMethod.GET)
     public String showUtentiPage(ModelMap model){
         Utente[] u=service.getUtenti();

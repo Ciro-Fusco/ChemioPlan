@@ -145,10 +145,6 @@ input {
     margin-left: auto;
 }
 
-input .check {
-    border: red;
-}
-
 input:hover {
     border-color: var(--color_primary);
 }
@@ -429,4 +425,28 @@ table tbody {
 
 .wrapper {
     min-height: 50vh;
+}
+
+/* CheckBox */
+.checkcontainer {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.checkbox {
+    /* border: red; */
+    width: 25px;
+    height: 25px;
+    margin: 0;
+}
+
+.checkbox[type="checkbox"] {
+    background-color: var(--color_primary);
+    color: white;
+}
+
+.checktext {
+    font-family: var(--font);
 }

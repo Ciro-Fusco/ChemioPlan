@@ -14,19 +14,22 @@
 </head>
 
 <body>
-<!-- Header -->
-<%@include file="/Content/header.jsp" %>
+    <!-- Header -->
+    <%@include file="/Content/header.jsp" %>
 
-<!-- Content -->
+        <!-- Content -->
 
-<h1>Prenotazioni</h1>
-<div class="filter_content">
-    <a class="button button_outline menu" href="/prenotazioni/all">Visualizza Prenotazioni</a>
-    <a class="button button_outline menu" href="/prenotazioni/add-prenotazione-page">Aggiungi Prenotazione</a>
-</div>
+        <h1>Prenotazioni</h1>
+        <div class="wrapper">
+            <div class="filter_content">
+                <a class="button button_outline menu" href="/prenotazioni/all">Visualizza Prenotazioni</a>
+                <a class="button button_outline menu" href="/prenotazioni/add-prenotazione-page">Aggiungi
+                    Prenotazione</a>
+            </div>
+        </div>
 
-<!-- Header -->
-<%@include file="/Content/footer.jsp" %>
+        <!-- Header -->
+        <%@include file="/Content/footer.jsp" %>
 
 </body>
 

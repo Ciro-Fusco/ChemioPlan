@@ -19,7 +19,7 @@
             </div>
 
             <div class="footer_menu">
-                <a class="footer_link footer_head" href="/pazientihome">Pazienti</a>
+                <a class="footer_link footer_head" href="/pazienti">Pazienti</a>
                 <a class="footer_link" href="/pazienti">Scheda Pazienti</a>
                 <a class="footer_link" href="/pazienti/cerca-paziente-page">Modifica Trattamento</a>
                 <a class="footer_link" href="/pazienti/add-paziente-page">Aggiungi Paziente</a>

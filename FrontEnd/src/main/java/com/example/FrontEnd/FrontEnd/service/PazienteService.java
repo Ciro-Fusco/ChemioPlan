@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class Paziente_Service implements IPaziente_Service {
+public class PazienteService implements IPazienteService {
 
   private RestTemplate restTemplate = new RestTemplate();
   private String pazienteResourceUrl = "http://localhost:8080/pazienti";

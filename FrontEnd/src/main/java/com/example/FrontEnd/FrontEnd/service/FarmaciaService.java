@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class Farmacia_Service implements IFarmacia_Service {
+public class FarmaciaService implements IFarmaciaService {
     private RestTemplate restTemplate = new RestTemplate();
     private String farmaciaResourceUrl = "http://localhost:8080/farmacia";
 
@@ -125,6 +125,4 @@ public class Farmacia_Service implements IFarmacia_Service {
             return e.getMessage();
         }
     }
-
-
 }

@@ -14,7 +14,7 @@ import java.lang.reflect.GenericDeclaration;
 import java.util.List;
 
 @Service
-public class Utente_Service implements IUtente_Service {
+public class UtenteService implements IUtenteService {
 
     private RestTemplate restTemplate = new RestTemplate();
     private String UtenteResourceUrl = "http://localhost:8080/utente";

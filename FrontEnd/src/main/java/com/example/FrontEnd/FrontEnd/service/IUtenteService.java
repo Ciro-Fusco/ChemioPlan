@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-public interface IUtente_Service {
+public interface IUtenteService {
     Utente getUtente(Integer id);
     Utente[] getUtenti();
     String verificaCrendenziali(Credenziali credenziali);

@@ -3,8 +3,8 @@ package com.example.FrontEnd.FrontEnd.Controller;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 import com.example.FrontEnd.FrontEnd.model.Utente;
-import com.example.FrontEnd.FrontEnd.service.IFarmacia_Service;
-import com.example.FrontEnd.FrontEnd.service.IPaziente_Service;
+import com.example.FrontEnd.FrontEnd.service.IFarmaciaService;
+import com.example.FrontEnd.FrontEnd.service.IPazienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,43 +14,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = { "/pazienti" }, method = RequestMethod.GET)
-public class Pazienti_Controller {
+@RequestMapping(value = { "/pazienti" })
+public class PazientiController {
 
   @Autowired
-  private IPaziente_Service pazienteService;
-
+  private IPazienteService pazienteService;
   @Autowired
-  private IFarmacia_Service farmaciaService;
+  private IFarmaciaService farmaciaService;
+
 
   @RequestMapping(value= {""}, method = RequestMethod.GET)
   public String showPazientiHomePage(ModelMap model){
-    return "Pazienti_Home";
+    return "PazientiHome";
   }
 
   @RequestMapping(value= {"/all"}, method = RequestMethod.GET)
   public String showPazientiPage(ModelMap model){
-    SchedaPaziente[] schede = pazienteService.getPazienti();
-    model.addAttribute("Pazienti", schede);
+    model.addAttribute("Pazienti", pazienteService.getPazienti());
     return "Pazienti";
   }
 
   @RequestMapping(value= {"/{cf}"}, method = RequestMethod.GET)
   public String showUtentiPage(ModelMap model, @PathVariable String cf){
-    SchedaPaziente scheda = pazienteService.getPaziente(cf);
-    model.addAttribute("Paziente", scheda);
+    model.addAttribute("Paziente", pazienteService.getPaziente(cf));
     return "Paziente";
   }
 
   @RequestMapping(value = {"/add-paziente-page"}, method = RequestMethod.GET)
-  public String insertPazientePage(@ModelAttribute SchedaPaziente scheda, ModelMap model) {
+  public String insertPazientePage(ModelMap model) {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
-    model.addAttribute("scheda", scheda);
+    model.addAttribute("scheda", new SchedaPaziente());
     return "AggiungiPaziente";
   }
 
   @RequestMapping(value = {"/add-paziente"}, method = RequestMethod.POST)
-  public String insertPaziente(@ModelAttribute SchedaPaziente scheda, ModelMap model) {
+  public String insertPaziente(ModelMap model, @ModelAttribute SchedaPaziente scheda) {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
     model.addAttribute("message", pazienteService.addPaziente(scheda));
     model.addAttribute("scheda", new SchedaPaziente());
@@ -64,7 +62,7 @@ public class Pazienti_Controller {
   }
 
   @RequestMapping(value = {"/cerca-paziente"}, method = RequestMethod.POST)
-  public String cercaPaziente(@ModelAttribute SchedaPaziente scheda, ModelMap model) {
+  public String cercaPaziente(ModelMap model, @ModelAttribute SchedaPaziente scheda) {
     SchedaPaziente s = pazienteService.getPaziente(scheda.getCodiceFiscale());
     if (s == null) {
       model.addAttribute("scheda", new SchedaPaziente());
@@ -88,5 +86,4 @@ public class Pazienti_Controller {
     model.addAttribute("Paziente", pazienteService.getPaziente(scheda.getCodiceFiscale()));
     return "Paziente";
   }
-
 }

@@ -11,6 +11,7 @@ import com.example.FrontEnd.FrontEnd.model.Prenotazione;
 public interface IPrenotazioneService {
 
   Prenotazione[] getAllPrenotazioni();
+
   Prenotazione getById(String codice);
 
   String addPrenotazione(Prenotazione prenotazione);

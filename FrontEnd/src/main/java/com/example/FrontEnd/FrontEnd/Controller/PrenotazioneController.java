@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping(value = { "/prenotazioni" }, method = RequestMethod.GET)
+@RequestMapping(value = { "/prenotazioni" })
 public class PrenotazioneController {
 
   /**
@@ -25,7 +25,7 @@ public class PrenotazioneController {
 
   @RequestMapping(value= {""}, method = RequestMethod.GET)
   public String showPrenotazioniHomePage(ModelMap model){
-    return "Prenotazioni_Home";
+    return "PrenotazioniHome";
   }
 
   @RequestMapping(value= {"/all"}, method = RequestMethod.GET)
@@ -44,7 +44,7 @@ public class PrenotazioneController {
 
   @RequestMapping(value = {"/add-prenotazione-page"}, method = RequestMethod.GET)
   public String insertPrenotazionePage(@ModelAttribute Prenotazione prenotazione, ModelMap model) {
-    model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
+    //model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
     model.addAttribute("prenotazione", prenotazione);
     return "AggiungiPrenotazione";
   }
@@ -56,7 +56,6 @@ public class PrenotazioneController {
     model.addAttribute("prenotazione", new Prenotazione());
     return "AggiungiPrenotazione";
   }
-
 
   @RequestMapping(value = {"/modifica-prenotazione-page/{codice}"}, method = RequestMethod.GET)
   public String modificaPrenotazionePage(ModelMap model, @PathVariable String codice) {

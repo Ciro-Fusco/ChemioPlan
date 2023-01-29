@@ -145,9 +145,7 @@ input {
     margin-left: auto;
 }
 
-input:hover {
-
-}
+input:hover {}
 
 input:focus {
     outline: none;
@@ -340,6 +338,10 @@ table tbody {
 
 .tablink {
     color: var(--colo) !important;
+}
+
+table td {
+    line-height: 2em;
 }
 
 @media screen and (max-width: 800px) {

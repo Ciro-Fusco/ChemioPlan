@@ -60,7 +60,7 @@ public interface FarmaciaService {
   void nuovoLotto(String codiceFarmaco, Lotto lotto);
 
   /**
-   * <p>Questo metodo fornisce i lotti di uno speficico farmaco</p>
+   * <p>Questo metodo fornisce i lotti di uno speficico farmaco.</p>
    *
    * @param codiceFarmaco codice del farmaco
    * @return lista dei lotti del farmaco
@@ -68,7 +68,7 @@ public interface FarmaciaService {
   List<Lotto> ottieniLotti(String codiceFarmaco);
 
   /**
-   * <p>Questo metodo fornisce il lotto cercato</p>
+   * <p>Questo metodo fornisce il lotto cercato.</p>
    *
    * @param codiceFarmaco codice del farmaco in cui si cerca il lotto
    * @param numeroLotto lotto da ricercare
@@ -78,6 +78,7 @@ public interface FarmaciaService {
 
   /**
    * <p>Modifca il lotto scelto di un farmaco.</p>
+   *
    * @param codiceFarmaco farmaco su cui modificare il lotto
    * @param numeroLotto numero del lotto da modificare
    * @param lotto lotto con le modifiche
@@ -106,5 +107,11 @@ public interface FarmaciaService {
    */
   void ordineConsegnato(String id);
 
+  /**
+   * <p>Questo metodo fornisce l'ordine cercato.</p>
+   *
+   * @param id id dell'ordine da ricercare
+   * @return ordine trovato
+   */
   Ordine ottieniOrdine(String id);
 }

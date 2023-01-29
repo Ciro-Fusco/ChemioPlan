@@ -2,8 +2,6 @@ package com.farmacia.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.farmacia.exception.LottoAlreadyExistException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,17 +33,22 @@ public class SchedaFarmaco {
   private String nome;
 
   /**
-   * <p>Dosaggio del farmaco per un paziente</p>
+   * <p>Dosaggio del farmaco.</p>
    */
   private Double dosaggio;
 
   /**
-   * <p>Lotti dei farmaci</p>
+   * <p>Indica la durata del farmaco dopo l'apertura.</p>
+   */
+  private Integer scadenzaDopoApertura;
+
+  /**
+   * <p>Lotti dei farmaci.</p>
    */
   private List<Lotto> lotti = new ArrayList<>();
 
   /**
-   * <p>Aggiunge un nuovo lotto per il farmaco</p>
+   * <p>Aggiunge un nuovo lotto per il farmaco.</p>
    *
    * @param lotto lotto da aggiungere
    */
@@ -54,7 +57,7 @@ public class SchedaFarmaco {
   }
 
   /**
-   * <p>Rimuove un lotto per il farmaco</p>
+   * <p>Rimuove un lotto per il farmaco.</p>
    *
    * @param lotto lotto da rimuovere
    */
@@ -68,9 +71,9 @@ public class SchedaFarmaco {
    * @param lotto lotto che dovrebbe essere contenuto
    * @return true se il lotto è già contenuto, false altrimenti
    */
-  public boolean lottiContains(Lotto lotto){
+  public boolean lottiContains(Lotto lotto) {
     List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
-    if (numeriLotti.contains(lotto.getNumeroLotto())){
+    if (numeriLotti.contains(lotto.getNumeroLotto())) {
       return true;
     }
     return false;
@@ -84,12 +87,18 @@ public class SchedaFarmaco {
    */
   public Lotto getLotto(Integer numeroLotto) {
     List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
-    if (!numeriLotti.contains(numeroLotto))
+    if (!numeriLotti.contains(numeroLotto)) {
       return null;
+    }
     return lotti.get(numeriLotti.indexOf(numeroLotto));
   }
 
-  public void replaceLotto(Lotto lotto){
+  /**
+   * <p>Questo metodo sostituisce il lotto con lo stesso id.</p>
+   *
+   * @param lotto lotto che viene sostituito
+   */
+  public void replaceLotto(Lotto lotto) {
     List<Integer> numeriLotti = lotti.stream().map((l) -> l.getNumeroLotto()).toList();
     lotti.set(numeriLotti.indexOf(lotto.getNumeroLotto()), lotto);
   }

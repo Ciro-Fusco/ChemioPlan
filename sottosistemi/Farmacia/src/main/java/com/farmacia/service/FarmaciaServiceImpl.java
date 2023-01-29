@@ -71,11 +71,13 @@ public class FarmaciaServiceImpl implements FarmaciaService {
                 + schedaFarmaco.getCodice() + "| già esistente");
     }
 
-    if(schedaFarmaco.getCodice().length() <= 0 || schedaFarmaco.getCodice().length() > 10)
+    if (schedaFarmaco.getCodice().length() <= 0 || schedaFarmaco.getCodice().length() > 10) {
       throw new CodiceSchedaFarmacoLengthException("Lunghezza del codice errata");
+    }
 
-    if (schedaFarmaco.getNome().length() < 1 || schedaFarmaco.getNome().length() >256)
+    if (schedaFarmaco.getNome().length() < 1 || schedaFarmaco.getNome().length() > 256) {
       throw new NomeSchedaFarmacoLenghtException("Lunghezza del nome errata");
+    }
 
     repo.save(schedaFarmaco);
   }
@@ -141,17 +143,19 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     }
 
     var scheda = optional.get();
-    if (scheda.lottiContains(lotto)){
+
+    if (scheda.lottiContains(lotto)) {
       throw new LottoAlreadyExistException("Lotto numero |" + lotto.getNumeroLotto() + "| già presente nella lista");
     }
-    if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null ) {
+
+    if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null) {
       scheda.addLotto(lotto);
     }
     repo.save(scheda);
   }
 
   /**
-   * <p>Questo metodo fornisce i lotti di uno speficico farmaco</p>
+   * <p>Questo metodo fornisce i lotti di uno speficico farmaco.</p>
    *
    * @param codiceFarmaco codice del farmaco
    */
@@ -159,7 +163,7 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   public List<Lotto> ottieniLotti(String codiceFarmaco) {
     var optional = repo.findById(codiceFarmaco);
 
-    if (optional.isEmpty()){
+    if (optional.isEmpty()) {
       throw new SchedaFarmacoNotFoundException("Scheda Farmaco con CODICE: |"
               + codiceFarmaco + "| non trovato");
     }
@@ -168,7 +172,7 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   }
 
   /**
-   * <p>Questo metodo fornisce il lotto cercato</p>
+   * <p>Questo metodo fornisce il lotto cercato.</p>
    *
    * @param codiceFarmaco codice del farmaco in cui si cerca il lotto
    * @param numeroLotto lotto da ricercare
@@ -177,27 +181,36 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   @Override
   public Lotto ottieniLotto(String codiceFarmaco, Integer numeroLotto) {
     var optional = repo.findById(codiceFarmaco);
-    if (optional.isEmpty())
+    if (optional.isEmpty()) {
       throw new SchedaFarmacoNotFoundException("Scheda farmaco " + codiceFarmaco + " non trovata");
-
+    }
     SchedaFarmaco s = optional.get();
 
     Lotto l = s.getLotto(numeroLotto);
-    if (l == null)
+    if (l == null) {
       throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
+    }
     return l;
   }
 
+  /**
+   * <p>Questo metodo modifica il lotto di un farmaco.</p>
+   *
+   * @param codiceFarmaco farmaco su cui modificare il lotto
+   * @param numeroLotto numero del lotto da modificare
+   * @param lotto lotto con le modifiche
+   */
   @Override
   public void modificaLotto(String codiceFarmaco, Integer numeroLotto, Lotto lotto) {
     var optional = repo.findById(codiceFarmaco);
-    if (optional.isEmpty())
+    if (optional.isEmpty()) {
       throw new SchedaFarmacoNotFoundException("Scheda farmaco " + codiceFarmaco + " non trovata");
-
+    }
     SchedaFarmaco s = optional.get();
     System.out.println(s.getLotti());
-    if (!(s.lottiContains(lotto)))
+    if (!(s.lottiContains(lotto))) {
       throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
+    }
     s.replaceLotto(lotto);
     repo.save(s);
   }
@@ -238,7 +251,9 @@ public class FarmaciaServiceImpl implements FarmaciaService {
    * @return lista di ordini
    */
   @Override
-  public List<Ordine> ottieniOrdini() { return repoOrdine.findAll();}
+  public List<Ordine> ottieniOrdini() {
+    return repoOrdine.findAll();
+  }
 
   /**
    * <p>Questo metodo modifica lo stato dell'Ordine.
@@ -259,11 +274,18 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     repoOrdine.save(o);
   }
 
+  /**
+   * <p>Questo metodo fornisce l'ordine cercato.</p>
+   *
+   * @param id id dell'ordine da ricercare
+   * @return ordine trovato
+   */
   @Override
   public Ordine ottieniOrdine(String id) {
     var optional = repoOrdine.findById(id);
-    if (optional.isEmpty())
+    if (optional.isEmpty()) {
       throw new OrdineNotFoundException();
+    }
     return optional.get();
   }
 }

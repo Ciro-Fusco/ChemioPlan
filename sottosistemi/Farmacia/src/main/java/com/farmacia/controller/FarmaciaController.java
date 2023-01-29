@@ -6,8 +6,6 @@ import com.farmacia.model.Ordine;
 import com.farmacia.model.SchedaFarmaco;
 import com.farmacia.service.FarmaciaService;
 import java.util.List;
-
-import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -109,11 +107,25 @@ public class FarmaciaController {
     return ResponseEntity.ok("Nuovo lotto modificato correttamente sulla Scheda Farmaco " + codice);
   }
 
+  /**
+   * <p>Questo metodo fornisce il lotto sulla base del farmaco.</p>
+   *
+   * @param codice codice del farmaco da cercare
+   * @param num numero del lotto
+   * @return lotto del farmaco
+   */
   @GetMapping("/get-lotto/{codice}/{num}")
   public Lotto ottieniLotto(@PathVariable String codice, @PathVariable Integer num) {
     return service.ottieniLotto(codice, num);
   }
 
+  /**
+   * <p>Questo metodo modifica il lotto del farmaco.</p>
+   *
+   * @param codice codice del farmaco
+   * @param lotto lotto con le modifiche
+   * @return un ResponseEntity con un messaggio e lo status HTTP
+   */
   @PutMapping("/modifica-lotto/{codice}")
   public ResponseEntity<?> modificaLotto(@PathVariable String codice, @RequestBody Lotto lotto) {
     service.modificaLotto(codice, lotto.getNumeroLotto(), lotto);
@@ -142,6 +154,11 @@ public class FarmaciaController {
     return service.ottieniOrdini();
   }
 
+  /**
+   * <p>Questo metodo fornisce l'ordine selezionato.</p>
+   * @param id id dell'ordine
+   * @return ordine presente nel DB
+   */
   @GetMapping("/ordine/{id}")
   public Ordine ottieniOrdini(@PathVariable String id) {
     return service.ottieniOrdine(id);

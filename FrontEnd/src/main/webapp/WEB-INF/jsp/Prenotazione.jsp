@@ -21,19 +21,42 @@
     <%@include file="/Content/header.jsp"%>
 
     <!-- Content -->
-
+    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
     <h3>${message}</h3>
-    <h1>${Prenotazione.codice}</h1>
-    <h3>${Prenotazione.codiceFiscale}</h3>
-    <h3><fmt:formatDate value="${Prenotazione.data}" pattern="dd-MM-yyyy"/></h3>
-    <h3>${Prenotazione.sala}</h3>
-    <h3>${Prenotazione.poltrona}</h3>
-    <h3>${Prenotazione.codiceFarmaci}</h3>
-    <div class="filter_content">
-        <a class="button button_outline menu" href="/prenotazioni/modifica-prenotazione-page/${Prenotazione.codice}">Modifica Prenotazione</a>
-    </div>
+    <table>
+        <tr>
+            <td>${Prenotazione.codice}</td>
+        </tr>
+        <tr>
+            <td>${Prenotazione.codiceFiscale}</td>
+        </tr>
+        <tr>
+            <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${Prenotazione.data}"/></td>
+        </tr>
+        <tr>
+            <td>${Prenotazione.sala}</td>
+        </tr>
+        <tr>
+            <td>${Prenotazione.poltrona}</td>
+        </tr>
+        <tr>
+            <td>
+            <c:forEach items="${Prenotazione.codiceFarmaci}" var="codice">
+                <c:set var="farmaco" value="${farmacia.getFarmaco(codice)}"/>
+                <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a><br>
+            </c:forEach>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a class="button menu" href="/prenotazioni/modifica-prenotazione-page/${Prenotazione.codice}">
+                <span class="material-symbols-outlined">edit_square</span>
+            </a>
+            </td>
+        </tr>
+    </table>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <%@include file="/Content/footer.jsp" %>
 
     </body>

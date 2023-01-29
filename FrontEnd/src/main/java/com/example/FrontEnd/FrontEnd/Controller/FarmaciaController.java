@@ -41,9 +41,15 @@ public class FarmaciaController {
 
   @PostMapping(value = {"/add-farmaco"})
   public String insertFarmaco(ModelMap model, @ModelAttribute SchedaFarmaco scheda) {
-    model.addAttribute("message", service.addFarmaco(scheda));
-    model.addAttribute("scheda", new SchedaFarmaco());
-    return "AggiungiFarmaco";
+    String msg = service.addFarmaco(scheda);
+    if(msg.contains("400")) {
+      model.addAttribute("message", msg);
+      model.addAttribute("scheda", scheda);
+      return "AggiungiFarmaco";
+    }
+    model.addAttribute("message", msg);
+    model.addAttribute("Farmaco", service.getFarmaco(scheda.getCodice()));
+    return "Farmaco";
   }
 
   @GetMapping(value = {"/add-lotto-page/{codice}"})
@@ -110,7 +116,7 @@ public class FarmaciaController {
     return "Ordini";
   }
 
-  @DeleteMapping(value = {"/elimina/{codice}"})
+  @GetMapping(value = {"/elimina/{codice}"})
   public String eliminaFarmaco(ModelMap model, @PathVariable String codice) {
     model.addAttribute("message", service.eliminaFarmaco(codice));
     model.addAttribute("Farmaci", service.getAllFarmaci());

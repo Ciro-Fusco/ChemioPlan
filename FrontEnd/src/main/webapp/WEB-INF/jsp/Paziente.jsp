@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,11 +20,41 @@
 
     <!-- Content -->
     <h3>${message}</h3>
-    <h1>${Paziente.codiceFiscale}</h1>
-    <h3>${Paziente.codiceFarmaci}</h3>
-    <h3>${Paziente.malattie}</h3>
+    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
+    <table>
+        <tr>
+            <td>${Paziente.codiceFiscale}</td>
+        </tr>
+        <tr>
+            <td>
+                <c:forEach items="${Paziente.codiceFarmaci}" var="codice">
+                    <c:set var="farmaco" value="${farmacia.getFarmaco(codice.key)}"/>
+                    <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}ml<br>
+                </c:forEach>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <c:forEach items="${Paziente.malattie}" var="malattia">
+                    ${malattia}<br>
+                </c:forEach>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="button menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">
+                    <span class="material-symbols-outlined">edit_square</span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="button button_outline menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">Cambia Trattamento</a>
+            </td>
+        </tr>
+    </table>
     <div class="filter_content">
-        <a class="button button_outline menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">Cambia Trattamento</a>
+
     </div>
     <!-- Header -->
     <%@include file="/Content/footer.jsp"%>

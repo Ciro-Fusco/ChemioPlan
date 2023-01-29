@@ -1,5 +1,6 @@
 package com.example.FrontEnd.FrontEnd.Controller;
 
+import com.example.FrontEnd.FrontEnd.model.Paziente;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 import com.example.FrontEnd.FrontEnd.model.Utente;
@@ -26,6 +27,13 @@ public class PazientiController {
   @RequestMapping(value= {""}, method = RequestMethod.GET)
   public String showPazientiHomePage(ModelMap model){
     return "PazientiHome";
+  }
+
+  //prova ricerca
+  @RequestMapping(value= {"/ricerca"}, method = RequestMethod.GET)
+  public String showRicercaPage(ModelMap model){
+    model.addAttribute("scheda", new Paziente());
+    return "Ricerca";
   }
 
   @RequestMapping(value= {"/all"}, method = RequestMethod.GET)

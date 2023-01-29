@@ -37,14 +37,15 @@
                 <div class="filter_screen" id="farmaci">
                     <h4>Codici Farmaci</h4>
                     <c:forEach items="${farmaci}" var = "f">
-                            <label>
-                                <form:checkbox path="codiceFarmaci" value="${f.codice}"></form:checkbox>
-                                    ${f.nome}
-                            </label>
+                    <!-- <div class="filter_content"> -->
+                    <div class="checkcontainer">
+                                <form:checkbox path="codiceFarmaci" value="${f.codice}"
+                                    class="checkbox"></form:checkbox>
+                                    <label class="checktext">${f.nome}</label>
+                    </div>
                     </c:forEach>
-
-
                 </div>
+
 
                 <div class="filter_screen">
                     <h4>Malattie</h4>

@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +26,7 @@ public class SchedaPaziente {
   /**
    *<p>Codice dei farmaci che il paziente assume</p>
    */
-  private List<String> codiceFarmaci = new ArrayList<>();
+  private HashMap<String, Double> codiceFarmaci = new HashMap<>();
 
   /**
    * <p>nome delle malattie da cui è affetto il paziente</p>

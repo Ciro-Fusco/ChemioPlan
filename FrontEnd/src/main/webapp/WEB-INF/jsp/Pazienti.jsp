@@ -27,7 +27,7 @@
     <thead>
     <tr>
         <th>Codice Fiscale</th>
-        <th>Farmaci</th>
+        <th>Farmaci/Dosaggio</th>
         <th>Malatie</th>
     </tr>
     </thead>

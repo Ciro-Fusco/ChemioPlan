@@ -1,5 +1,6 @@
 package com.chemioplan.SchedaPaziente.model;
 
+import java.util.HashMap;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,7 @@ public class SchedaPaziente {
      *<p>Codice dei farmaci che il paziente assume</p>
      */
     @Field(name="codiceFarmaci")
-    private List<String> codiceFarmaci;
+    private HashMap<String, Double> codiceFarmaci;
 
     /**
      * <p>nome delle malattie da cui è affetto il paziente</p>

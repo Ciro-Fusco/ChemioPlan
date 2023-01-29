@@ -1,5 +1,4 @@
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Footer -->
 <div class="footer">
     <div class="footer_logo">

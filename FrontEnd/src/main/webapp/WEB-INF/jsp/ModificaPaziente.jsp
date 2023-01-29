@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +25,7 @@
 
     <h1>Modifica Trattamento</h1>
 
+    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPaziente"--%>
     <form:form action="/pazienti/modifica-paziente" method="post" modelAttribute="scheda">
         <div class="page_content">
             <div class="filter_content">

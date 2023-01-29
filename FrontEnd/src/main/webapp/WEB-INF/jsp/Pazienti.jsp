@@ -1,5 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,10 +33,16 @@
     </thead>
     <tbody>
 
+    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
     <c:forEach items="${Pazienti}" var="paziente">
         <tr>
             <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>
-            <td data-label="Farmaci">${paziente.codiceFarmaci}</td>
+            <td data-label="Farmaci">
+                <c:forEach items="${paziente.codiceFarmaci}" var="codice">
+                    <c:set var="farmaco" value="${farmacia.getFarmaco(codice.key)}"/>
+                    <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}<br>
+                </c:forEach>
+            </td>
             <td data-label="Malattie">${paziente.malattie}</td>
         </tr>
     </c:forEach>

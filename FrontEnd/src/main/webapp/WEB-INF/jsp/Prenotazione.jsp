@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +25,7 @@
     <h3>${message}</h3>
     <h1>${Prenotazione.codice}</h1>
     <h3>${Prenotazione.codiceFiscale}</h3>
-    <h3>${Prenotazione.data}</h3>
+    <h3><fmt:formatDate value="${Prenotazione.data}" pattern="dd-MM-yyyy"/></h3>
     <h3>${Prenotazione.sala}</h3>
     <h3>${Prenotazione.poltrona}</h3>
     <h3>${Prenotazione.codiceFarmaci}</h3>

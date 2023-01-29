@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +39,9 @@
                 <td><fmt:formatDate value="${lotto.scadenzaLotto}" pattern="dd-MM-yyyy"/></td>
                 <td>${lotto.quantita}</td>
                 <td>
-                    <a class="button button_outline menu" href="/farmacia/modifica-lotto-page/${Farmaco.codice}/${lotto.numeroLotto}">Modifica</a>
+                    <a class="button button_outline menu" href="/farmacia/modifica-lotto-page/${Farmaco.codice}/${lotto.numeroLotto}">
+                        Modifica
+                    </a>
                 </td>
             </tr>
         </c:forEach>

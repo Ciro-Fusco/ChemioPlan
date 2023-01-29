@@ -70,6 +70,13 @@ public class FarmaciaServiceImpl implements FarmaciaService {
       throw new SchedaFarmacoAlreadyExistException("Scheda Farmaco con CODICE: |"
                 + schedaFarmaco.getCodice() + "| già esistente");
     }
+
+    if(schedaFarmaco.getCodice().length() <= 0 || schedaFarmaco.getCodice().length() > 10)
+      throw new CodiceSchedaFarmacoLengthException("Lunghezza del codice errata");
+
+    if (schedaFarmaco.getNome().length() < 1 || schedaFarmaco.getNome().length() >256)
+      throw new NomeSchedaFarmacoLenghtException("Lunghezza del nome errata");
+
     repo.save(schedaFarmaco);
   }
 

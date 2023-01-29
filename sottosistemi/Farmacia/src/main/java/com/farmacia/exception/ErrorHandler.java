@@ -48,4 +48,14 @@ public class ErrorHandler {
   public ResponseEntity<String> handleLottoNotFoundException(LottoNotFoundException exception){
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
+
+  @ExceptionHandler(CodiceSchedaFarmacoLengthException.class)
+  public ResponseEntity<String> handleCodiceSchedaFarmacoLengthException(CodiceSchedaFarmacoLengthException exception){
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(NomeSchedaFarmacoLenghtException.class)
+  public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(NomeSchedaFarmacoLenghtException exception){
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
 }

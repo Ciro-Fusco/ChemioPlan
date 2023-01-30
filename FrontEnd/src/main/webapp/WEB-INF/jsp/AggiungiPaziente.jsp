@@ -34,16 +34,23 @@
                 </div>
 
                 <div class="filter_screen" id="farmaci">
-                    <h4>Codici Farmaci / Dosaggio</h4>
-                    <c:forEach items="${farmaci}" var="f">
-                        <!-- <div class="filter_content"> -->
-                        <div class="checkcontainer">
-                            <form:checkbox path="codiceFarmaci" value="${f.codice}" class="checkbox"/>
-                            <label class="checktext">${f.nome}</label>
-                            <form:input class="inp_filter" path="codiceFarmaci" placeholder="Dosaggio"/>
-                        </div>
-                        <!-- </div> -->
-                    </c:forEach>
+                    <h4>Farmaci <br> Dosaggio</h4>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per nome..">
+                    <table id="myTable">
+                        <c:forEach items="${farmaci}" var="f">
+                            <tr>
+                                <td>
+                                    <div class="checkcontainer">
+                                        <form:checkbox path="codiceFarmaci" value="${f.codice}" class="checkbox"/>
+                                        <label class="checktext">${f.nome}</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form:input class="inp_filter" path="codiceFarmaci" placeholder="Dosaggio"/>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                 </div>
 
                 <div class="filter_screen">
@@ -57,6 +64,29 @@
 
     <!-- Footer -->
     <%@include file="/Content/footer.jsp" %>
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
 </body>
 

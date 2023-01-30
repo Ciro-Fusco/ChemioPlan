@@ -26,7 +26,7 @@ public class SchedaFarmaco {
    * <p>Codice della scheda farmaco.</p>
    */
 //  @NotNull
-  @Size(min=2, max=30,message = "Lunghezza Errata")
+  @Size(min=1, max=30,message = "Lunghezza Errata")
   private String codice;
 
   /**

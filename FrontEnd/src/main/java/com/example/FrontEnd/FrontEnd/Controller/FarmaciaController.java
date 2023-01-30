@@ -51,15 +51,6 @@ public class FarmaciaController {
     }
 
     String msg = service.addFarmaco(scheda);
-=======
-  public String insertFarmaco(ModelMap model, @ModelAttribute SchedaFarmaco scheda) {
-    String msg = service.addFarmaco(scheda);
-    if(msg.contains("400")) {
-      model.addAttribute("message", msg);
-      model.addAttribute("scheda", scheda);
-      return "AggiungiFarmaco";
-    }
->>>>>>> 2764caa2ea0251e76409b56ede91a018427758f5
     model.addAttribute("message", msg);
     model.addAttribute("Farmaco", service.getFarmaco(scheda.getCodice()));
     return "Farmaco";

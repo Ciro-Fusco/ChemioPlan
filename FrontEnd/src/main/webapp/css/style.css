@@ -325,6 +325,7 @@ table {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
 }
 
 table thead {
@@ -334,6 +335,10 @@ table thead {
 table tbody {
     font-size: 20px;
     font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(var(--color_primary_rgb), 0.1);
 }
 
 .tablink {
@@ -450,4 +455,8 @@ table td {
 
 .checktext {
     font-family: var(--font);
+}
+
+.error {
+    color: red;
 }

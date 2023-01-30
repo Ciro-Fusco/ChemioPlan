@@ -1,5 +1,8 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,16 +25,21 @@ public class SchedaFarmaco {
   /**
    * <p>Codice della scheda farmaco.</p>
    */
+//  @NotNull
+  @Size(min=2, max=30,message = "Lunghezza Errata")
   private String codice;
 
   /**
    * <p>Nome del farmaco.</p>
    */
+  @Size(min=2, max=30,message = "Lunghezza Errata")
   private String nome;
 
   /**
    * <p>Dosaggio del farmaco per un paziente</p>
    */
+  @Min(value = 0,message = "Il Dosaggio deve essere Positivo")
+  @NotNull(message = "Dosaggio Obbligatorio")
   private Double dosaggio;
 
   /**

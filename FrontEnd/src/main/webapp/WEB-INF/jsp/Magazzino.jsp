@@ -40,7 +40,7 @@
                         <td data-label="Dosaggio">${farmaco.dosaggio}</td>
                         <td>
                             <c:forEach items="${farmaco.lotti}" var="lotto">
-                                ${lotto.numeroLotto}
+                                ${lotto.numeroLotto}<br>
                             </c:forEach>
                         </td>
                         <td><a class="button button_outline menu" href="/farmacia/elimina/${farmaco.codice}" class="tablink">Elimina</a></td>

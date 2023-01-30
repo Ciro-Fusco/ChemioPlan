@@ -28,20 +28,27 @@
     <form:form action="/farmacia/add-farmaco" method="post" modelAttribute="scheda">
         <div class="page_content">
             <div class="filter_content">
+
+
+
                 <div class="filter_screen">
                     <h4>Codice Farmaco</h4>
                     <form:input class="inp_filter" path="codice" placeholder="Codice"/>
+                    <form:errors path="codice" cssClass="error"/>
                 </div>
 
                 <div class="filter_screen">
                     <h4>Nome Farmaco</h4>
                     <form:input class="inp_filter" path="nome" placeholder="Nome"/>
+                    <form:errors path="nome" cssClass="error"/>
                 </div>
 
                 <div class="filter_screen">
-                    <h4>Codice Farmaco</h4>
-                    <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio"/>
+                    <h4>Dosaggio</h4>
+                    <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio" type="number"/>
+                    <form:errors path="dosaggio" cssClass="error"/>
                 </div>
+
             </div>
             <form:button class="button button_fill menu" href="">Aggiungi</form:button>
         </div>

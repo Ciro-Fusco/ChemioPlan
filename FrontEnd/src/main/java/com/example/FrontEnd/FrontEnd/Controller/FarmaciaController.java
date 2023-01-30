@@ -42,7 +42,6 @@ public class FarmaciaController {
   }
 
   @PostMapping(value = {"/add-farmaco"})
-<<<<<<< HEAD
   public String insertFarmaco(ModelMap model,@Valid @ModelAttribute("scheda") SchedaFarmaco scheda,BindingResult bindingResult) {
     if (bindingResult.hasErrors()){
       model.addAttribute("scheda", scheda);

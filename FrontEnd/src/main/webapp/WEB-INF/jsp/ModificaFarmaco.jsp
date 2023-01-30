@@ -44,6 +44,11 @@
                     <h4>Dosaggio</h4>
                     <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio"/>
                 </div>
+
+                <div class="filter_screen">
+                    <h4>Durata dopo apertura</h4>
+                    <form:input class="inp_filter" path="scadenzaDopoApertura" placeholder="Durata"/>
+                </div>
             </div>
             <form:button class="button button_fill menu" href="">Modifica</form:button>
         </div>

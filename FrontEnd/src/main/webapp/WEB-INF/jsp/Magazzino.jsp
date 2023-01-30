@@ -43,7 +43,11 @@
                                 ${lotto.numeroLotto}<br>
                             </c:forEach>
                         </td>
-                        <td><a class="button button_outline menu" href="/farmacia/elimina/${farmaco.codice}" class="tablink">Elimina</a></td>
+                        <td>
+                            <a href="/farmacia/elimina/${farmaco.codice}" class="tablink">
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
+                        </td>
                     </tr>
                 </c:forEach>
 

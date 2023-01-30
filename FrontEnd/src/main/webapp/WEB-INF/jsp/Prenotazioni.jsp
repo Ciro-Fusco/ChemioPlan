@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
     <title>Prenotazioni</title>
 
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="/js/script.js"></script>
 
 </head>
@@ -25,25 +27,39 @@
 <table>
     <thead>
     <tr>
-        <th>Codice</th>
-        <th>Codice Fiscale</th>
-        <th>Data</th>
+        <th>Paziente</th>
         <th>Sala</th>
         <th>Poltrona</th>
-        <th>Codice Farmaci</th>
+        <th>Data</th>
+        <th>Farmaci</th>
     </tr>
     </thead>
     <tbody>
 
+    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
     <c:forEach items="${Prenotazioni}" var="prenotazione">
         <tr>
-            <td data-label="codice"><a href="/prenotazioni/${prenotazione.codice}" class="tablink">${prenotazione.codice}</a></td>
-            <td data-label="codiceFiscale">${prenotazione.codiceFiscale}</td>
-            <td data-label="data">${prenotazione.data}</td>
+            <td data-label="codiceFiscale"><a href="/pazienti/${prenotazione.codiceFiscale}">${prenotazione.codiceFiscale}</a></td>
             <td data-label="sala">${prenotazione.sala}</td>
             <td data-label="poltrona">${prenotazione.poltrona}</td>
-            <td data-label="codiceFarmaci">${prenotazione.codiceFarmaci}</td>
-            <td><a class="button button_outline menu" href="/prenotazioni/elimina/${prenotazione.codice}" class="tablink">Elimina</a></td>
+            <td data-label="data">
+                <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${prenotazione.data}"/>
+            </td>
+            <td data-label="codiceFarmaci">
+                <c:forEach items="${prenotazione.codiceFarmaci}" var="codice">
+                    <c:set var="farmaco" value="${farmacia.getFarmaco(codice)}"/>
+                    <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a><br>
+                </c:forEach>
+            </td>
+            <td data-label="codice">
+                <a href="/prenotazioni/${prenotazione.codice}" class="tablink">
+                    <span class="material-symbols-outlined">open_in_new</span>
+                </a>
+                <br>
+                <a href="/prenotazioni/elimina/${prenotazione.codice}">
+                    <span class="material-symbols-outlined">delete</span>
+                </a>
+            </td>
         </tr>
     </c:forEach>
 

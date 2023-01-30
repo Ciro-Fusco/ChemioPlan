@@ -36,11 +36,16 @@ public class SchedaFarmaco {
   private String nome;
 
   /**
-   * <p>Dosaggio del farmaco per un paziente</p>
+   * <p>Dosaggio del farmaco</p>
    */
   @Min(value = 0,message = "Il Dosaggio deve essere Positivo")
   @NotNull(message = "Dosaggio Obbligatorio")
   private Double dosaggio;
+
+  /**
+   * <p>Indica la durata del farmaco dopo l'apertura.</p>
+   */
+  private Integer scadenzaDopoApertura;
 
   /**
    * <p>Lotti del farmaco presente in farmacia.</p>

@@ -26,7 +26,7 @@ public class SchedaPaziente {
   /**
    *<p>Codice dei farmaci che il paziente assume</p>
    */
-  private HashMap<String, Double> codiceFarmaci = new HashMap<>();
+  private HashMap<String, Double> farmaci = new HashMap<>();
 
   /**
    * <p>nome delle malattie da cui è affetto il paziente</p>

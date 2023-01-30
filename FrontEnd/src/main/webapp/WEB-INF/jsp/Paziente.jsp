@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>
-                <c:forEach items="${Paziente.codiceFarmaci}" var="codice">
+                <c:forEach items="${Paziente.farmaci}" var="codice">
                     <c:set var="farmaco" value="${farmacia.getFarmaco(codice.key)}"/>
                     <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}ml<br>
                 </c:forEach>
@@ -45,11 +45,6 @@
                 <a class="button menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">
                     <span class="material-symbols-outlined">edit_square</span>
                 </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a class="button button_outline menu" href="/pazienti/modifica-paziente-page/${Paziente.codiceFiscale}">Cambia Trattamento</a>
             </td>
         </tr>
     </table>

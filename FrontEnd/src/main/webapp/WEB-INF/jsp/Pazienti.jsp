@@ -38,7 +38,7 @@
         <tr>
             <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>
             <td data-label="Farmaci">
-                <c:forEach items="${paziente.codiceFarmaci}" var="codice">
+                <c:forEach items="${paziente.farmaci}" var="codice">
                     <c:set var="farmaco" value="${farmacia.getFarmaco(codice.key)}"/>
                     <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}<br>
                 </c:forEach>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +25,7 @@
 
     <h1>Aggiungi Paziente</h1>
 
-    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPaziente"--%>
+    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm"--%>
     <form:form action="/pazienti/add-paziente" method="post" modelAttribute="scheda">
         <div class="page_content">
             <div class="filter_content">
@@ -41,12 +42,13 @@
                             <tr>
                                 <td>
                                     <div class="checkcontainer">
-                                        <form:checkbox path="codiceFarmaci" value="${f.codice}" class="checkbox"/>
+                                        <form:hidden path="farmaci" id="${f.codice}"/>
+                                        <input type="checkbox" class="checkbox" onclick="checkboxSelected(${f.codice})" id = "check+${f.codice}"/>
                                         <label class="checktext">${f.nome}</label>
                                     </div>
                                 </td>
                                 <td>
-                                    <form:input class="inp_filter" path="codiceFarmaci" placeholder="Dosaggio"/>
+                                    <input class="inp_filter" placeholder="Dosaggio" onkeyup="checkboxSelected(${f.codice})" id = "in+${f.codice}"/>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -66,6 +68,22 @@
     <%@include file="/Content/footer.jsp" %>
 
     <script>
+
+        function checkboxSelected(key) {
+            console.log(key);
+            var txt = document.getElementById(key);
+            var checkbox = document.getElementById("check+"+key);
+            var input = document.getElementById("in+"+key);
+
+            if (checkbox.checked) {
+                txt.value = "";
+                txt.value += key + "=";
+                txt.value += input.value;
+            } else {
+                txt.value = "";
+            }
+        }
+
         function myFunction() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("myInput");

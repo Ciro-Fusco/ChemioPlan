@@ -25,7 +25,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>Codice</th>
                     <th>Nome</th>
                     <th>Dosaggio</th>
                     <th>Lotti</th>
@@ -35,7 +34,6 @@
 
                 <c:forEach items="${Farmaci}" var="farmaco">
                     <tr>
-                        <td data-label="Codice"><a href="/farmacia/magazzino/${farmaco.codice}" class="tablink">${farmaco.codice}</a></td>
                         <td data-label="Nome">${farmaco.nome}</td>
                         <td data-label="Dosaggio">${farmaco.dosaggio}</td>
                         <td>
@@ -44,6 +42,10 @@
                             </c:forEach>
                         </td>
                         <td>
+                            <a href="/farmacia/magazzino/${farmaco.codice}">
+                                <span class="material-symbols-outlined">open_in_new</span>
+                            </a>
+                            <br>
                             <a href="/farmacia/elimina/${farmaco.codice}" class="tablink">
                                 <span class="material-symbols-outlined">delete</span>
                             </a>

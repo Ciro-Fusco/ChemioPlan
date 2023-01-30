@@ -73,8 +73,8 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
             throw new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale " + codiceFiscale + " non trovata");
 
         var scheda = optional.get();
-        if (schedaPaziente.getCodiceFarmaci() != null)
-            scheda.setCodiceFarmaci(schedaPaziente.getCodiceFarmaci());
+        if (schedaPaziente.getFarmaci() != null)
+            scheda.setFarmaci(schedaPaziente.getFarmaci());
         if (schedaPaziente.getMalattie() != null)
             scheda.setMalattie(schedaPaziente.getMalattie());
         schedaPazienteRepository.save(scheda);

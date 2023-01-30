@@ -33,8 +33,8 @@ public class SchedaPaziente {
     /**
      *<p>Codice dei farmaci che il paziente assume</p>
      */
-    @Field(name="codiceFarmaci")
-    private HashMap<String, Double> codiceFarmaci;
+    @Field(name="codiceFarmaco")
+    private List<FarmacoDosaggio> farmaci;
 
     /**
      * <p>nome delle malattie da cui è affetto il paziente</p>

@@ -2,14 +2,12 @@ package com.example.FrontEnd.FrontEnd.Controller;
 
 import com.example.FrontEnd.FrontEnd.model.*;
 import com.example.FrontEnd.FrontEnd.service.IFarmaciaService;
+import com.example.FrontEnd.FrontEnd.service.IMalattiaStub;
 import com.example.FrontEnd.FrontEnd.service.IPazienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -21,6 +19,9 @@ public class PazientiController {
   private IPazienteService pazienteService;
   @Autowired
   private IFarmaciaService farmaciaService;
+
+  @Autowired
+  private IMalattiaStub malattiaStub;
 
 
   @RequestMapping(value= {""}, method = RequestMethod.GET)
@@ -51,17 +52,20 @@ public class PazientiController {
   public String insertPazientePage(ModelMap model) {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
     model.addAttribute("scheda", new SchedaPazienteForm());
+    model.addAttribute("Malattie", malattiaStub.getAll());
     return "AggiungiPaziente";
   }
 
   @RequestMapping(value = {"/add-paziente"}, method = RequestMethod.POST)
   public String insertPaziente(ModelMap model, @ModelAttribute SchedaPazienteForm scheda) {
     SchedaPaziente s = scheda.mapToSchedaPaziente();
-    System.out.println(s);
     String msg = pazienteService.addPaziente(s);
     if(msg.contains("400")) {
-      model.addAttribute("message", msg);
+      model.addAttribute("Malattie", malattiaStub.getAll());
+      model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
+      scheda.setFarmaci(new ArrayList<>());
       model.addAttribute("scheda", scheda);
+      model.addAttribute("message", msg);
       return "AggiungiPaziente";
     }
     model.addAttribute("Paziente", pazienteService.getPaziente(s.getCodiceFiscale()));
@@ -94,6 +98,7 @@ public class PazientiController {
     scheda.setFarmaci(new ArrayList<>());
     model.addAttribute("schedaMap", pazienteService.getPaziente(cf));
     model.addAttribute("scheda", scheda);
+    model.addAttribute("Malattie", malattiaStub.getAll());
     return "ModificaPaziente";
   }
 
@@ -103,5 +108,12 @@ public class PazientiController {
     model.addAttribute("message", pazienteService.modificaPaziente(s));
     model.addAttribute("Paziente", pazienteService.getPaziente(scheda.getCodiceFiscale()));
     return "Paziente";
+  }
+
+  @GetMapping(value = {"/elimina/{cf}"})
+  public String eliminaFarmaco(ModelMap model, @PathVariable String cf) {
+    model.addAttribute("message", pazienteService.eliminaPaziente(cf));
+    model.addAttribute("Pazienti", pazienteService.getPazienti());
+    return "Pazienti";
   }
 }

@@ -34,6 +34,7 @@
     <tbody>
 
     <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
+    <jsp:useBean id="malattie" class="com.example.FrontEnd.FrontEnd.service.MalattiaService"/>
     <c:forEach items="${Pazienti}" var="paziente">
         <tr>
             <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>
@@ -43,7 +44,17 @@
                     <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}<br>
                 </c:forEach>
             </td>
-            <td data-label="Malattie">${paziente.malattie}</td>
+            <td data-label="Malattie">
+                <c:forEach items="${paziente.malattie}" var="malattia">
+                    <c:set var="m" value="${malattie.getMalattia(malattia)}"/>
+                    ${m.nomeMalattia} <br>
+                </c:forEach>
+            </td>
+            <td>
+                <a href="/pazienti/elimina/${paziente.codiceFiscale}" class="tablink">
+                    <span class="material-symbols-outlined">delete</span>
+                </a>
+            </td>
         </tr>
     </c:forEach>
 

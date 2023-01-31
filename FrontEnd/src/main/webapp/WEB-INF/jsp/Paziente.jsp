@@ -21,6 +21,7 @@
     <!-- Content -->
     <h3>${message}</h3>
     <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
+    <jsp:useBean id="malattie" class="com.example.FrontEnd.FrontEnd.service.MalattiaService"/>
     <table>
         <tr>
             <td>${Paziente.codiceFiscale}</td>
@@ -36,7 +37,8 @@
         <tr>
             <td>
                 <c:forEach items="${Paziente.malattie}" var="malattia">
-                    ${malattia}<br>
+                    <c:set var="m" value="${malattie.getMalattia(malattia)}"/>
+                    ${m.nomeMalattia} <br>
                 </c:forEach>
             </td>
         </tr>

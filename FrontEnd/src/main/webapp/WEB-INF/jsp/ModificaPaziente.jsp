@@ -39,8 +39,8 @@
 
                 <div class="filter_screen" id="farmaci">
                     <h4>Farmaci <br> Dosaggio</h4>
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per nome..">
-                    <table id="myTable">
+                    <input type="text" id="inFarmaci" onkeyup="myFunction('inFarmaci', 'FarmaciTable')" placeholder="Cerca per nome..">
+                    <table id="FarmaciTable">
                         <%--@elvariable id="f" type="com.example.FrontEnd.FrontEnd.model.SchedaFarmaco"--%>
                         <c:forEach items="${farmaci}" var="f">
                             <c:choose>
@@ -79,7 +79,19 @@
 
                 <div class="filter_screen">
                     <h4>Malattie</h4>
-                    <form:input class="inp_filter" path="malattie" placeholder="Malattie" />
+                    <input type="text" id="inMalattie" onkeyup="myFunction('inMalattie', 'MalattieTable')" placeholder="Cerca per nome..">
+                    <table id="MalattieTable">
+                        <c:forEach items="${Malattie}" var="m">
+                            <tr>
+                                <td>
+                                    <div class="checkcontainer">
+                                        <form:checkbox class="checkbox" path="malattie" value="${m.codiceMalattia}"/>
+                                        <label class="checktext">${m.nomeMalattia}</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                 </div>
             </div>
             <form:button class="button button_fill menu" href="">Modifica</form:button>
@@ -109,12 +121,12 @@
             }
         }
 
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
+        function myFunction(idIn, idTab) {
+            var td, i, txtValue;
+            var input = document.getElementById(idIn);
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById(idTab);
+            var tr = table.getElementsByTagName("tr");
 
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {

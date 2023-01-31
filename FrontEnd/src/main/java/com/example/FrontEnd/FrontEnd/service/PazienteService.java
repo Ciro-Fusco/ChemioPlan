@@ -58,4 +58,14 @@ public class PazienteService implements IPazienteService {
       return e.getMessage();
     }
   }
+
+  @Override
+  public String eliminaPaziente(String cf) {
+    try {
+      restTemplate.delete(pazienteResourceUrl + "/" + cf);
+      return "SchedaPaziente " + cf + " eliminata";
+    } catch (Exception e){
+      return e.getMessage();
+    }
+  }
 }

@@ -25,7 +25,7 @@
 
 <h1>Cerca Paziente</h1>
 
-<form:form action="/pazienti/cerca-paziente" method="post" modelAttribute="scheda">
+<form:form action="/pazienti/ricerca-paziente" method="post" modelAttribute="paziente">
     <div class="page_content">
         <div class="filter_content">
             <div class="filter_screen">
@@ -35,7 +35,7 @@
 
             <div class="filter_screen">
                 <h4>Data di nascita</h4>
-                <form:input type="date" class="inp_filter" path="data" placeholder="Data di nascita"/>
+                <form:input type="date" class="inp_filter" path="dataNascita" placeholder="Data di nascita"/>
             </div>
 
 
@@ -52,7 +52,7 @@
 
             <div class="filter_screen">
                 <h4>Luogo di nascita</h4>
-                <form:input class="inp_filter" path="luogo_nascita" placeholder="luogo di nascita"/>
+                <form:input class="inp_filter" path="luogoNascita" placeholder="luogo di nascita"/>
             </div>
         </div>
         <form:button class="button button_fill menu" href="">Cerca</form:button>

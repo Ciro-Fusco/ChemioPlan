@@ -4,8 +4,10 @@ import com.example.FrontEnd.FrontEnd.model.*;
 import com.example.FrontEnd.FrontEnd.service.IFarmaciaService;
 import com.example.FrontEnd.FrontEnd.service.IMalattiaStub;
 import com.example.FrontEnd.FrontEnd.service.IPazienteService;
+import com.example.FrontEnd.FrontEnd.service.IPazienteStub;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,9 @@ public class PazientiController {
 
   @Autowired
   private IMalattiaStub malattiaStub;
+
+  @Autowired
+  private IPazienteStub pazienteStub;
 
 
   @RequestMapping(value= {""}, method = RequestMethod.GET)
@@ -48,10 +53,11 @@ public class PazientiController {
     return "Paziente";
   }
 
-  @RequestMapping(value = {"/add-paziente-page"}, method = RequestMethod.GET)
-  public String insertPazientePage(ModelMap model) {
+  @RequestMapping(value = {"/add-paziente-page/{cf}"}, method = RequestMethod.GET)
+  public String insertPazientePage(ModelMap model, @PathVariable String cf) {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
     model.addAttribute("scheda", new SchedaPazienteForm());
+    model.addAttribute("cf", cf);
     model.addAttribute("Malattie", malattiaStub.getAll());
     return "AggiungiPaziente";
   }
@@ -70,6 +76,19 @@ public class PazientiController {
     }
     model.addAttribute("Paziente", pazienteService.getPaziente(s.getCodiceFiscale()));
     return "Paziente";
+  }
+
+  @RequestMapping(value = "/ricerca-paziente-page", method = RequestMethod.GET)
+  public String ricercaPazientePage(ModelMap model){
+      model.addAttribute("paziente", new Paziente());
+      return "Ricerca";
+  }
+
+  @RequestMapping(value = "/ricerca-paziente", method = RequestMethod.POST)
+  public String ricercaPaziente(ModelMap model, @ModelAttribute Paziente p){
+    model.addAttribute("paziente", new Paziente());
+    model.addAttribute("pazienti", pazienteStub.findPazienti(p));
+    return "PazientiTrovati";
   }
 
   @RequestMapping(value = {"/cerca-paziente-page"}, method = RequestMethod.GET)

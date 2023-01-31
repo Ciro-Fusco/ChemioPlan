@@ -31,7 +31,7 @@
             <div class="filter_content">
                 <div class="filter_screen">
                     <h4>Codice Fiscale</h4>
-                    <form:input class="inp_filter" path="codiceFiscale" placeholder="Codice" />
+                    <form:input class="inp_filter" path="codiceFiscale" value = "${cf}" readonly="true"/>
                 </div>
 
                 <div class="filter_screen" id="farmaci">

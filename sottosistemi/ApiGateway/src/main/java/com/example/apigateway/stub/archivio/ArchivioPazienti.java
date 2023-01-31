@@ -54,7 +54,7 @@ public class ArchivioPazienti {
         Iterator<Paziente> iterator = pazienti.listIterator();
         List pazientiLuogoNascita = new ArrayList<>();
         for (Paziente p : pazienti){
-            if(p.getCittàNascita().equals(luogo)){
+            if(p.getLuogoNascita().equals(luogo)){
                 pazientiLuogoNascita.add(p);
             }
         }
@@ -73,8 +73,7 @@ public class ArchivioPazienti {
     }
 
     public List<Paziente> findByNomeCognome(String nome, String cognome) {
-        Iterator<Paziente> iterator = pazienti.listIterator();
-        List pazientiNomeCognome = new ArrayList<>();
+        List<Paziente> pazientiNomeCognome = new ArrayList<>();
         for (Paziente p : pazienti){
             if(p.getNome().equals(nome) && p.getCognome().equals(cognome)){
                 pazientiNomeCognome.add(p);
@@ -87,7 +86,7 @@ public class ArchivioPazienti {
         Iterator<Paziente> iterator = pazienti.listIterator();
         List pazientiNomeCognome = new ArrayList<>();
         for (Paziente p : pazienti){
-            if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getCittàNascita().equals(cittàNascita)){
+            if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getLuogoNascita().equals(cittàNascita)){
                 pazientiNomeCognome.add(p);
             }
         }
@@ -109,11 +108,10 @@ public class ArchivioPazienti {
         Iterator<Paziente> iterator = pazienti.listIterator();
         List pazientiNomeCognomeData = new ArrayList<>();
         for (Paziente p : pazienti){
-            if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getDataNascita().equals(dataNascita) && p.getCittàNascita().equals(luogo)){
+            if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getDataNascita().equals(dataNascita) && p.getLuogoNascita().equals(luogo)){
                 pazientiNomeCognomeData.add(p);
             }
         }
         return pazientiNomeCognomeData;
-
     }
 }

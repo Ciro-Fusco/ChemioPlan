@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.util.Date;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -13,5 +14,5 @@ public class Paziente {
     private String cognome;
     private String dataNascita;
     private Indirizzo indirizzo;
-    private String cittàNascita;
+    private String luogoNascita;
 }

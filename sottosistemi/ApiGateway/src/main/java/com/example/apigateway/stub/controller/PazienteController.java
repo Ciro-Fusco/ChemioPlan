@@ -8,6 +8,7 @@ import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,78 +36,33 @@ public class PazienteController {
         return pazienti.findByCf(cf);
     }
 
-    @GetMapping("/nome/{nome}")
-    public List<Paziente> getByNome(@PathVariable String nome)  {
+    @PostMapping("/trova-paziente")
+    public List<Paziente> findPaziente(@RequestBody Paziente p){
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
-            return pazienti.findByNome(nome);
         }
-        return pazienti.findByNome(nome);
-    }
+        System.out.println(p.toString());
+        List<Paziente> paz = new ArrayList<>();
 
-    @GetMapping("/cognome/{cognome}")
-    public List<Paziente> getByCognome(@PathVariable String cognome)  {
-        if (pazienti.getPazienti().isEmpty()){
-            pazienti.initialize();
-            return pazienti.findByCognome(cognome);
+        if(p.getNome() != null && p.getCognome() != null && p.getDataNascita() != null && p.getLuogoNascita() != null){
+            paz = pazienti.findByNomeCognomeDataLuogo(p.getNome(), p.getCognome(), p.getDataNascita(),p.getLuogoNascita());
         }
-        return pazienti.findByCognome(cognome);
-    }
-
-    @GetMapping("/luogo-nascita/{luogo}")
-    public List<Paziente> getByLuogo(@PathVariable String luogo)  {
-        if (pazienti.getPazienti().isEmpty()){
-            pazienti.initialize();
-            return pazienti.findByLuogoNascita(luogo);
+        if(p.getNome() != null && p.getCognome() != null && p.getDataNascita() != null){
+            paz = pazienti.findByNomeCognomeData(p.getNome(), p.getCognome(), p.getDataNascita());
         }
-        return pazienti.findByLuogoNascita(luogo);
-    }
-
-    @GetMapping("/data/{data}")
-    public List<Paziente> getByData(@PathVariable String data)  {
-        if (pazienti.getPazienti().isEmpty()){
-            pazienti.initialize();
-            return pazienti.findByDataNascita(data);
+        if(p.getNome() != null && p.getCognome() != null && p.getLuogoNascita() != null){
+            paz = pazienti.findByNomeCognomeData(p.getNome(), p.getCognome(), p.getLuogoNascita());
         }
-        return pazienti.findByDataNascita(data);
-    }
-
-    @PostMapping("/nome-cognome")
-    public List<Paziente> getByNomeCognome(@RequestBody Paziente paziente)  {
-        if (pazienti.getPazienti().isEmpty()) {
-            pazienti.initialize();
+        if (p.getNome() != null && p.getCognome() != null){
+            System.out.println("qui ok");
+            paz = pazienti.findByNomeCognome(p.getNome(), p.getCognome());
         }
 
-        return pazienti.findByNomeCognome(paziente.getNome(), paziente.getCognome());
-    }
-
-    @PostMapping("/nome-cognome-luogo")
-    public List<Paziente> getByNomeCognomeLuogo(@RequestBody Paziente paziente)  {
-        if (pazienti.getPazienti().isEmpty()) {
-            pazienti.initialize();
-        }
-        return pazienti.findByNomeCognomeLuogo(paziente.getNome(), paziente.getCognome(), paziente.getCittàNascita());
-    }
-
-
-
-    @PostMapping("/nome-cognome-data")
-    public List<Paziente> getByNomeCognomeData(@RequestBody Paziente paziente)  {
-        if (pazienti.getPazienti().isEmpty()) {
-            pazienti.initialize();
+        if(!p.getCodiceFiscale().equals("")){
+            paz.add(pazienti.findByCf(p.getCodiceFiscale()));
         }
 
-        return pazienti.findByNomeCognomeData(paziente.getNome(), paziente.getCognome(), paziente.getDataNascita());
+        System.out.println(paz);
+        return paz;
     }
-
-    @PostMapping("/nome-cognome-data-luogo")
-    public List<Paziente> getByNomeCognomeDataLuogo(@RequestBody Paziente paziente)  {
-        if (pazienti.getPazienti().isEmpty()) {
-            pazienti.initialize();
-        }
-
-        return pazienti.findByNomeCognomeDataLuogo(paziente.getNome(), paziente.getCognome(), paziente.getDataNascita(), paziente.getCittàNascita());
-    }
-
-
 }

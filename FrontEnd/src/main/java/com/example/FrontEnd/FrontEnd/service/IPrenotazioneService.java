@@ -1,6 +1,7 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
+import java.util.Date;
 
 /**
  * <p>Questa interfaccia fornisce i metodi di PrenotazioneService.</p>
@@ -13,6 +14,8 @@ public interface IPrenotazioneService {
   Prenotazione[] getAllPrenotazioni();
 
   Prenotazione getById(String codice);
+
+  Prenotazione[] getByData(Date data);
 
   String addPrenotazione(Prenotazione prenotazione);
 

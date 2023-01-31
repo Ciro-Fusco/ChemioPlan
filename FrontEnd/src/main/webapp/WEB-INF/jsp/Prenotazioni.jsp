@@ -24,7 +24,11 @@
 <!-- Content -->
 <h1>Prenotazioni</h1>
 
-<table>
+<div class="page_content">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per data">
+</div>
+
+<table id="myTable">
     <thead>
     <tr>
         <th>Paziente</th>
@@ -42,7 +46,7 @@
             <td data-label="codiceFiscale"><a href="/pazienti/${prenotazione.codiceFiscale}">${prenotazione.codiceFiscale}</a></td>
             <td data-label="sala">${prenotazione.sala}</td>
             <td data-label="poltrona">${prenotazione.poltrona}</td>
-            <td data-label="data">
+            <td data-label="data" class="data">
                 <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${prenotazione.data}"/>
             </td>
             <td data-label="codiceFarmaci">
@@ -70,5 +74,29 @@
 <%@include file="/Content/footer.jsp"%>
 
 </body>
+
+<script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByClassName("data")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+
 
 </html>

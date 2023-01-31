@@ -41,7 +41,7 @@
 
             <div class="filter_screen">
                 <h4>Data</h4>
-                <form:input type="date" class="inp_filter" path="data" placeholder="Data"/>
+                <form:input type="datetime-local" class="inp_filter" path="data" placeholder="Data"/>
             </div>
 
             <div class="filter_screen">

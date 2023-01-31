@@ -25,6 +25,8 @@
                 <a class="button button_outline menu" href="/prenotazioni/all">Visualizza Prenotazioni</a>
                 <a class="button button_outline menu" href="/prenotazioni/add-prenotazione-page">Aggiungi
                     Prenotazione</a>
+                <a class="button button_outline menu" href="/prenotazioni/cerca-prenotazioneByData-page"
+                   style="max-width:200px;min-width:200px;">Cerca Prenotazione</a>
             </div>
         </div>
 

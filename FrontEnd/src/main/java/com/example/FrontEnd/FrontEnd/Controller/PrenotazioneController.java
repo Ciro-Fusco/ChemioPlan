@@ -2,6 +2,7 @@ package com.example.FrontEnd.FrontEnd.Controller;
 
 
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
+import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 import com.example.FrontEnd.FrontEnd.service.PrenotazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,14 +45,13 @@ public class PrenotazioneController {
 
   @RequestMapping(value = {"/add-prenotazione-page"}, method = RequestMethod.GET)
   public String insertPrenotazionePage(@ModelAttribute Prenotazione prenotazione, ModelMap model) {
-    //model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
+    model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
     model.addAttribute("prenotazione", prenotazione);
     return "AggiungiPrenotazione";
   }
 
   @RequestMapping(value = {"/add-prenotazione"}, method = RequestMethod.POST)
   public String insertPrenotazione(@ModelAttribute Prenotazione prenotazione, ModelMap model) {
-    model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
     model.addAttribute("message", prenotazioneService.addPrenotazione(prenotazione));
     model.addAttribute("prenotazione", new Prenotazione());
     return "AggiungiPrenotazione";
@@ -78,4 +78,25 @@ public class PrenotazioneController {
     model.addAttribute("Prenotazioni", prenotazioni);
     return "Prenotazioni";
   }
+
+  @RequestMapping(value = {"/cerca-prenotazioneByData-page"}, method = RequestMethod.GET)
+  public String cercaPrenotazioneByDataPage(ModelMap model) {
+    model.addAttribute("prenotazione", new Prenotazione());
+    return "CercaPrenotazioneByData";
+  }
+  @RequestMapping(value = {"/cerca-prenotazioneByData"}, method = RequestMethod.POST)
+  public String cercaPrenotazioneByData(ModelMap model, @ModelAttribute Prenotazione prenotazione) {
+    Prenotazione[] prenotazioni = prenotazioneService.getByData(prenotazione.getData());
+    if (prenotazioni == null) {
+      model.addAttribute("prenotazione", new Prenotazione());
+      model.addAttribute("message", "Data " + prenotazione.getData() + " non trovata");
+      return "CercaPrenotazioneByData";
+    }
+    model.addAttribute("Prenotazioni", prenotazioni);
+    return "Prenotazioni";
+  }
+
+
+
+
 }

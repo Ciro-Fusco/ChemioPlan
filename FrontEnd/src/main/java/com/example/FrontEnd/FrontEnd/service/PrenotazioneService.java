@@ -2,6 +2,11 @@ package com.example.FrontEnd.FrontEnd.service;
 
 
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -45,6 +50,15 @@ public class PrenotazioneService implements IPrenotazioneService {
   public Prenotazione getById(String codice) {
     try {
       return  restTemplate.getForObject(prenotazioneResourceUrl + "/" + codice, Prenotazione.class);
+    }catch (Exception e) {
+      return null;
+    }
+  }
+
+  @Override
+  public Prenotazione[] getByData(Date data) {
+    try {
+      return  restTemplate.getForObject(prenotazioneResourceUrl + "/getByData/" + data, Prenotazione[].class);
     }catch (Exception e) {
       return null;
     }

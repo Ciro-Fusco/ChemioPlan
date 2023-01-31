@@ -11,15 +11,15 @@ import java.util.*;
 @Data
 public class ArchivioPazienti {
     List<Paziente> pazienti = new ArrayList<>();
-    SimpleDateFormat formato = new SimpleDateFormat("dd-mm-yyyy");
-    public void initialize() throws ParseException {
-        pazienti.add(new Paziente("xxxxx", "nome1", "cognome1", formato.parse("14-10-2024") ,new Indirizzo("via1", "città1", "paese1", "cap1"),"paese1"));
-        pazienti.add(new Paziente("xxxxx1", "nome2", "cognome2", formato.parse("10-10-2024"),new Indirizzo("via2", "citta2", "paese2", "cap"),"paese2"));
-        pazienti.add(new Paziente("xxxxx2", "nome3", "cognome3", formato.parse("10-10-2024"),new Indirizzo("via3", "città3", "paese2", "cap2"),"paese2"));
-        pazienti.add(new Paziente("xxxxx3", "nome1", "cognome1", formato.parse("10-10-2024") ,new Indirizzo("via4", "città2", "paese4", "cap3"),"paese1"));
-        pazienti.add(new Paziente("xxxxx4", "nome5", "cognome5", formato.parse("10-10-2024"),new Indirizzo("via5", "città4", "paese2", "cap4"),"paese4"));
-        pazienti.add(new Paziente("xxxxx5", "nome6", "cognome6", formato.parse("10-10-2024"), new Indirizzo("via6", "città7", "paese7", "cap5"),"paese3"));
-        pazienti.add(new Paziente("xxxxx6", "nome7", "cognome7", formato.parse("10-10-2024"),  new Indirizzo("via7", "città2", "paese3", "cap6"),"paese1"));
+
+    public void initialize() {
+        pazienti.add(new Paziente("xxxxx", "nome1", "cognome1", "14-10-2024" ,new Indirizzo("via1", "città1", "paese1", "cap1"),"paese1"));
+        pazienti.add(new Paziente("xxxxx1", "nome2", "cognome2", "10-10-2024",new Indirizzo("via2", "citta2", "paese2", "cap"),"paese2"));
+        pazienti.add(new Paziente("xxxxx2", "nome3", "cognome3", "10-10-2024",new Indirizzo("via3", "città3", "paese2", "cap2"),"paese2"));
+        pazienti.add(new Paziente("xxxxx3", "nome1", "cognome1", "10-10-2024" ,new Indirizzo("via4", "città2", "paese4", "cap3"),"paese1"));
+        pazienti.add(new Paziente("xxxxx4", "nome5", "cognome5", "10-10-2024",new Indirizzo("via5", "città4", "paese2", "cap4"),"paese4"));
+        pazienti.add(new Paziente("xxxxx5", "nome1", "cognome1", "10-10-2024", new Indirizzo("via6", "città7", "paese7", "cap5"),"paese3"));
+        pazienti.add(new Paziente("xxxxx6", "nome7", "cognome7", "10-10-2024",  new Indirizzo("via7", "città2", "paese3", "cap6"),"paese1"));
     }
 
     public Paziente findByCf(String cf){
@@ -61,11 +61,11 @@ public class ArchivioPazienti {
         return pazientiLuogoNascita;
     }
 
-    public List<Paziente> findByDataNascita(String data) throws ParseException {
+    public List<Paziente> findByDataNascita(String data)  {
         Iterator<Paziente> iterator = pazienti.listIterator();
         List pazientiDataNascita = new ArrayList<>();
         for (Paziente p : pazienti){
-            if(p.getDataNascita().equals(formato.parse(data))){
+            if(p.getDataNascita().equals(data)){
                 pazientiDataNascita.add(p);
             }
         }
@@ -94,14 +94,26 @@ public class ArchivioPazienti {
         return pazientiNomeCognome;
     }
 
-    public List<Paziente> findByNomeCognomeData(String nome, String cognome, Date dataNascita) {
+    public List<Paziente> findByNomeCognomeData(String nome, String cognome, String dataNascita) {
         Iterator<Paziente> iterator = pazienti.listIterator();
-        List pazientiNomeCognome = new ArrayList<>();
+        List pazientiNomeCognomeData = new ArrayList<>();
         for (Paziente p : pazienti){
             if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getDataNascita().equals(dataNascita)){
-                pazientiNomeCognome.add(p);
+                pazientiNomeCognomeData.add(p);
             }
         }
-        return pazientiNomeCognome;
+        return pazientiNomeCognomeData;
+    }
+
+    public List<Paziente> findByNomeCognomeDataLuogo(String nome, String cognome, String dataNascita, String luogo) {
+        Iterator<Paziente> iterator = pazienti.listIterator();
+        List pazientiNomeCognomeData = new ArrayList<>();
+        for (Paziente p : pazienti){
+            if(p.getNome().equals(nome) && p.getCognome().equals(cognome) && p.getDataNascita().equals(dataNascita) && p.getCittàNascita().equals(luogo)){
+                pazientiNomeCognomeData.add(p);
+            }
+        }
+        return pazientiNomeCognomeData;
+
     }
 }

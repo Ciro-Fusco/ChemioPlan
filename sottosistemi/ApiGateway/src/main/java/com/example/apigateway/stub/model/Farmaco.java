@@ -16,6 +16,5 @@ public class Farmaco {
     private String nome;
     private double dosaggio;
     private int numLotto;
-    @JsonFormat(pattern = "dd-mm-yyyy")
-    private Date scandenza;
+    private String scandenza;
 }

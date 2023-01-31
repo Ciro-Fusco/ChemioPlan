@@ -14,7 +14,7 @@ public class ArchivioMalattia {
 
     public void initialize(){
         malattie.add(new Malattia("codice1", "nome1", "testa"));
-        malattie.add(new Malattia("codice2", "nome2", "testicoli"));
+        malattie.add(new Malattia("codice2", "nome2", "polmoni"));
         malattie.add(new Malattia("codice3", "nome3", "pancreas"));
         malattie.add(new Malattia("codice4", "nome4", "cervello"));
         malattie.add(new Malattia("codice5", "nome5", "fegato"));

@@ -16,7 +16,7 @@ public class PazienteController {
     private ArchivioPazienti pazienti = new ArchivioPazienti();
 
     @GetMapping
-    public List<Paziente> getAll() throws ParseException {
+    public List<Paziente> getAll()  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
         }
@@ -28,7 +28,7 @@ public class PazienteController {
     }
 
     @GetMapping("/{cf}")
-    public Paziente getByCf(@PathVariable String cf) throws ParseException {
+    public Paziente getByCf(@PathVariable String cf)  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
         }
@@ -36,7 +36,7 @@ public class PazienteController {
     }
 
     @GetMapping("/nome/{nome}")
-    public List<Paziente> getByNome(@PathVariable String nome) throws ParseException {
+    public List<Paziente> getByNome(@PathVariable String nome)  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
             return pazienti.findByNome(nome);
@@ -45,7 +45,7 @@ public class PazienteController {
     }
 
     @GetMapping("/cognome/{cognome}")
-    public List<Paziente> getByCognome(@PathVariable String cognome) throws ParseException {
+    public List<Paziente> getByCognome(@PathVariable String cognome)  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
             return pazienti.findByCognome(cognome);
@@ -54,7 +54,7 @@ public class PazienteController {
     }
 
     @GetMapping("/luogo-nascita/{luogo}")
-    public List<Paziente> getByLuogo(@PathVariable String luogo) throws ParseException {
+    public List<Paziente> getByLuogo(@PathVariable String luogo)  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
             return pazienti.findByLuogoNascita(luogo);
@@ -63,7 +63,7 @@ public class PazienteController {
     }
 
     @GetMapping("/data/{data}")
-    public List<Paziente> getByData(@PathVariable String data) throws ParseException {
+    public List<Paziente> getByData(@PathVariable String data)  {
         if (pazienti.getPazienti().isEmpty()){
             pazienti.initialize();
             return pazienti.findByDataNascita(data);
@@ -72,7 +72,7 @@ public class PazienteController {
     }
 
     @PostMapping("/nome-cognome")
-    public List<Paziente> getByNomeCognome(@RequestBody Paziente paziente) throws ParseException {
+    public List<Paziente> getByNomeCognome(@RequestBody Paziente paziente)  {
         if (pazienti.getPazienti().isEmpty()) {
             pazienti.initialize();
         }
@@ -81,24 +81,32 @@ public class PazienteController {
     }
 
     @PostMapping("/nome-cognome-luogo")
-    public List<Paziente> getByNomeCognomeLuogo(@RequestBody Paziente paziente) throws ParseException {
+    public List<Paziente> getByNomeCognomeLuogo(@RequestBody Paziente paziente)  {
         if (pazienti.getPazienti().isEmpty()) {
             pazienti.initialize();
         }
         return pazienti.findByNomeCognomeLuogo(paziente.getNome(), paziente.getCognome(), paziente.getCittàNascita());
     }
 
-    /*
-    finire /nome-cognome-data
+
+
     @PostMapping("/nome-cognome-data")
-    public List<Paziente> getByNomeCognomeData(@RequestBody Paziente paziente) throws ParseException {
+    public List<Paziente> getByNomeCognomeData(@RequestBody Paziente paziente)  {
         if (pazienti.getPazienti().isEmpty()) {
             pazienti.initialize();
         }
-        System.out.println(paziente.toString());
-        return null;//pazienti.findByNomeCognomeData(paziente.getNome(), paziente.getCognome(), paziente.getDataNascita());
+
+        return pazienti.findByNomeCognomeData(paziente.getNome(), paziente.getCognome(), paziente.getDataNascita());
     }
 
-    fare /nome-cognome-luogo-data
-     */
+    @PostMapping("/nome-cognome-data-luogo")
+    public List<Paziente> getByNomeCognomeDataLuogo(@RequestBody Paziente paziente)  {
+        if (pazienti.getPazienti().isEmpty()) {
+            pazienti.initialize();
+        }
+
+        return pazienti.findByNomeCognomeDataLuogo(paziente.getNome(), paziente.getCognome(), paziente.getDataNascita(), paziente.getCittàNascita());
+    }
+
+
 }

@@ -17,7 +17,7 @@ public class FarmacoController {
     private MagazzinoFarmaco farmaci = new MagazzinoFarmaco();
 
     @GetMapping
-    public List<Farmaco> getAll() throws ParseException {
+    public List<Farmaco> getAll() {
         if (farmaci.getFarmaci().isEmpty()){
             farmaci.initialize();
         }
@@ -25,7 +25,7 @@ public class FarmacoController {
     }
 
     @GetMapping("/{id}")
-    public Farmaco getById(@PathVariable String id) throws ParseException {
+    public Farmaco getById(@PathVariable String id) {
         if (farmaci.getFarmaci().isEmpty()){
             farmaci.initialize();
         }

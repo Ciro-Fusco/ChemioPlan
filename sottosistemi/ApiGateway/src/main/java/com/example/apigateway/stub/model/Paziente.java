@@ -11,8 +11,7 @@ public class Paziente {
     private String codiceFiscale;
     private String nome;
     private String cognome;
-    @JsonFormat(pattern = "dd-mm-yyyy")
-    private Date dataNascita = new Date();
+    private String dataNascita;
     private Indirizzo indirizzo;
     private String cittàNascita;
 }

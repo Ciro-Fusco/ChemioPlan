@@ -14,5 +14,4 @@ public class Malattia {
     private String codiceMalattia;
     private String nomeMalattia;
     private String parteCorpo;
-
 }

@@ -7,6 +7,10 @@ import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
 import com.example.prenotazione.model.SchedaPaziente;
 import com.example.prenotazione.repository.PrenotazioneRepository;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +40,8 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
   private PrenotazioneResponse mapToPrenotazioneResponse(Prenotazione prenotazione) {
     return PrenotazioneResponse.builder().codiceFiscale(prenotazione.getCodiceFiscale())
         .codice(prenotazione.getCodice())
-        .data(prenotazione.getData()).sala(prenotazione.getSala())
+        .data(prenotazione.getData())
+        .sala(prenotazione.getSala())
         .poltrona(prenotazione.getPoltrona()).codiceFarmaci(prenotazione.getCodiceFarmaci())
         .build();
   }
@@ -130,6 +135,19 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
         () -> new PrenotazioneNotFoundException(
             "Prenotazione con CODICE: |" + codice + "| non trovata"));
     return mapToPrenotazioneResponse(prenotazione);
+  }
+
+  /**
+   * <p>Questo metodo restituisce una prenotazione con un determinata data.</p>
+   *
+   * @param data identificativo della prenotazione
+   * @return una prenotazione
+   */
+  @Override
+  public List<PrenotazioneResponse> getByData(Date data) {
+    List<Prenotazione> prenotazioni = prenotazioneRepository.findByData(data);
+    System.out.println(data);
+    return prenotazioni.stream().map(this::mapToPrenotazioneResponse).toList();
   }
 
 }

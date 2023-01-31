@@ -2,8 +2,13 @@ package com.example.prenotazione.repository;
 
 
 
+import com.example.prenotazione.dto.PrenotazioneResponse;
 import com.example.prenotazione.model.Prenotazione;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 
 /**
@@ -15,4 +20,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface PrenotazioneRepository extends MongoRepository<Prenotazione, String> {
 
+  @Query("{ 'data' : ?0 }")
+  List<Prenotazione> findByData(Date data);
 }

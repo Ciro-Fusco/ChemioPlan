@@ -35,6 +35,7 @@ public class SchedaFarmaco {
   /**
    * <p>Dosaggio del farmaco.</p>
    */
+  //sostituire nome diensione
   private Double dosaggio;
 
   /**

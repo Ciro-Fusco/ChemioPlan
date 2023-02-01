@@ -1,3 +1,0 @@
-language: java
-sudo: false
-script:  - mvn -f /pom.xml clean verify

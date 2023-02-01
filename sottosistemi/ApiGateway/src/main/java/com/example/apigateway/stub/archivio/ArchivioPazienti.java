@@ -13,13 +13,10 @@ public class ArchivioPazienti {
     List<Paziente> pazienti = new ArrayList<>();
 
     public void initialize() {
-        pazienti.add(new Paziente("xxxxx", "nome1", "cognome1", "14-10-2024" ,new Indirizzo("via1", "città1", "paese1", "cap1"),"paese1"));
-        pazienti.add(new Paziente("xxxxx1", "nome2", "cognome2", "10-10-2024",new Indirizzo("via2", "citta2", "paese2", "cap"),"paese2"));
-        pazienti.add(new Paziente("xxxxx2", "nome3", "cognome3", "10-10-2024",new Indirizzo("via3", "città3", "paese2", "cap2"),"paese2"));
-        pazienti.add(new Paziente("xxxxx3", "nome1", "cognome1", "10-10-2024" ,new Indirizzo("via4", "città2", "paese4", "cap3"),"paese1"));
-        pazienti.add(new Paziente("xxxxx4", "nome5", "cognome5", "10-10-2024",new Indirizzo("via5", "città4", "paese2", "cap4"),"paese4"));
-        pazienti.add(new Paziente("xxxxx5", "nome1", "cognome1", "10-10-2024", new Indirizzo("via6", "città7", "paese7", "cap5"),"paese3"));
-        pazienti.add(new Paziente("xxxxx6", "nome7", "cognome7", "10-10-2024",  new Indirizzo("via7", "città2", "paese3", "cap6"),"paese1"));
+        pazienti.add(new Paziente("RSSMRC75R13F839Q", "Marco", "Rossi", "13-10-1975" , new Indirizzo("Via Roma 10", "Napoli", "Italia", "20159"),"Napoli"));
+        pazienti.add(new Paziente("CPAFNC98E05F141E", "Franco", "Capo", "05-05-1998", new Indirizzo("Piazza Rossi 5", "Mercogliano", "Italia", "45035"),"Avellino"));
+        pazienti.add(new Paziente("BNCLSS90B49F839X", "Alessia", "Bianco", "09-02-1990", new Indirizzo("Via Napoli 451", "Napoli", "Italia", "20159"),"Napoli"));
+        pazienti.add(new Paziente("RSSMRA00R21A783X", "Mario", "Rossi", "21-10-2000" ,new Indirizzo("Via Roma 45", "Benevento", "Italia", "45789"),"Benevento"));
     }
 
     public Paziente findByCf(String cf){

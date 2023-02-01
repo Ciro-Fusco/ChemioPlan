@@ -7,9 +7,6 @@ import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
 import com.example.prenotazione.model.SchedaPaziente;
 import com.example.prenotazione.repository.PrenotazioneRepository;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,7 +143,6 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
   @Override
   public List<PrenotazioneResponse> getByData(Date data) {
     List<Prenotazione> prenotazioni = prenotazioneRepository.findByData(data);
-    System.out.println(data);
     return prenotazioni.stream().map(this::mapToPrenotazioneResponse).toList();
   }
 

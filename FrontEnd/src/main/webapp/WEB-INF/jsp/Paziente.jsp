@@ -22,9 +22,15 @@
     <h3>${message}</h3>
     <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
     <jsp:useBean id="malattie" class="com.example.FrontEnd.FrontEnd.service.MalattiaService"/>
+    <jsp:useBean id="pazientiStub" class="com.example.FrontEnd.FrontEnd.service.PazienteStub"/>
     <table>
         <tr>
             <td>${Paziente.codiceFiscale}</td>
+        </tr>
+        <tr>
+            <%--@elvariable id="paz" type="com.example.FrontEnd.FrontEnd.model.Paziente"--%>
+            <c:set var="paz" value="${pazientiStub.findByCf(Paziente.codiceFiscale)}"/>
+            <td>${paz.nome} ${paz.cognome}</td>
         </tr>
         <tr>
             <td>

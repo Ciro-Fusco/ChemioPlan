@@ -53,8 +53,8 @@ public class PrenotazioneController {
   @RequestMapping(value = {"/add-prenotazione"}, method = RequestMethod.POST)
   public String insertPrenotazione(@ModelAttribute Prenotazione prenotazione, ModelMap model) {
     model.addAttribute("message", prenotazioneService.addPrenotazione(prenotazione));
-    model.addAttribute("prenotazione", new Prenotazione());
-    return "AggiungiPrenotazione";
+    model.addAttribute("Prenotazione", prenotazione);
+    return "Prenotazione";
   }
 
   @RequestMapping(value = {"/modifica-prenotazione-page/{codice}"}, method = RequestMethod.GET)
@@ -71,7 +71,7 @@ public class PrenotazioneController {
     return "Prenotazione";
   }
 
-  @RequestMapping(value = {"/elimina/{codice}"}, method = RequestMethod.DELETE)
+  @RequestMapping(value = {"/elimina/{codice}"}, method = RequestMethod.GET)
   public String eliminaPrenotazione(ModelMap model, @PathVariable String codice) {
     Prenotazione[] prenotazioni = prenotazioneService.getAllPrenotazioni();
     model.addAttribute("message", prenotazioneService.deletePrenotazione(codice));
@@ -95,8 +95,4 @@ public class PrenotazioneController {
     model.addAttribute("Prenotazioni", prenotazioni);
     return "Prenotazioni";
   }
-
-
-
-
 }

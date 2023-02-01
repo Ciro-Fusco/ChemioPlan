@@ -34,10 +34,10 @@
             <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${Prenotazione.data}"/></td>
         </tr>
         <tr>
-            <td>${Prenotazione.sala}</td>
+            <td>Sala ${Prenotazione.sala}</td>
         </tr>
         <tr>
-            <td>${Prenotazione.poltrona}</td>
+            <td>Poltrona ${Prenotazione.poltrona}</td>
         </tr>
         <tr>
             <td>

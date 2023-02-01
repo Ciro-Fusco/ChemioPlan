@@ -27,5 +27,4 @@ public class PazienteStub implements IPazienteStub{
     public List<Paziente> findPazienti(Paziente p) {
         return restTemplate.postForObject(url + "/trova-paziente", p, List.class );
     }
-
 }

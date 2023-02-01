@@ -1,51 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<!DOCTYPE html>
-<html lang="en">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Farmacia</title>
+        <!DOCTYPE html>
+        <html lang="en">
 
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="/js/script.js"></script>
-    </head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Farmacia</title>
 
-    <body>
-    <!-- Header -->
-    <%@include file="/Content/header.jsp" %>
+            <link rel="stylesheet" href="/css/style.css">
+            <script src="/js/script.js"></script>
+        </head>
 
-    <!-- Content -->
+        <body>
+            <!-- Header -->
+            <%@include file="/Content/header.jsp" %>
 
-    <h1>Magazzino</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Codice</th>
-            <th>Codice Farmaco</th>
-            <th>Quantità</th>
-            <th>Stato</th>
-        </tr>
-        </thead>
-        <tbody>
+                <!-- Content -->
 
-        <c:forEach items="${ordini}" var="ordine">
-            <tr>
-                <td data-label="Codice">${ordine.id}</td>
-                <td data-label="Codice Farmaco">${ordine.codiceFarmaco}</td>
-                <td data-label="Quantità">${ordine.quantita}</td>
-                <td data-label="Stato">${ordine.stato}</td>
-            </tr>
-        </c:forEach>
+                <h1>Lista Ordini</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Codice</th>
+                            <th>Codice Farmaco</th>
+                            <th>Quantita</th>
+                            <th>Stato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-        </tbody>
-    </table>
-    <!-- Header -->
-    <%@include file="/Content/footer.jsp" %>
+                        <c:forEach items="${ordini}" var="ordine">
+                            <tr>
+                                <td data-label="Codice">${ordine.id}</td>
+                                <td data-label="Codice Farmaco">${ordine.codiceFarmaco}</td>
+                                <td data-label="Quantita">${ordine.quantita}</td>
+                                <td data-label="Stato">${ordine.stato}</td>
+                            </tr>
+                        </c:forEach>
 
-    </body>
+                    </tbody>
+                </table>
+                <!-- Header -->
+                <%@include file="/Content/footer.jsp" %>
 
-</html>
+        </body>
+
+        </html>

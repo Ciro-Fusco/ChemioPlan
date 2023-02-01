@@ -5,10 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 /**
- * <p>Questa classe modella il lotto della scheda farmaco.</p>
+ * <p>
+ * Questa classe modella il lotto della scheda farmaco.
+ * </p>
  *
  * @author Francesco Pio di Pippa
  * @version 0.1
@@ -18,18 +26,30 @@ import java.util.Date;
 @Data
 public class Lotto {
   /**
-   * <p>Numero del lotto.</p>
+   * <p>
+   * Numero del lotto.
+   * </p>
    */
+  @Min(value = 1, message = "Numero Lotto Invalido")
+  @NotNull(message = "Inserire Numero Lotto")
   private Integer numeroLotto;
 
   /**
-   * <p>Data di scadenza del lotto.</p>
+   * <p>
+   * Data di scadenza del lotto.
+   * </p>
    */
   @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @Future(message = "la data non puo essere nel passato")
+  @NotNull(message = "Inserire Data Scadena")
   private Date scadenzaLotto;
 
   /**
-   * <p>Quantità di farmaco presente in farmacia per il relativo lotto.</p>
+   * <p>
+   * Quantità di farmaco presente in farmacia per il relativo lotto.
+   * </p>
    */
+  @Min(value = 1, message = "Quantita lotto invalida")
+  @NotNull(message = "Inserire Quantita Lotto")
   private Integer quantita;
 }

@@ -16,14 +16,16 @@
 
                 <div class="footer_menu">
                     <a class="footer_link footer_head" href="/prenotazioni">Prenotazione</a>
-                    <a class="footer_link" href="/prenotazioni/add-prenotazione-page">Nuova Prenotazione</a>
+                    <a class="footer_link" href="/prenotazioni/all">Visualizza Prenotazioni</a>
+                    <a class="footer_link" href="/prenotazioni/add-prenotazione-page">Aggiungi Prenotazione</a>
+                    <a class="footer_link" href="prenotazioni/cerca-prenotazioneByData-page">Cerca Prenotazione</a>
                 </div>
 
                 <div class="footer_menu">
                     <a class="footer_link footer_head" href="/pazienti">Pazienti</a>
-                    <a class="footer_link" href="/pazienti">Scheda Pazienti</a>
+                    <a class="footer_link" href="/pazienti/all">Visualizza Pazienti</a>
+                    <a class="footer_link" href="/pazienti/ricerca-paziente-page">Aggiungi Paziente</a>
                     <a class="footer_link" href="/pazienti/cerca-paziente-page">Modifica Trattamento</a>
-                    <a class="footer_link" href="/pazienti/add-paziente-page">Aggiungi Paziente</a>
                 </div>
             </c:when>
             <c:when test="${ruolo=='Responsabile Farmacia'}">

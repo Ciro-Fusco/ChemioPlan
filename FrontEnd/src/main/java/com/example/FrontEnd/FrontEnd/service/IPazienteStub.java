@@ -8,5 +8,8 @@ import java.util.List;
 
 public interface IPazienteStub {
     public Paziente findByCf(String cf);
+
     List<Paziente> findPazienti(Paziente p);
+
+    List<Paziente> findAllPazienti();
 }

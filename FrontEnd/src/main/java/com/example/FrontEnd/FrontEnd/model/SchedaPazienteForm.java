@@ -9,8 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jakarta.validation.constraints.Pattern;
+
 /**
- * <p>Questa classe rappresenta l'entità Paziente</p>
+ * <p>
+ * Questa classe rappresenta l'entità Paziente
+ * </p>
  *
  * @author vitco
  * @version 0.1
@@ -21,17 +25,24 @@ import java.util.Map;
 @Data
 public class SchedaPazienteForm {
   /**
-   * <p>CodiceFiscale dell paziente</p>
+   * <p>
+   * CodiceFiscale dell paziente
+   * </p>
    */
+  @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}|^.{0}", message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
   /**
-   *<p>Codice dei farmaci che il paziente assume</p>
+   * <p>
+   * Codice dei farmaci che il paziente assume
+   * </p>
    */
   private List<String> farmaci = new ArrayList<>();
 
   /**
-   * <p>nome delle malattie da cui è affetto il paziente</p>
+   * <p>
+   * nome delle malattie da cui è affetto il paziente
+   * </p>
    */
   private List<String> malattie = new ArrayList<>();
 
@@ -41,7 +52,7 @@ public class SchedaPazienteForm {
     scheda.setMalattie(this.malattie);
 
     int pos;
-    HashMap<String,Double> map = new HashMap<>();
+    HashMap<String, Double> map = new HashMap<>();
     for (String s : this.farmaci) {
       pos = s.indexOf('=');
       if (pos != -1) {
@@ -60,7 +71,7 @@ public class SchedaPazienteForm {
     scheda.setMalattie(s.getMalattie());
 
     List<String> list = new ArrayList<>();
-    for (Object key: s.getFarmaci().keySet()) {
+    for (Object key : s.getFarmaci().keySet()) {
       String codice = (String) key;
       Double dosaggio = s.getFarmaci().get(key);
       list.add(codice + "=" + dosaggio);

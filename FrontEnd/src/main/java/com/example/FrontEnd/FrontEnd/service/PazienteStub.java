@@ -13,18 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PazienteStub implements IPazienteStub{
+public class PazienteStub implements IPazienteStub {
     private RestTemplate restTemplate = new RestTemplate();
 
     private String url = "http://localhost:8080/fhir/paziente";
 
     @Override
     public Paziente findByCf(String cf) {
-        return restTemplate.getForObject(url +"/" + cf, Paziente.class);
+        return restTemplate.getForObject(url + "/" + cf, Paziente.class);
     }
 
     @Override
     public List<Paziente> findPazienti(Paziente p) {
-        return restTemplate.postForObject(url + "/trova-paziente", p, List.class );
+        return restTemplate.postForObject(url + "/trova-paziente", p, List.class);
     }
+
+    @Override
+    public List<Paziente> findAllPazienti() {
+        return restTemplate.getForObject(url, List.class);
+    }
+
 }

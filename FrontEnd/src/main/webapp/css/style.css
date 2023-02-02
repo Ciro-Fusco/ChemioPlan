@@ -457,6 +457,7 @@ table td {
 .checkbox[type="checkbox"] {
     background-color: var(--color_primary);
     color: white;
+    margin-left: 10px;
 }
 
 .checktext {

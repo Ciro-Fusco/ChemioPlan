@@ -107,8 +107,14 @@ public class UtenteController {
     return service.verificaCredenziali(credenziali.getUser(), credenziali.getPass());
   }
 
+  /**
+   * <p>Ricerca il ruolo dell'utente in base allo username.</p>
+   *
+   * @param user username dell'utente
+   * @return ruolo dell'utente
+   */
   @PostMapping("/ruolo")
-  public String getRuoloByUser(@RequestBody String user){
+  public String getRuoloByUser(@RequestBody String user) {
     return service.getRuoloByUser(user);
   }
 }

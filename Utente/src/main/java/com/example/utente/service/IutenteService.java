@@ -1,9 +1,8 @@
 package com.example.utente.service;
 
 import com.example.utente.model.Utente;
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 /**
  * <p>Interfaccia che definisce i metodi per l'entità Utente.</p>
@@ -63,5 +62,11 @@ public interface IutenteService {
   */
   ResponseEntity<?> verificaCredenziali(String user, String pass);
 
+  /**
+   * <p>Ricerca il ruolo dell'utente in base allo username.</p>
+   *
+   * @param user username dell'utente
+   * @return ruolo dell'utente
+   */
   String getRuoloByUser(String user);
 }

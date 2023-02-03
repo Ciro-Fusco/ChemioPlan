@@ -47,7 +47,8 @@ public class UtenteService implements IutenteService {
    */
   @Override
   public Utente getUtenteById(Integer id) {
-    return repository.findById(id).orElseThrow(() -> new UtenteNotFoundException("Utente con codice: " + id + "non trovato"));
+    return repository.findById(id).orElseThrow(
+            () -> new UtenteNotFoundException("Utente con codice: " + id + "non trovato"));
   }
 
   /**
@@ -120,8 +121,14 @@ public class UtenteService implements IutenteService {
     return ResponseEntity.ok("Login effettuato con successo!");
   }
 
+  /**
+   * <p>Ricerca il ruolo dell'utente in base allo username.</p>
+   *
+   * @param user username dell'utente
+   * @return ruolo dell'utente
+   */
   @Override
-  public String getRuoloByUser(String user){
+  public String getRuoloByUser(String user) {
     return repository.findByUser(user).getRuolo();
   }
 }

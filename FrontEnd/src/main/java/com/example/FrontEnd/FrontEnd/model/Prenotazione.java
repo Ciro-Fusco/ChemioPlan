@@ -39,6 +39,4 @@ public class Prenotazione {
   private String sala;
   @NotEmpty(message = "Poltrona obbligatorio")
   private String poltrona;
-  @NotEmpty(message = "Codice Farmaco Obbligatorio")
-  private List<String> codiceFarmaci = new ArrayList<>();
 }

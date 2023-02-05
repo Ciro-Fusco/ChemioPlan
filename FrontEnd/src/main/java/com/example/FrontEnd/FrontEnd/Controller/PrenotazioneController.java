@@ -65,14 +65,6 @@ public class PrenotazioneController {
       return "AggiungiPrenotazione";
     }
 
-    try {
-      farmaciService.getFarmaco(prenotazione.getCodiceFarmaci().get(0));
-    } catch (Exception e) {
-      model.addAttribute("msg_farmaco", "Farmaco Inesistente");
-      model.addAttribute("prenotazione", prenotazione);
-      return "AggiungiPrenotazione";
-    }
-
     String r = prenotazioneService.addPrenotazione(prenotazione);
     System.out.println(r);
     if (r != null) {

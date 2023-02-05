@@ -7,7 +7,6 @@ import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
 import com.example.prenotazione.model.SchedaPaziente;
 import com.example.prenotazione.repository.PrenotazioneRepository;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +38,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
         .codice(prenotazione.getCodice())
         .data(prenotazione.getData())
         .sala(prenotazione.getSala())
-        .poltrona(prenotazione.getPoltrona()).codiceFarmaci(prenotazione.getCodiceFarmaci())
+        .poltrona(prenotazione.getPoltrona())
         .build();
   }
 
@@ -60,7 +59,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     Prenotazione p = Prenotazione.builder().codiceFiscale(prenotazioneRequest.getCodiceFiscale())
         .data(prenotazioneRequest.getData())
         .sala(prenotazioneRequest.getSala()).poltrona(prenotazioneRequest.getPoltrona())
-        .codiceFarmaci(prenotazioneRequest.getCodiceFarmaci()).build();
+        .build();
     prenotazioneRepository.insert(p);
   }
 
@@ -99,9 +98,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     if (prenotazione.getPoltrona() != null) {
       prenotazioneSalvata.setPoltrona(prenotazione.getPoltrona());
     }
-    if (prenotazione.getCodiceFarmaci() != null) {
-      prenotazioneSalvata.setCodiceFarmaci(prenotazione.getCodiceFarmaci());
-    }
+
     prenotazioneRepository.save(prenotazioneSalvata);
   }
 
@@ -134,16 +131,5 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     return mapToPrenotazioneResponse(prenotazione);
   }
 
-  /**
-   * <p>Questo metodo restituisce una prenotazione con un determinata data.</p>
-   *
-   * @param data identificativo della prenotazione
-   * @return una prenotazione
-   */
-  @Override
-  public List<PrenotazioneResponse> getByData(Date data) {
-    List<Prenotazione> prenotazioni = prenotazioneRepository.findByData(data);
-    return prenotazioni.stream().map(this::mapToPrenotazioneResponse).toList();
-  }
 
 }

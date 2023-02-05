@@ -3,8 +3,6 @@ package com.example.prenotazione.service;
 import com.example.prenotazione.dto.PrenotazioneRequest;
 import com.example.prenotazione.dto.PrenotazioneResponse;
 import com.example.prenotazione.model.Prenotazione;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 
@@ -26,7 +24,6 @@ public interface PrenotazioneServiceInterface {
 
   PrenotazioneResponse getById(String codice);
 
-  List<PrenotazioneResponse> getByData(Date data);
 
 }
 

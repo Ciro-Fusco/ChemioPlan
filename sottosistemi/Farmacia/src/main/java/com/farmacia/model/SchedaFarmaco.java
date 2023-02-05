@@ -33,10 +33,9 @@ public class SchedaFarmaco {
   private String nome;
 
   /**
-   * <p>Dosaggio del farmaco.</p>
+   * <p>Dimensione del farmaco.</p>
    */
-  //sostituire nome diensione
-  private Double dosaggio;
+  private Double dimensioneFlacone;
 
   /**
    * <p>Indica la durata del farmaco dopo l'apertura.</p>

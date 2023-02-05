@@ -1,0 +1,7 @@
+com.farmacia
+com.farmacia.controller
+com.farmacia.dto
+com.farmacia.exception
+com.farmacia.model
+com.farmacia.repository
+com.farmacia.service

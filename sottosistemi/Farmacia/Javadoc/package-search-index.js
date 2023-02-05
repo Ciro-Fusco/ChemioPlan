@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.farmacia"},{"l":"com.farmacia.controller"},{"l":"com.farmacia.dto"},{"l":"com.farmacia.exception"},{"l":"com.farmacia.model"},{"l":"com.farmacia.repository"},{"l":"com.farmacia.service"}];updateSearchResults();

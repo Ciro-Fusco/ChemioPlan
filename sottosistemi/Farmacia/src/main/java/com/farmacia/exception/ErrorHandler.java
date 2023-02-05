@@ -40,22 +40,22 @@ public class ErrorHandler {
   }
 
   @ExceptionHandler(LottoAlreadyExistException.class)
-  public ResponseEntity<String> handleLottoArleadyExistException(LottoAlreadyExistException exception){
+  public ResponseEntity<String> handleLottoArleadyExistException(LottoAlreadyExistException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(LottoNotFoundException.class)
-  public ResponseEntity<String> handleLottoNotFoundException(LottoNotFoundException exception){
+  public ResponseEntity<String> handleLottoNotFoundException(LottoNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(CodiceSchedaFarmacoLengthException.class)
-  public ResponseEntity<String> handleCodiceSchedaFarmacoLengthException(CodiceSchedaFarmacoLengthException exception){
+  public ResponseEntity<String> handleCodiceSchedaFarmacoLengthException(CodiceSchedaFarmacoLengthException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(NomeSchedaFarmacoLenghtException.class)
-  public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(NomeSchedaFarmacoLenghtException exception){
+  public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(NomeSchedaFarmacoLenghtException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 }

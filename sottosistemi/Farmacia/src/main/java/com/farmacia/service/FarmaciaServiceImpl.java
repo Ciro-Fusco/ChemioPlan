@@ -103,8 +103,8 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     if (schedaFarmaco.getNome() != null) {
       scheda.setNome(schedaFarmaco.getNome());
     }
-    if (schedaFarmaco.getDosaggio() != null) {
-      scheda.setDosaggio(schedaFarmaco.getDosaggio());
+    if (schedaFarmaco.getDimensioneFlacone() != null) {
+      scheda.setDimensioneFlacone(schedaFarmaco.getDimensioneFlacone());
     }
     repo.save(scheda);
   }

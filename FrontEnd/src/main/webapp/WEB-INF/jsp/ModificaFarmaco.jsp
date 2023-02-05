@@ -45,10 +45,10 @@
 
                                     <div class="filter_screen">
                                         <h4>Dosaggio</h4>
-                                        <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio"
+                                        <form:input class="inp_filter" path="dimensioneFlacone" placeholder="Dosaggio"
                                             type="number" min="1" />
 
-                                        <form:errors path="dosaggio" cssClass="error" />
+                                        <form:errors path="dimensioneFlacone" cssClass="error" />
                                     </div>
 
                                     <div class="filter_screen">

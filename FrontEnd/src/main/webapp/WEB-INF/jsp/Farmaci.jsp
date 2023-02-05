@@ -26,7 +26,7 @@
 <table>
     <thead>
     <tr>
-        <th>Nome</th>
+        <th>Codice Farmaco</th>
         <th>Dosaggio</th>
     </tr>
     </thead>

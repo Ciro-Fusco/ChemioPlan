@@ -25,13 +25,13 @@
     <h3>${message}</h3>
     <table>
         <tr>
-            <td>${Prenotazione.codice}</td>
+            <td>Codice: ${Prenotazione.codice}</td>
         </tr>
         <tr>
-            <td>${Prenotazione.codiceFiscale}</td>
+            <td>Codice Fiscale Paziente: <a href="/pazienti/${Prenotazione.codiceFiscale}">${Prenotazione.codiceFiscale}</a></td>
         </tr>
         <tr>
-            <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${Prenotazione.data}"/></td>
+            <td>Data e ora: <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${Prenotazione.data}"/></td>
         </tr>
         <tr>
             <td>Sala ${Prenotazione.sala}</td>

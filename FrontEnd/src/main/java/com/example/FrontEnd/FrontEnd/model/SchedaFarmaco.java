@@ -39,8 +39,8 @@ public class SchedaFarmaco {
    * <p>Dosaggio del farmaco</p>
    */
   @Min(value = 1,message = "Il Dosaggio deve essere Positivo")
-  @NotNull(message = "Dosaggio Obbligatorio")
-  private Double dosaggio;
+  @NotNull(message = "Dimensione flacone obbligatorio")
+  private Double dimensioneFlacone;
 
   /**
    * <p>Indica la durata del farmaco dopo l'apertura.</p>

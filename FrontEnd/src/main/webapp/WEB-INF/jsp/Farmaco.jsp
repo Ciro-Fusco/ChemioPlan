@@ -24,13 +24,13 @@
     <h3>${message}</h3>
     <table>
         <tr>
-            <td>${Farmaco.codice}</td>
+            <td>Codice: ${Farmaco.codice}</td>
         </tr>
         <tr>
-            <td>${Farmaco.nome}</td>
+            <td>Nome Farmaco: ${Farmaco.nome}</td>
         </tr>
         <tr>
-            <td>${Farmaco.dosaggio}</td>
+            <td>Dimensione: ${Farmaco.dimensioneFlacone}</td>
         </tr>
         <tr>
             <td>Il farmaco dura ${Farmaco.scadenzaDopoApertura} giorni dopo l'aperura</td>

@@ -29,14 +29,18 @@ import jakarta.validation.constraints.Size;
 @Builder
 @Data
 public class Prenotazione {
+
   private String codice;
+
   @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}", message = "Codice Fiscale Invalido")
   private String codiceFiscale;
-  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-  @NotNull(message = "Data obbligatorio")
+
+  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") @NotNull(message = "Data obbligatorio")
   private Date data;
+
   @NotEmpty(message = "Sala obbligatorio")
   private String sala;
+
   @NotEmpty(message = "Poltrona obbligatorio")
   private String poltrona;
 }

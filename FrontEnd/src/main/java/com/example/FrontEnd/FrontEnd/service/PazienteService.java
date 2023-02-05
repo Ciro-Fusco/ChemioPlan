@@ -72,7 +72,7 @@ public class PazienteService implements IPazienteService {
 
   @Override
   public HashMap<String, Double> getFarmaci(String cf) {
-    HashMap<String,Double> farmaci = restTemplate.getForObject(pazienteResourceUrl +"/getFarmaci/" + cf, HashMap.class);
-    return farmaci;
+    SchedaPaziente paziente = restTemplate.getForObject(pazienteResourceUrl +"/" + cf, SchedaPaziente.class);
+    return paziente.getFarmaci();
   }
 }

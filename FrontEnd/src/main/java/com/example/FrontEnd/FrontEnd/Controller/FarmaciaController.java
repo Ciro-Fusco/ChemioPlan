@@ -4,46 +4,79 @@ import com.example.FrontEnd.FrontEnd.model.Lotto;
 import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.service.IFarmaciaService;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.validation.BindingResult;
-
+/**
+ * 
+ */
 @Controller
 @RequestMapping(value = { "/farmacia" })
 public class FarmaciaController {
   @Autowired
   private IFarmaciaService service;
 
+  /**
+   *
+   *
+   * @param model
+   * @return
+   */
   @GetMapping
   public String showFarmaciaHomePage(ModelMap model) {
     return "FarmaciaHome";
   }
 
+  /**
+   *
+   *
+   * @param model
+   * @return
+   */
   @GetMapping(value = { "/magazzino" })
   public String showMagazzinoPage(ModelMap model) {
     model.addAttribute("Farmaci", service.getAllFarmaci());
     return "Magazzino";
   }
 
+  /**
+   *
+   *
+   * @param model
+   * @param id
+   * @return
+   */
   @GetMapping(value = { "/magazzino/{id}" })
   public String showFarmacoPage(ModelMap model, @PathVariable String id) {
     model.addAttribute("Farmaco", service.getFarmaco(id));
     return "Farmaco";
   }
 
+  /**
+   *
+   *
+   * @param model
+   * @return
+   */
   @GetMapping(value = { "/add-farmaco-page" })
   public String insertFarmacoPage(ModelMap model) {
     model.addAttribute("scheda", new SchedaFarmaco());
     return "AggiungiFarmaco";
   }
 
+  /**
+   *
+   *
+   * @param model
+   * @param scheda
+   * @param bindingResult
+   * @return
+   */
   @PostMapping(value = { "/add-farmaco" })
   public String insertFarmaco(ModelMap model, @Valid @ModelAttribute("scheda") SchedaFarmaco scheda,
       BindingResult bindingResult) {

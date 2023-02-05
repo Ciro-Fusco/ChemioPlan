@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Dosaggio</th>
+                    <th>Dimensione</th>
                     <th>Lotti</th>
                 </tr>
             </thead>
@@ -35,7 +35,7 @@
                 <c:forEach items="${Farmaci}" var="farmaco">
                     <tr>
                         <td data-label="Nome">${farmaco.nome}</td>
-                        <td data-label="Dosaggio">${farmaco.dosaggio}</td>
+                        <td data-label="Dimensione">${farmaco.dimensioneFlacone}</td>
                         <td data-label="Lotti"><c:forEach items="${farmaco.lotti}" var="lotto">${lotto.numeroLotto}<br></c:forEach></td>
                         <td>
                             <a href="/farmacia/magazzino/${farmaco.codice}">

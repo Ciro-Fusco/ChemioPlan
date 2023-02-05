@@ -51,7 +51,7 @@ public class PazientiController {
   }
 
   @RequestMapping(value = { "/{cf}" }, method = RequestMethod.GET)
-  public String showUtentiPage(ModelMap model, @PathVariable String cf) {
+  public String showPazientePage(ModelMap model, @PathVariable String cf) {
     model.addAttribute("Paziente", pazienteService.getPaziente(cf));
     return "Paziente";
   }
@@ -67,6 +67,7 @@ public class PazientiController {
 
   @RequestMapping(value = { "/add-paziente" }, method = RequestMethod.POST)
   public String insertPaziente(ModelMap model, @ModelAttribute SchedaPazienteForm scheda) {
+    System.out.println(scheda);
     SchedaPaziente s = scheda.mapToSchedaPaziente();
     String msg = pazienteService.addPaziente(s);
     if (msg.contains("400")) {

@@ -42,9 +42,9 @@
                                 </div>
 
                                 <div class="filter_screen">
-                                    <h4>Dosaggio</h4>
-                                    <form:input class="inp_filter" path="dosaggio" placeholder="Dosaggio" type="number" min="1"/>
-                                    <form:errors path="dosaggio" cssClass="error" />
+                                    <h4>Dimensione Flacone</h4>
+                                    <form:input class="inp_filter" path="dimensioneFlacone" placeholder="Dimensione" type="number" min="1"/>
+                                    <form:errors path="dimensioneFlacone" cssClass="error" />
                                 </div>
 
                                 <div class="filter_screen">

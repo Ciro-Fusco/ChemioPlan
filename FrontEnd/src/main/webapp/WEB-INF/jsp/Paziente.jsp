@@ -25,7 +25,7 @@
     <jsp:useBean id="pazientiStub" class="com.example.FrontEnd.FrontEnd.service.PazienteStub"/>
     <table>
         <tr>
-            <td>${Paziente.codiceFiscale}</td>
+            <td>Codice Fiscale: ${Paziente.codiceFiscale}</td>
         </tr>
         <tr>
             <%--@elvariable id="paz" type="com.example.FrontEnd.FrontEnd.model.Paziente"--%>
@@ -34,6 +34,7 @@
         </tr>
         <tr>
             <td>
+                Farmaci e dosaggi <br>
                 <c:forEach items="${Paziente.farmaci}" var="codice">
                     <c:set var="farmaco" value="${farmacia.getFarmaco(codice.key)}"/>
                     <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a> ${codice.value}ml<br>
@@ -42,6 +43,7 @@
         </tr>
         <tr>
             <td>
+                Malattie <br>
                 <c:forEach items="${Paziente.malattie}" var="malattia">
                     <c:set var="m" value="${malattie.getMalattia(malattia)}"/>
                     ${m.nomeMalattia} <br>

@@ -62,13 +62,6 @@
                                         <form:errors path="poltrona" cssClass="error" />
                                     </div>
 
-                                    <div class="filter_screen">
-                                        <h4>Codici Farmaci</h4>
-                                        <form:input class="inp_filter" path="codiceFarmaci"
-                                            placeholder="CodiceFarmaci" />
-                                        <form:errors path="codiceFarmaci" cssClass="error" />
-                                    </div>
-
                                     <!--
             <div class="filter_screen" id="farmaci">
                 <h4>Codici Farmaci</h4>

@@ -195,4 +195,10 @@ public class PazientiController {
     model.addAttribute("Pazienti", pazienteService.getPazienti());
     return "Pazienti";
   }
+
+  @RequestMapping(value = { "/getFarmaci/{cf}" }, method = RequestMethod.GET)
+  public String showFarmaciPage(ModelMap model, @PathVariable String cf) {
+    model.addAttribute("farmaci", pazienteService.getFarmaci(cf));
+    return "Farmaci";
+  }
 }

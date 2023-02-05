@@ -54,14 +54,6 @@
                                     <form:input class="inp_filter" path="poltrona" placeholder="Poltrona" />
                                     <form:errors path="poltrona" cssClass="error" />
                                 </div>
-
-                                <div class="filter_screen">
-                                    <h4>Codice Farmaco</h4>
-                                    <form:input class="inp_filter" path="codiceFarmaci" placeholder="CodiceFarmaco" />
-                                    <form:errors path="codiceFarmaci" cssClass="error" />
-                                    <p class="error">${msg_farmaco}</p>
-                                </div>
-
                             </div>
                             <form:button class="button button_fill menu" href="">Aggiungi</form:button>
                         </div>

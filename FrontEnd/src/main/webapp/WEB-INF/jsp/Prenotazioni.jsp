@@ -50,10 +50,7 @@
                 <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${prenotazione.data}"/>
             </td>
             <td data-label="codiceFarmaci">
-                <c:forEach items="${prenotazione.codiceFarmaci}" var="codice">
-                    <c:set var="farmaco" value="${farmacia.getFarmaco(codice)}"/>
-                    <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a><br>
-                </c:forEach>
+                    <a href="/pazienti/getFarmaci/${prenotazione.codiceFiscale}">Visualizza farmaci</a><br>
             </td>
             <td data-label="codice">
                 <a href="/prenotazioni/${prenotazione.codice}" class="tablink">

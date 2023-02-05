@@ -2,6 +2,7 @@ package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
+import java.util.HashMap;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -67,5 +68,11 @@ public class PazienteService implements IPazienteService {
     } catch (Exception e){
       return e.getMessage();
     }
+  }
+
+  @Override
+  public HashMap<String, Double> getFarmaci(String cf) {
+    HashMap<String,Double> farmaci = restTemplate.getForObject(pazienteResourceUrl +"/getFarmaci/" + cf, HashMap.class);
+    return farmaci;
   }
 }

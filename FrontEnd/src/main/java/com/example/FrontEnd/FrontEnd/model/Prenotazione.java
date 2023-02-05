@@ -35,7 +35,6 @@ public class Prenotazione {
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   @NotNull(message = "Data obbligatorio")
   private Date data;
-
   @NotEmpty(message = "Sala obbligatorio")
   private String sala;
   @NotEmpty(message = "Poltrona obbligatorio")

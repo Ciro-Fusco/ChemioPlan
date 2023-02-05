@@ -41,14 +41,6 @@
         </tr>
         <tr>
             <td>
-            <c:forEach items="${Prenotazione.codiceFarmaci}" var="codice">
-                <c:set var="farmaco" value="${farmacia.getFarmaco(codice)}"/>
-                <a href="/farmacia/magazzino/${farmaco.codice}">${farmaco.nome}</a><br>
-            </c:forEach>
-            </td>
-        </tr>
-        <tr>
-            <td>
             <a class="button menu" href="/prenotazioni/modifica-prenotazione-page/${Prenotazione.codice}">
                 <span class="material-symbols-outlined">edit_square</span>
             </a>

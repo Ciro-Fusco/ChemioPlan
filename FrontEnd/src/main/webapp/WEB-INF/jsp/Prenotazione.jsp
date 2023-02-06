@@ -41,9 +41,15 @@
         </tr>
         <tr>
             <td>
-            <a class="button menu" href="/prenotazioni/modifica-prenotazione-page/${Prenotazione.codice}">
-                <span class="material-symbols-outlined">edit_square</span>
-            </a>
+                <a class="button menu" href="/prenotazioni/modifica-prenotazione-page/${Prenotazione.codice}">
+                    <span class="material-symbols-outlined">edit_square</span>
+                </a>
+                <c:choose>
+                    <c:when test="${Prenotazione.confermata == false}">
+                        <a class="button button_fill" href="/prenotazioni/conferma-prenotazione/${Prenotazione.codice}">Conferma</a>
+                    </c:when>
+                </c:choose>
+
             </td>
         </tr>
     </table>

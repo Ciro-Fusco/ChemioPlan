@@ -10,9 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
- * <p>Questa classe rappresenta l'entità Paziente</p>
+ * <p>Questa classe rappresenta l'entità Paziente.</p>
  *
- * @author vitco
+ * @author vittorio contardo
  * @version 0.1
  */
 
@@ -23,21 +23,22 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 public class SchedaPaziente {
 
-    /**
-     * <p>CodiceFiscale dell paziente</p>
-     */
-    @Id @Field("_id")
-    private String codiceFiscale;
+  /**
+   * <p>CodiceFiscale dell paziente.</p>
+   */
+  @Id
+  @Field("_id")
+  private String codiceFiscale;
 
-    /**
-     *<p>Codice dei farmaci che il paziente assume</p>
-     */
-    @Field(name="farmaci")
-    private HashMap<String,Double> farmaci;
+  /**
+   * <p>Codice dei farmaci che il paziente assume.</p>
+   */
+  @Field(name = "farmaci")
+  private HashMap<String, Double> farmaci;
 
-    /**
-     * <p>nome delle malattie da cui è affetto il paziente</p>
-     */
-    @Field(name="malattie")
-    private List<String> malattie;
+  /**
+   * <p>nome delle malattie da cui è affetto il paziente.</p>
+   */
+  @Field(name = "malattie")
+  private List<String> malattie;
 }

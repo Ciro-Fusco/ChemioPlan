@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * <p> Questa classe rappresenta il DTO per la richiesta</p>
+ * <p> Questa classe rappresenta il DTO per la richiesta.</p>
  */
 
 @Data
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 public class SchedaPazienteRequest {
 
-    private String CodiceFiscale;
-    private List<String> codiceFarmaci;
-    private List<String> malattie;
+  private String codiceFiscale;
+  private List<String> codiceFarmaci;
+  private List<String> malattie;
 }

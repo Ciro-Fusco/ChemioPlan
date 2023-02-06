@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 /**
- * <p>Questa classe rappresenta il DTO per la risposta</p>
+ * <p>Questa classe rappresenta il DTO per la risposta.</p>
  */
 
 @Data
@@ -17,9 +17,9 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 public class SchedaPazienteResponse {
 
-    @Id
-    private int id;
-    private String CodiceFiscale;
-    private List<String> codiceFarmaci;
-    private List<String> malattie;
+  @Id
+  private int id;
+  private String codiceFiscale;
+  private List<String> codiceFarmaci;
+  private List<String> malattie;
 }

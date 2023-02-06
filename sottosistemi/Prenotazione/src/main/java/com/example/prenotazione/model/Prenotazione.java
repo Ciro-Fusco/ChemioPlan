@@ -41,4 +41,6 @@ public class Prenotazione {
   @Field(name = "poltrona")
   private String poltrona;
 
+  @Field(name = "confermata")
+  private boolean confermata;
 }

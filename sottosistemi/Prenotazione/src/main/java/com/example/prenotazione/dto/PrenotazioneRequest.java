@@ -28,4 +28,6 @@ public class PrenotazioneRequest {
 
   private String poltrona;
 
+  private boolean confermata;
+
 }

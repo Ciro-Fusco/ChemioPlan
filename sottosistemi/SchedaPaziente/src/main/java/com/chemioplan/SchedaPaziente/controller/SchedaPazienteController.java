@@ -2,7 +2,7 @@ package com.chemioplan.SchedaPaziente.controller;
 
 import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
 import com.chemioplan.SchedaPaziente.service.SchedaPazienteService;
-import org.apache.coyote.Response;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,5 +77,10 @@ public class SchedaPazienteController {
     public ResponseEntity<?> eliminaSchedaPaziente(@PathVariable String codiceFiscale){
         schedaPazienteService.eliminaSchedaPaziente(codiceFiscale);
         return ResponseEntity.ok("Scheda farmaco eliminata correttamente" +codiceFiscale);
+    }
+
+    @GetMapping("/getFarmaci/{CodiceFiscale}")
+    public HashMap<String,Double> ottieniFarmaciPaziente(@PathVariable String CodiceFiscale){
+        return schedaPazienteService.ottieniFarmaciPerCodiceFiscale(CodiceFiscale);
     }
 }

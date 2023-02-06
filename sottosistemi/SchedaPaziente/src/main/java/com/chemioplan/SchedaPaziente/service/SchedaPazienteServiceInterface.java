@@ -1,6 +1,7 @@
 package com.chemioplan.SchedaPaziente.service;
 
 import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -42,6 +43,6 @@ public interface SchedaPazienteServiceInterface {
      */
     void eliminaSchedaPaziente(String codiceFiscale);
 
-
+    HashMap<String,Double> ottieniFarmaciPerCodiceFiscale(String codiceFiscale);
 
 }

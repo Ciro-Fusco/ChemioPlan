@@ -4,8 +4,8 @@ import com.chemioplan.SchedaPaziente.exception.SchedaPazienteAlredyExistExceptio
 import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
 import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
 import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -93,5 +93,14 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface{
         schedaPazienteRepository.deleteById(codiceFiscale);
 
 
+    }
+
+    @Override
+    public HashMap<String,Double> ottieniFarmaciPerCodiceFiscale(String codiceFiscale) {
+        var optional = schedaPazienteRepository.findById(codiceFiscale);
+        if(optional.isEmpty()){
+            throw  new SchedaPazienteNotFoundException("SchedaPaziente con codiceFiscale " + codiceFiscale + " non trovata");
+        }
+        return optional.get().getFarmaci();
     }
 }

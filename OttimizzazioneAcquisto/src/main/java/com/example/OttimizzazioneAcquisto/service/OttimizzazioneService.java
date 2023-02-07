@@ -6,34 +6,43 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 
+/**
+ * <p>
+ * Questa classe fa una predizione delle numero di flaconi da acquistare e ne
+ * restituisce il risultato
+ * 
+ * </p>
+ *
+ * @author Francesco Matteis
+ * @version 1.0
+ */
 @Service
-public class OttimizzazioneService implements IOttimizzazioneService{
+public class OttimizzazioneService implements IOttimizzazioneService {
 
+    /**
+     * <p>
+     * Questo metodo restituisce il numero ottimale di flaconi da acquistare
+     * </p>
+     *
+     * @param codice codice del farmaco
+     * @return numero di flaconi da acquistare
+     */
     @Override
     public String Ottimizza(String codice) {
 
-        String output="";
+        String output = "";
 
         try {
 
-//            String path = System.getProperty("user.dir");
-//            System.out.println("Current path: " + path);
-
-            String command ="python Modello_Deploy.py "+codice;
+            String command = "python Modello_Deploy.py " + codice;
             System.out.println(command);
             Process process = Runtime.getRuntime().exec(command);
-
-//            File directory = new File("/src/main/AcquistoDeploy");
-//            ProcessBuilder processBuilder = new ProcessBuilder("python", "Modello_Deploy.py",codice);
-//            processBuilder.directory(directory);
-//            System.out.println("Current directory: " + processBuilder.directory().getAbsolutePath());
-//            Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-                output=output+line;
+                output = output + line;
             }
             reader.close();
 

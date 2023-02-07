@@ -33,4 +33,5 @@ public class PrenotazioneResponse {
   private String poltrona;
 
   private boolean confermata;
+
 }

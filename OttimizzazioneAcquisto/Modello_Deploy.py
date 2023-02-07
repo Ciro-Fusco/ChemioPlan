@@ -1,3 +1,4 @@
+import warnings
 import numpy as np
 from datetime import datetime
 import requests
@@ -72,8 +73,13 @@ def stima(medicinale):
     mms_input = load('mms_input.bin')
     mms_output = load('mms_output.bin')
 
-    input_ml = mms_input.transform(
-        [[Disponibilita, Necessari, scadenza, dimensione_flacone, utilizzati]])
+    df = pd.DataFrame([[Disponibilita, Necessari, scadenza,
+                        dimensione_flacone, utilizzati]])
+
+    df.columns = ["Disponibilita", "Necessari",
+                  "Scadenza", "Dimensione", "Utilizzati"]
+
+    input_ml = mms_input.transform(df)
 
     prediction = rt.predict(input_ml)
 
@@ -87,9 +93,10 @@ response = requests.get(url+"farmacia/"+str(codice_farmaco))
 
 if response.status_code == 200:
     medicinale = response.json()
-    print(str(stima(medicinale)))
+    print(stima(medicinale))
 else:
     print("")
 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-# cls && python Modello_Deploy.py
+# cls && python Modello_Deploy.py 123

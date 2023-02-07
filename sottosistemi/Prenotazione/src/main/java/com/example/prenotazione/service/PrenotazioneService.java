@@ -39,6 +39,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
         .data(prenotazione.getData())
         .sala(prenotazione.getSala())
         .poltrona(prenotazione.getPoltrona())
+        .confermata(prenotazione.isConfermata())
         .build();
   }
 
@@ -58,7 +59,9 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
 
     Prenotazione p = Prenotazione.builder().codiceFiscale(prenotazioneRequest.getCodiceFiscale())
         .data(prenotazioneRequest.getData())
-        .sala(prenotazioneRequest.getSala()).poltrona(prenotazioneRequest.getPoltrona())
+        .sala(prenotazioneRequest.getSala())
+        .poltrona(prenotazioneRequest.getPoltrona())
+        .confermata(prenotazioneRequest.isConfermata())
         .build();
     prenotazioneRepository.insert(p);
   }
@@ -98,6 +101,8 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
     if (prenotazione.getPoltrona() != null) {
       prenotazioneSalvata.setPoltrona(prenotazione.getPoltrona());
     }
+
+    prenotazioneSalvata.setConfermata(prenotazione.isConfermata());
 
     prenotazioneRepository.save(prenotazioneSalvata);
   }

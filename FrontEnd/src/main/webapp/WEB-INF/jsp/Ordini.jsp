@@ -13,6 +13,11 @@
             <link rel="stylesheet" href="/css/style.css">
             <script src="/js/script.js"></script>
         </head>
+        <c:choose>
+            <c:when test="${ruolo != 'Responsabile Farmacia' or ruolo != 'Dottore'}">
+                <jsp:forward page = "ErrorLogged.jsp" />
+            </c:when>
+        </c:choose>
 
         <body>
             <!-- Header -->

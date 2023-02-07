@@ -15,7 +15,11 @@
     <script src="/js/script.js"></script>
 
 </head>
-
+<c:choose>
+    <c:when test="${ruolo != 'Dottore'}">
+        <jsp:forward page = "ErrorLogged.jsp" />
+    </c:when>
+</c:choose>
 <body>
     <!-- Header -->
     <%@include file="/Content/header.jsp" %>

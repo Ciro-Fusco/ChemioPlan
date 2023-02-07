@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,11 @@
     <script src="/js/script.js"></script>
 
 </head>
-
+<c:choose>
+    <c:when test="${ruolo != 'Responsabile Farmacia' or ruolo != 'Dottore'}">
+        <jsp:forward page = "ErrorLogged.jsp" />
+    </c:when>
+</c:choose>
 <body>
     <!-- Header -->
     <%@include file="/Content/header.jsp" %>

@@ -16,6 +16,11 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
             </head>
+            <c:choose>
+                <c:when test="${ruolo != 'Responsabile Farmacia' or ruolo != 'Dottore'}">
+                    <jsp:forward page = "ErrorLogged.jsp" />
+                </c:when>
+            </c:choose>
 
             <body>
                 <!-- Header -->

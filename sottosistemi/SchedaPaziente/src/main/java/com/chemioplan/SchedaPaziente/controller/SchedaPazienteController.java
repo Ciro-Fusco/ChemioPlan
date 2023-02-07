@@ -52,7 +52,7 @@ public class SchedaPazienteController {
    * @param codiceFiscale il codice fiscale del paziente
    * @Return la schedaPaziente con il codiceFiscale dato in input
    */
-  @GetMapping("/ {codiceFiscale}")
+  @GetMapping("/{codiceFiscale}")
   public SchedaPaziente ottieniSchedaPaziente(@PathVariable String codiceFiscale) {
     return schedaPazienteService.ottieniSchedaPazientePerCodiceFiscale(codiceFiscale);
   }

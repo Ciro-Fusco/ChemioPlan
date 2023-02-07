@@ -1,10 +1,8 @@
 package com.example.FrontEnd.FrontEnd.Controller;
 
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
-import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
-import com.example.FrontEnd.FrontEnd.service.FarmaciaService;
-import com.example.FrontEnd.FrontEnd.service.PrenotazioneService;
+import com.example.FrontEnd.FrontEnd.service.*;
 
 import jakarta.validation.Valid;
 
@@ -27,9 +25,11 @@ public class PrenotazioneController {
    * </p>
    */
   @Autowired
-  private PrenotazioneService prenotazioneService;
+  private IPrenotazioneService prenotazioneService;
   @Autowired
-  private FarmaciaService farmaciService;
+  private IFarmaciaService farmaciaService;
+  @Autowired
+  private IPazienteService pazienteService;
 
   @RequestMapping(value = { "" }, method = RequestMethod.GET)
   public String showPrenotazioniHomePage(ModelMap model) {
@@ -129,6 +129,22 @@ public class PrenotazioneController {
       return "CercaPrenotazioneByData";
     }
     model.addAttribute("Prenotazioni", prenotazioni);
+    return "Prenotazioni";
+  }
+
+  @RequestMapping(value = {"/conferma-prenotazione/{codice}"}, method = RequestMethod.GET)
+  public String confermaPrenotazione(ModelMap model,@PathVariable String codice) {
+    Prenotazione p = prenotazioneService.getById(codice);
+    SchedaPaziente s = pazienteService.getPaziente(p.getCodiceFiscale());
+    if (prenotazioneService.confermaPrenotazione(s)){
+      model.addAttribute("message", "Prenotazione confermata");
+      p.setConfermata(true);
+      System.out.println(prenotazioneService.updatePrenotazione(p));
+    } else {
+      model.addAttribute("message",
+              "Impossibile confermare la prenotazione. Quantità farmaco non disponibile");
+    }
+    model.addAttribute("Prenotazioni", prenotazioneService.getAllPrenotazioni());
     return "Prenotazioni";
   }
 }

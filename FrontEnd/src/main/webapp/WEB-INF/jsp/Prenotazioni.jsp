@@ -23,7 +23,7 @@
 
 <!-- Content -->
 <h1>Prenotazioni</h1>
-
+<h3>${message}</h3>
 <div class="page_content">
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per data">
 </div>

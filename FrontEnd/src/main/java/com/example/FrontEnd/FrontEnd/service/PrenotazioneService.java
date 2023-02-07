@@ -1,12 +1,13 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 
-import com.example.FrontEnd.FrontEnd.model.Prenotazione;
+import com.example.FrontEnd.FrontEnd.model.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -24,6 +25,8 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class PrenotazioneService implements IPrenotazioneService {
+  @Autowired
+  private IFarmaciaService farmaciaService;
 
   private RestTemplate restTemplate = new RestTemplate();
 
@@ -49,8 +52,8 @@ public class PrenotazioneService implements IPrenotazioneService {
   @Override
   public Prenotazione getById(String codice) {
     try {
-      return  restTemplate.getForObject(prenotazioneResourceUrl + "/" + codice, Prenotazione.class);
-    }catch (Exception e) {
+      return restTemplate.getForObject(prenotazioneResourceUrl + "/" + codice, Prenotazione.class);
+    } catch (Exception e) {
       return null;
     }
   }
@@ -58,8 +61,8 @@ public class PrenotazioneService implements IPrenotazioneService {
   @Override
   public Prenotazione[] getByData(Date data) {
     try {
-      return  restTemplate.getForObject(prenotazioneResourceUrl + "/getByData/" + data, Prenotazione[].class);
-    }catch (Exception e) {
+      return restTemplate.getForObject(prenotazioneResourceUrl + "/getByData/" + data, Prenotazione[].class);
+    } catch (Exception e) {
       return null;
     }
   }
@@ -74,7 +77,7 @@ public class PrenotazioneService implements IPrenotazioneService {
     try {
       response = restTemplate.postForEntity(prenotazioneResourceUrl, entity, String.class);
       return response.getBody();
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println(e.getMessage());
       return e.getMessage();
     }
@@ -90,7 +93,7 @@ public class PrenotazioneService implements IPrenotazioneService {
     try {
       response = restTemplate.exchange(prenotazioneResourceUrl + "/" + prenotazione.getCodice(), HttpMethod.PUT, entity, String.class);
       return response.getBody();
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println(e.getMessage());
       return e.getMessage();
     }
@@ -101,9 +104,42 @@ public class PrenotazioneService implements IPrenotazioneService {
     try {
       restTemplate.delete(prenotazioneResourceUrl + "/elimina/" + codice, getById(codice));
       return "Prenotazione " + codice + " eliminata";
-    } catch (Exception e){
+    } catch (Exception e) {
       return e.getMessage();
     }
   }
 
+  @Override
+  public boolean confermaPrenotazione(SchedaPaziente p) {
+    HashMap<String, Double> farmaci = p.getFarmaci();
+
+    Set<String> keySet = farmaci.keySet();
+    for (String key : keySet) {
+      double dosaggio = farmaci.get(key);
+      SchedaFarmaco s = farmaciaService.getFarmaco(key);
+      List<Lotto> lotti = s.getLotti();
+
+      //verifica della disponibilità del farmaco
+      int quantitaDisponibile = 0;
+      for (Lotto l: lotti) {
+        quantitaDisponibile += l.getQuantita();
+      }
+
+      System.out.println(quantitaDisponibile + " | " + dosaggio);
+      if (quantitaDisponibile < dosaggio) {
+        return false;
+      }
+      for (Lotto lotto : lotti) {
+        if (lotto.getQuantita() <= dosaggio) {
+          dosaggio -= lotto.getQuantita();
+          lotto.setQuantita(0);
+          farmaciaService.modificaLotto(key, lotto);
+        } else if (lotto.getQuantita() > dosaggio) {
+          lotto.setQuantita(lotto.getQuantita() - (int) dosaggio);
+          farmaciaService.modificaLotto(key, lotto);
+        }
+      }
+    }
+    return true;
+  }
 }

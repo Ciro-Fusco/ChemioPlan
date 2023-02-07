@@ -43,4 +43,6 @@ public class Prenotazione {
 
   @NotEmpty(message = "Poltrona obbligatorio")
   private String poltrona;
+
+  private boolean confermata = false;
 }

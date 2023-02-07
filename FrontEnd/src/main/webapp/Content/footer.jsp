@@ -7,14 +7,6 @@
         <c:choose>
             <c:when test="${ruolo=='Dottore'}">
                 <div class="footer_menu">
-                    <a class="footer_link footer_head" href="/farmacia">Farmacia</a>
-                    <a class="footer_link" href="/farmacia/magazzino">Magazzino</a>
-                    <a class="footer_link" href="/farmacia/add-farmaco-page">Aggiungi Farmaco</a>
-                    <a class="footer_link" href="/farmacia/nuovo-ordine-page">Nuovo Ordine</a>
-                    <a class="footer_link" href="/farmacia/ordini-page">Tutti gli ordini</a>
-                </div>
-
-                <div class="footer_menu">
                     <a class="footer_link footer_head" href="/prenotazioni">Prenotazione</a>
                     <a class="footer_link" href="/prenotazioni/all">Visualizza Prenotazioni</a>
                     <a class="footer_link" href="/prenotazioni/add-prenotazione-page">Aggiungi Prenotazione</a>

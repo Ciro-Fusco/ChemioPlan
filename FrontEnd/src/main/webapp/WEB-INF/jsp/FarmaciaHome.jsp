@@ -14,11 +14,12 @@
 
 </head>
 <c:choose>
-    <c:when test="${ruolo != 'Responsabile Farmacia' or ruolo != 'Dottore'}">
+    <c:when test="${ruolo != 'Responsabile Farmacia'}">
         <jsp:forward page = "ErrorLogged.jsp" />
     </c:when>
 </c:choose>
 <body>
+
     <!-- Header -->
     <%@include file="/Content/header.jsp" %>
 

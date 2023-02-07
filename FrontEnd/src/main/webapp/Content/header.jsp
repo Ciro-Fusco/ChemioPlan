@@ -15,7 +15,6 @@
         <div class="container_nav" id="header_nav">
             <c:choose>
                 <c:when test="${ruolo=='Dottore'}">
-                    <a class="link" href="/farmacia">Farmacia</a>
                     <a class="link" href="/prenotazioni">Prenotazioni</a>
                     <a class="link" href="/pazienti">Pazienti</a>
                     <a class="button button_fill margins" href="/utente/logout">Log Out</a>

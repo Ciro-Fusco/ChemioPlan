@@ -3,9 +3,7 @@ package com.example.FrontEnd.FrontEnd.Controller;
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 import com.example.FrontEnd.FrontEnd.service.*;
-
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,27 +13,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * <p>Classe controller che gestisce tutte le chiamate dal browser riferite alle prenotazioni.</p>
+ *
+ * @version 1.0
+ */
 @Controller
 @RequestMapping(value = { "/prenotazioni" })
 public class PrenotazioneController {
-
   /**
-   * <p>
-   * Riferimento al layer Service.
-   * </p>
+   * <p>Riferimento all'interfaccia prenotazione service.</p>
    */
   @Autowired
   private IPrenotazioneService prenotazioneService;
-  @Autowired
-  private IFarmaciaService farmaciaService;
+
+  /**
+   * <p>Riferimento all'interfaccia paziente service.</p>
+   */
   @Autowired
   private IPazienteService pazienteService;
 
+  /**
+   * <p>Metodo che inizilizza la pagina home delle prenotazioni.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp PrenotazioniHome
+   */
   @RequestMapping(value = { "" }, method = RequestMethod.GET)
   public String showPrenotazioniHomePage(ModelMap model) {
     return "PrenotazioniHome";
   }
 
+  /**
+   * <p>Metodo che inizilizza la pagina di tutte le prenotazioni.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp Prenotazione
+   */
   @RequestMapping(value = { "/all" }, method = RequestMethod.GET)
   public String showPrenotazioniiPage(ModelMap model) {
     Prenotazione[] prenotazioni = prenotazioneService.getAllPrenotazioni();
@@ -43,6 +57,13 @@ public class PrenotazioneController {
     return "Prenotazioni";
   }
 
+  /**
+   * <p>Metodo che inizializza la pagina della prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param codice codice della prenotazione da visualizzare
+   * @return nome della pagina jsp Prenotazione
+   */
   @RequestMapping(value = { "/{codice}" }, method = RequestMethod.GET)
   public String showPrenotazionePage(ModelMap model, @PathVariable String codice) {
     Prenotazione prenotazione = prenotazioneService.getById(codice);
@@ -50,13 +71,27 @@ public class PrenotazioneController {
     return "Prenotazione";
   }
 
+  /**
+   * <p>Metodo che inizilizza la pagina di inserimento di una nuova prenotazione.</p>
+   *
+   * @param prenotazione prenotazione inizializzata
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp AggiungiPrenotazione
+   */
   @RequestMapping(value = { "/add-prenotazione-page" }, method = RequestMethod.GET)
   public String insertPrenotazionePage(@ModelAttribute Prenotazione prenotazione, ModelMap model) {
-    // model.addAttribute("prenotazioni", prenotazioneService.getAllPrenotazioni());
-    // model.addAttribute("prenotazione", prenotazione);
     return "AggiungiPrenotazione";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di inserimento della prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param prenotazione prenotazione da inserire
+   * @param bindingResult contiene gli errori del form
+   * @return redirect alla pagina della prenotazione se l'inserimento va a buon fine,
+   *      altrimenti nome della pagina jsp AggiungiPrenotazione
+   */
   @RequestMapping(value = { "/add-prenotazione" }, method = RequestMethod.POST)
   public String insertPrenotazione(ModelMap model, @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
       BindingResult bindingResult) {
@@ -72,17 +107,17 @@ public class PrenotazioneController {
       model.addAttribute("msg_paziente", "Paziente Inesistente");
       return "AggiungiPrenotazione";
     }
-    // if(.contains("non trovato"));
-    // System.out.println(farmaciService.getFarmaco());
-
     Prenotazione[] prenotazioni = prenotazioneService.getAllPrenotazioni();
     return "redirect:/prenotazioni/" + prenotazioni[prenotazioni.length - 1].getCodice();
-
-    // model.addAttribute("message", p);
-    // model.addAttribute("Prenotazione", prenotazione);
-    // return "Prenotazione";
   }
 
+  /**
+   * <p>Metodo che inizializza la pagina di modifica della prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param codice codice della prenotazione da modificare
+   * @return nome della pagina jsp ModificaPrenotazione
+   */
   @RequestMapping(value = { "/modifica-prenotazione-page/{codice}" }, method = RequestMethod.GET)
   public String modificaPrenotazionePage(ModelMap model, @PathVariable String codice) {
     Prenotazione p = prenotazioneService.getById(codice);
@@ -92,6 +127,15 @@ public class PrenotazioneController {
     return "ModificaPrenotazione";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di modifica della prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param prenotazione prenotazione con le modifiche
+   * @param bindingResult contiene gli errori del form
+   * @return nome della pagina jsp Prenotazione se la modifica va buon fine,
+   *      altrimenti nome della pagina jsp ModificaPrenotazione
+   */
   @RequestMapping(value = { "/modifica-prenotazione" }, method = RequestMethod.POST)
   public String modificaPrenotazione(ModelMap model, @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
       BindingResult bindingResult) {
@@ -107,6 +151,13 @@ public class PrenotazioneController {
     return "Prenotazione";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di eliminazione della prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param codice codice della prenotazione da eliminare
+   * @return redirect alla pagina di tutte le prenotazioni
+   */
   @RequestMapping(value = { "/elimina/{codice}" }, method = RequestMethod.GET)
   public String eliminaPrenotazione(ModelMap model, @PathVariable String codice) {
     Prenotazione[] prenotazioni = prenotazioneService.getAllPrenotazioni();
@@ -114,12 +165,26 @@ public class PrenotazioneController {
     return "redirect:/prenotazioni/all";
   }
 
+  /**
+   * <p>Metodo che inizializza la pagina di ricerca di prenotazione per data.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp CercaPrenotazioneByData
+   */
   @RequestMapping(value = { "/cerca-prenotazioneByData-page" }, method = RequestMethod.GET)
   public String cercaPrenotazioneByDataPage(ModelMap model) {
     model.addAttribute("prenotazione", new Prenotazione());
     return "CercaPrenotazioneByData";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di ricerca della prenotazione per data.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param prenotazione prenotazione trovata
+   * @return nome della pagina jsp Prenotazioni se la ricerca va a buon fine,
+   *      altrimenti nome della pagina jsp CercaPrenotazioneByData
+   */
   @RequestMapping(value = { "/cerca-prenotazioneByData" }, method = RequestMethod.POST)
   public String cercaPrenotazioneByData(ModelMap model, @ModelAttribute Prenotazione prenotazione) {
     Prenotazione[] prenotazioni = prenotazioneService.getByData(prenotazione.getData());
@@ -132,11 +197,18 @@ public class PrenotazioneController {
     return "Prenotazioni";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di conferma di prenotazione.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param codice codice della prenotazione da confermare
+   * @return nome della pagina jsp Prenotazioni
+   */
   @RequestMapping(value = {"/conferma-prenotazione/{codice}"}, method = RequestMethod.GET)
-  public String confermaPrenotazione(ModelMap model,@PathVariable String codice) {
+  public String confermaPrenotazione(ModelMap model, @PathVariable String codice) {
     Prenotazione p = prenotazioneService.getById(codice);
     SchedaPaziente s = pazienteService.getPaziente(p.getCodiceFiscale());
-    if (prenotazioneService.confermaPrenotazione(s)){
+    if (prenotazioneService.confermaPrenotazione(s)) {
       model.addAttribute("message", "Prenotazione confermata");
       p.setConfermata(true);
       System.out.println(prenotazioneService.updatePrenotazione(p));

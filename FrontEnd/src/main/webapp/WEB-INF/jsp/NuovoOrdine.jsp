@@ -13,6 +13,7 @@
 
                 <link rel="stylesheet" href="/css/style.css">
                 <script src="/js/script.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
             </head>
 
@@ -40,6 +41,7 @@
                                             <form:input class="inp_filter" path="quantita" placeholder="Quantita"
                                                 type="number" min="1" value="${ordine.quantita}" />
                                             <form:errors path="quantita" cssClass="error" />
+                                            <div id="consiglio" class="info"></div>
                                         </div>
 
 
@@ -52,6 +54,27 @@
                     </div>
                     <!-- Footer -->
                     <%@include file="/Content/footer.jsp" %>
+
+                        <script>
+
+                            $(document).ready(function () {
+                                $("#codiceFarmaco").keyup(function () {
+                                    var codice = $("#codiceFarmaco").val();
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "http://localhost:3000/mlservices/ottimizzazioneacquisto",
+                                        data: {
+                                            codice: codice
+                                        },
+                                        success: function (response) {
+                                            console.log("Risultato: " + response);
+                                            $("#consiglio").html(response);
+                                        }
+                                    });
+                                });
+                            });
+
+                        </script>
 
             </body>
 

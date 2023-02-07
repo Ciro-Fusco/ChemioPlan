@@ -467,3 +467,33 @@ table td {
 .error {
     color: red;
 }
+
+/* Informazioni ML */
+.info {
+    font: var(--font_default);
+    position: relative;
+    background-color: var(--color_primary);
+    padding: 10px;
+    color: white;
+    margin-top: 25px;
+    border-radius: 5px;
+    max-width: 236px;
+    left: 50px;
+}
+
+.info::before {
+    content: "";
+    position: absolute;
+    left: auto;
+    right: auto;
+    top: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid var(--color_primary);
+}
+
+.info:empty {
+    display: none;
+}

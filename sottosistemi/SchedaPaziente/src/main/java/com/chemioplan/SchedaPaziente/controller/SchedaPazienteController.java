@@ -50,7 +50,7 @@ public class SchedaPazienteController {
    * con un codiceFiscale presente nell'url.</p>
    *
    * @param codiceFiscale il codice fiscale del paziente
-   * @Return la schedaPaziente con il codiceFiscale dato in input
+   * @return la schedaPaziente con il codiceFiscale dato in input
    */
   @GetMapping("/{codiceFiscale}")
   public SchedaPaziente ottieniSchedaPaziente(@PathVariable String codiceFiscale) {
@@ -102,7 +102,7 @@ public class SchedaPazienteController {
    * ad un codiceFiscale presente nell'url.</p>
    *
    * @param codiceFiscale il codice fiscale del paziente
-   * @Return la schedaPaziente con il codiceFiscale dato in input
+   * @return la schedaPaziente con il codiceFiscale dato in input
    */
   @GetMapping("/getFarmaci/{codiceFiscale}")
   public HashMap<String, Double> ottieniFarmaciPaziente(@PathVariable String codiceFiscale) {

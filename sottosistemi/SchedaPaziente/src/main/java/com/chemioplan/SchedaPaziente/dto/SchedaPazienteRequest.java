@@ -14,9 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class SchedaPazienteRequest {
-
   private String codiceFiscale;
   private List<String> codiceFarmaci;
   private List<String> malattie;

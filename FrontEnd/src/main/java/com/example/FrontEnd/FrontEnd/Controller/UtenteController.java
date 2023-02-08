@@ -3,9 +3,12 @@ package com.example.FrontEnd.FrontEnd.Controller;
 import com.example.FrontEnd.FrontEnd.model.Credenziali;
 import com.example.FrontEnd.FrontEnd.model.Utente;
 import com.example.FrontEnd.FrontEnd.service.IUtenteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -31,7 +34,7 @@ public class UtenteController {
    */
   @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
   public String showIndexPage(ModelMap model) {
-    if (model.getAttribute("ruolo").equals("")) {
+    if (model.getAttribute("ruolo") == null) {
       model.addAttribute("credenziali", new Credenziali());
       return "Login";
     }
@@ -78,6 +81,7 @@ public class UtenteController {
   @RequestMapping(value = {"/utente/verificaCredenziali"}, method = RequestMethod.POST)
   public String login(@ModelAttribute Credenziali credenziali, ModelMap model) {
     String response = service.verificaCrendenziali(credenziali);
+    System.out.println(response);
     if (response.equals("Login effettuato con successo!")) {
       model.addAttribute("message", response);
       model.addAttribute("ruolo", service.getRuoloByUser(credenziali.getUser()));
@@ -119,14 +123,70 @@ public class UtenteController {
    * <p>Metodo che inizializza la pagina di un utente.</p>
    *
    * @param model utilizzato per comunicare con le jsp
-   * @param id    id dell'utente
+   * @param id id dell'utente
    * @return nome della pagina jsp Utente
    */
   @RequestMapping(value = {"/utenti/{id}"}, method = RequestMethod.GET)
   public String showUtentePage(ModelMap model, @PathVariable Integer id) {
     Utente u = service.getUtente(id);
-
     model.addAttribute("Utente", u);
     return "Utente";
+  }
+
+  /**
+   * <p>Metodo che inizializza la pagina di registrazione di un nuovo utente.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp AggiungiUtente
+   */
+  @RequestMapping(value = {"/utenti/add-utente-page"}, method = RequestMethod.GET)
+  public String nuovoUtentePage(ModelMap model) {
+    model.addAttribute("utente", new Utente());
+    return "AggiungiUtente";
+  }
+
+  @RequestMapping(value = {"/utenti/add-utente"}, method = RequestMethod.POST)
+  public String nuovoUtente(ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
+    if (result.hasErrors()) {
+      model.addAttribute("utennte", utente);
+      return "AggiungiUtente";
+    }
+    String hash = BCrypt.hashpw(utente.getCredenziali().getPass(), BCrypt.gensalt());
+    utente.getCredenziali().setPass(hash);
+    String response = service.aggiungiUtente(utente);
+    if (!response.contains("Utente salvato")) {
+      model.addAttribute("message", response.substring(response.indexOf('"') + 1, response.length() -1));
+      model.addAttribute("utennte", utente);
+      return "AggiungiUtente";
+    }
+    return "redirect:/utenti/" + utente.getId();
+  }
+
+  @RequestMapping(value = {"/utenti/modifica-utente-page/{id}"}, method = RequestMethod.GET)
+  public String modificaUtentePage(ModelMap model, @PathVariable Integer id) {
+    Utente u = service.getUtente(id);
+    model.addAttribute("utente", u);
+    return "ModificaUtente";
+  }
+
+  @RequestMapping(value = {"/utenti/modifica-utente"}, method = RequestMethod.POST)
+  public String modificaUtente(ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
+    if (result.hasErrors()) {
+      model.addAttribute("utente", utente);
+      return "ModificaUtente";
+    }
+    String response = service.modificaUtente(utente.getId(), utente);
+    if (!response.contains("modificato correttamente")) {
+      model.addAttribute("utente", utente);
+      return "ModificaUtente";
+    }
+    return "redirect:/utenti/" + utente.getId();
+  }
+
+  @RequestMapping(value = {"/utenti/elimina/{id}"}, method = RequestMethod.GET)
+  public String eliminaUtente(ModelMap model, @PathVariable Integer id) {
+    model.addAttribute("message", service.elimina(id));
+    model.addAttribute("Utenti", service.getUtenti());
+    return "Utenti";
   }
 }

@@ -1,5 +1,7 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -13,9 +15,11 @@ public class Credenziali {
   /**
   * <p>Username.</p>
   */
+  @NotEmpty(message = "Username obbligatorio")
   private String user;
   /**
   * <p>Password.</p>
   */
+  @NotEmpty(message = "Password obbligatoria")
   private String pass;
 }

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +14,21 @@
     <script src="/js/script.js"></script>
 
 </head>
-
+<c:choose>
+    <c:when test="${ruolo != 'Admin'}">
+        <jsp:forward page = "ErrorLogged.jsp" />
+    </c:when>
+</c:choose>
 <body>
     <!-- Header -->
     <%@include file="/Content/header.jsp"%>
 
      <!-- Content -->
 
-    <h1>Id: ${Utente.id}</h1>
-    <h1>${Utente.ruolo}: ${Utente.nome} ${Utente.cognome}</h1>
-    <h3>Questa e` CyberSecurity</h3>
+    <h2>Id: ${Utente.id}</h2>
+    <h2>${Utente.ruolo}: ${Utente.nome} ${Utente.cognome}</h2>
     <h3>Username: ${Utente.credenziali.user}</h3>
-    <h3>Password: ${Utente.credenziali.pass}</h3>
-
+    <h3><a class="button button_outline" href="/utenti/modifica-utente-page/${Utente.id}">Modifica</a></h3>
     <!-- Header -->
     <%@include file="/Content/footer.jsp"%>
 

@@ -11,4 +11,9 @@ public interface IUtenteService {
     Utente[] getUtenti();
     String verificaCrendenziali(Credenziali credenziali);
     String getRuoloByUser(String user);
+    String aggiungiUtente(Utente utente);
+
+  String modificaUtente(Integer id, Utente utente);
+
+  String elimina(Integer id);
 }

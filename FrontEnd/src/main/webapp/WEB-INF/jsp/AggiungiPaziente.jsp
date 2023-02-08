@@ -16,7 +16,7 @@
 
 </head>
 <c:choose>
-    <c:when test="${ruolo == 'Dottore'}">
+    <c:when test="${ruolo != 'Dottore'}">
         <jsp:forward page = "ErrorLogged.jsp" />
     </c:when>
 </c:choose>

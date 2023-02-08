@@ -21,7 +21,11 @@
                 </c:when>
                 <c:when test="${ruolo=='Responsabile Farmacia'}">
                     <a class="link" href="/farmacia">Farmacia</a>
-                     <a class="button button_fill margins" href="/utente/logout">Log Out</a>
+                    <a class="button button_fill margins" href="/utente/logout">Log Out</a>
+                </c:when>
+                <c:when test="${ruolo=='Admin'}">
+                    <a class="link" href="/utenti">Utentenza</a>
+                    <a class="button button_fill margins" href="/utente/logout">Log Out</a>
                 </c:when>
                 <c:otherwise>
                      <a class="button button_outline margins" href="/utente/login">Log In</a>

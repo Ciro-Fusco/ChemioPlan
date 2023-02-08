@@ -29,8 +29,8 @@ public class ErrorHandler {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
-  @ExceptionHandler(OrdineFormatoQuantitaNonCorrettaException.class)
-  public ResponseEntity<String> handleOrdineFormatoQuantitaNonCorrettaException(OrdineFormatoQuantitaNonCorrettaException exception) {
+  @ExceptionHandler(FormatoQuantitaNonCorrettaException.class)
+  public ResponseEntity<String> handleFormatoQuantitaNonCorrettaException(FormatoQuantitaNonCorrettaException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
@@ -56,6 +56,11 @@ public class ErrorHandler {
 
   @ExceptionHandler(NomeSchedaFarmacoLenghtException.class)
   public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(NomeSchedaFarmacoLenghtException exception) {
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(OldDateException.class)
+  public ResponseEntity<String> handleOldDateException(OldDateException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 }

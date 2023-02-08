@@ -7,7 +7,12 @@ import com.farmacia.model.Ordine;
 import com.farmacia.model.SchedaFarmaco;
 import com.farmacia.repository.FarmaciaRepository;
 import com.farmacia.repository.OrdineRepository;
+
+import java.util.Date;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +25,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
 public class FarmaciaServiceImpl implements FarmaciaService {
 
   /**
@@ -151,6 +158,13 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null) {
       scheda.addLotto(lotto);
     }
+    Date today = new Date(System.currentTimeMillis());
+    if (lotto.getScadenzaLotto().before(today)) {
+      throw new OldDateException("Data nel passato");
+    }
+    if (lotto.getQuantita() < 0) {
+      throw new FormatoQuantitaNonCorrettaException("Quantità negativa");
+    }
     repo.save(scheda);
   }
 
@@ -211,6 +225,8 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     if (!(s.lottiContains(lotto))) {
       throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
     }
+    Date today = new Date(System.currentTimeMillis());
+    System.out.println(today);
     s.replaceLotto(lotto);
     repo.save(s);
   }
@@ -231,7 +247,7 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     }
 
     if (ordine.getQuantita() == null || ordine.getQuantita() < 0) {
-      throw new OrdineFormatoQuantitaNonCorrettaException("Formato quantità errato "
+      throw new FormatoQuantitaNonCorrettaException("Formato quantità errato "
                 + ordine.getQuantita());
     }
 

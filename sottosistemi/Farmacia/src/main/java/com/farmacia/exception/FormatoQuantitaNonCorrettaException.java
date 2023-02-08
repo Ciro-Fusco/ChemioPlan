@@ -6,10 +6,10 @@ package com.farmacia.exception;
  * @author Francesco Pio di Pippa
  * @version 0.1
  */
-public class OrdineFormatoQuantitaNonCorrettaException extends RuntimeException {
-  public OrdineFormatoQuantitaNonCorrettaException() {}
+public class FormatoQuantitaNonCorrettaException extends RuntimeException {
+  public FormatoQuantitaNonCorrettaException() {}
 
-  public OrdineFormatoQuantitaNonCorrettaException(String message) {
+  public FormatoQuantitaNonCorrettaException(String message) {
     super(message);
   }
 }

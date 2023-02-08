@@ -1,0 +1,15 @@
+Gruppo:0
+Dosaggio:0
+Dimensione:0
+Medicinale:{'nome': 0, 'dosaggio': 0, 'scadenza': 0, 'rimanente': 0, 'aperto': 0}
+
+Gruppo:111-150
+Dosaggio:150.0
+Dimensione:1
+Medicinale:{'nome': '111', 'dosaggio': 300.0, 'scadenza': 30, 'rimanente': 0, 'aperto': 0}
+
+Gruppo:123-50
+Dosaggio:50.0
+Dimensione:1
+Medicinale:{'nome': '123', 'dosaggio': 150.0, 'scadenza': 5, 'rimanente': 0, 'aperto': 0}
+

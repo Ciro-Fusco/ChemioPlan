@@ -103,7 +103,6 @@ public class UtenteController {
    */
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody Credenziali credenziali) {
-    //System.out.println(credenziali.toString());
     return service.verificaCredenziali(credenziali.getUser(), credenziali.getPass());
   }
 

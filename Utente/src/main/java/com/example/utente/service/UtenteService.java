@@ -3,13 +3,12 @@ package com.example.utente.service;
 import com.example.utente.exception.CredenzialiNonValideException;
 import com.example.utente.exception.UtenteAlreadyExistException;
 import com.example.utente.exception.UtenteNotFoundException;
-import com.example.utente.model.Credenziali;
 import com.example.utente.model.Utente;
 import com.example.utente.repository.UtenteRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 
@@ -95,7 +94,6 @@ public class UtenteService implements IutenteService {
     if (repository.findByUser(u.getCredenziali().getUser()) != null) {
       throw new CredenzialiNonValideException("Username esistente");
     }
-
     repository.save(u);
   }
 
@@ -109,16 +107,17 @@ public class UtenteService implements IutenteService {
   @Override
   public ResponseEntity<?> verificaCredenziali(String user, String pass) {
     Utente u = repository.findByUser(user);
-    System.out.println(u.toString());
     if (u == null) {
       throw new CredenzialiNonValideException("User Errato");
     }
 
-    if (!u.getCredenziali().getPass().equals(pass)) {
+    if (BCrypt.checkpw(pass, u.getCredenziali().getPass())) {
+      System.out.println("Login effettuato con successo");
+      return ResponseEntity.ok("Login effettuato con successo!");
+    } else {
+      System.out.println("Le credenziali sono errate");
       throw new CredenzialiNonValideException("Credenziali non valide");
     }
-    //System.out.println(ResponseEntity.ok("Login effettuato con successo!").getBody());
-    return ResponseEntity.ok("Login effettuato con successo!");
   }
 
   /**

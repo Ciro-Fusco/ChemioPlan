@@ -1,6 +1,6 @@
 package com.example.OttimizzazioneAcquisto.control;
 
-import com.example.OttimizzazioneAcquisto.service.IOttimizzazioneService;
+import com.example.OttimizzazioneAcquisto.service.IottimizzazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,26 +16,26 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("ottimizzazioneacquisti")
 public class OttimizzazioneController {
-    /**
-     * <p>
-     * Riferimento alla classe service.
-     * </p>
-     */
-    @Autowired
-    private IOttimizzazioneService service;
+  /**
+  * <p>
+  * Riferimento alla classe service.
+  * </p>
+  */
+  @Autowired
+  private IottimizzazioneService service;
 
-    /**
-     * <p>
-     * Questo metodo restituisce la quantità di flaconi da acquistare
-     * </p>
-     *
-     * @param codice codice del farmaco da acquistare
-     * @return numeri di flaconi da acquistare
-     */
-    @GetMapping()
-    public String Ottimizzaacquisto(@RequestParam("codice") String codice) {
+  /**
+  * <p>
+  * Questo metodo restituisce la quantità di flaconi da acquistare.
+  * </p>
+  *
+  * @param codice codice del farmaco da acquistare
+  * @return numeri di flaconi da acquistare
+  */
+  @GetMapping()
+  public String ottimizzaacquisto(@RequestParam("codice") String codice) {
 
-        return service.Ottimizza(codice);
+    return service.ottimizza(codice);
 
-    }
+  }
 }

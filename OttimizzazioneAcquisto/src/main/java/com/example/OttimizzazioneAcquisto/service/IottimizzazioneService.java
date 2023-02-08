@@ -8,6 +8,6 @@ package com.example.OttimizzazioneAcquisto.service;
  * @author Francesco Matteis
  * @version 1.0
  */
-public interface IOttimizzazioneService {
-    String Ottimizza(String codice);
+public interface IottimizzazioneService {
+  String ottimizza(String codice);
 }

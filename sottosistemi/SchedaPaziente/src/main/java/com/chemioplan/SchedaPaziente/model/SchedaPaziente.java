@@ -31,6 +31,16 @@ public class SchedaPaziente {
   private String codiceFiscale;
 
   /**
+   * <p>Nome del paziente.</p>
+   */
+  private String nome;
+
+  /**
+   * <p>Cognome del paziente.</p>
+   */
+  private String cognome;
+
+  /**
    * <p>Codice dei farmaci che il paziente assume.</p>
    */
   @Field(name = "farmaci")

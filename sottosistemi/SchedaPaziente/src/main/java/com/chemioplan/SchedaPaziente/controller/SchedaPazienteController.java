@@ -108,4 +108,15 @@ public class SchedaPazienteController {
   public HashMap<String, Double> ottieniFarmaciPaziente(@PathVariable String codiceFiscale) {
     return schedaPazienteService.ottieniFarmaciPerCodiceFiscale(codiceFiscale);
   }
+
+  /**
+   * <p>Questo metodo , con chiamata Post, restituisce i pazienti dato un paziente presente nel body.</p>
+   *
+   * @param paziente paziente che contiene i filtri
+   * @return la lista dei pazienti trovati nel Database in base ai filtri
+   */
+  @PostMapping("/byPaziente")
+  public List<SchedaPaziente> ottieniSchedePazientiByPaziente(@RequestBody SchedaPaziente paziente) {
+    return schedaPazienteService.ottieniSchedePazientiByPaziente(paziente);
+  }
 }

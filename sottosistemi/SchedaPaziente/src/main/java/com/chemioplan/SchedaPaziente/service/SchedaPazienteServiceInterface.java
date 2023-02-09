@@ -49,10 +49,18 @@ public interface SchedaPazienteServiceInterface {
   void eliminaSchedaPaziente(String codiceFiscale);
 
   /**
-   * <p> Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</p>
+   * <p>Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</p>
    *
-   * @param codiceFiscale il codiceFiscale della schedaPaziente da eliminare
+   * @param codiceFiscale il codiceFiscale del paziente
+   * @return la mappa dei codici e dosaggio
    */
   HashMap<String, Double> ottieniFarmaciPerCodiceFiscale(String codiceFiscale);
 
+  /**
+   * <p>Metodo che restituisce una lista di pazienti in base ai filtri dati.</p>
+   *
+   * @param paziente paziente che contiene tutti i filtri
+   * @return lista di pazienti trovati
+   */
+  List<SchedaPaziente> ottieniSchedePazientiByPaziente(SchedaPaziente paziente);
 }

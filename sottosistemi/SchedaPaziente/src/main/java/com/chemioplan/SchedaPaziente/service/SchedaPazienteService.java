@@ -4,8 +4,9 @@ import com.chemioplan.SchedaPaziente.exception.SchedaPazienteAlredyExistExceptio
 import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
 import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
 import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
-import java.util.HashMap;
-import java.util.List;
+
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -108,6 +109,12 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
 
   }
 
+  /**
+   * <p>Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</p>
+   *
+   * @param codiceFiscale il codiceFiscale del paziente
+   * @return la mappa dei codici e dosaggio
+   */
   @Override
   public HashMap<String, Double> ottieniFarmaciPerCodiceFiscale(String codiceFiscale) {
     var optional = schedaPazienteRepository.findById(codiceFiscale);
@@ -116,5 +123,92 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
               + codiceFiscale + " non trovata");
     }
     return optional.get().getFarmaci();
+  }
+
+  /**
+   * <p>Metodo che restituisce una lista di pazienti in base ai filtri dati.</p>
+   *
+   * @param paziente paziente che contiene tutti i filtri
+   * @return lista di pazienti trovati
+   */
+  @Override
+  public List<SchedaPaziente> ottieniSchedePazientiByPaziente(SchedaPaziente paziente) {
+    //caso in cui il codice fiscale è stato inserito
+    if (paziente.getCodiceFiscale() != "") {
+      System.out.println("3");
+      List<SchedaPaziente> pazienti = new ArrayList<>();
+      var optional = schedaPazienteRepository.findById(paziente.getCodiceFiscale());
+      if (optional.isPresent()) {
+        pazienti.add(optional.get());
+      }
+      return pazienti;
+    }
+
+    //ricerca per nome cognome e farmaci
+    if (paziente.getNome() != "" && paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
+      Set<String> codici = paziente.getFarmaci().keySet();
+      Set<SchedaPaziente> pazienti = new HashSet<>();
+      for (String c: codici) {
+        List<SchedaPaziente> p = schedaPazienteRepository.findByNomeAndCognomeAndFarmaci(
+                paziente.getNome(), paziente.getCognome(), c);
+        for (SchedaPaziente paz : p) {
+          pazienti.add(paz);
+        }
+      }
+      return pazienti.stream().toList();
+    }
+
+    //ricerca per nome e farmaci
+    if (paziente.getNome() != "" && paziente.getFarmaci().size() > 0) {
+      Set<String> codici = paziente.getFarmaci().keySet();
+      Set<SchedaPaziente> pazienti = new HashSet<>();
+      for (String c: codici) {
+        List<SchedaPaziente> p = schedaPazienteRepository.findByNomeAndFarmaci(
+                paziente.getNome(), c);
+        for (SchedaPaziente paz : p) {
+          pazienti.add(paz);
+        }
+      }
+      return pazienti.stream().toList();
+    }
+
+    if (paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
+      Set<String> codici = paziente.getFarmaci().keySet();
+      Set<SchedaPaziente> pazienti = new HashSet<>();
+      for (String c: codici) {
+        List<SchedaPaziente> p = schedaPazienteRepository.findByCognomeAndFarmaci(
+                paziente.getCognome(), c);
+        for (SchedaPaziente paz : p) {
+          pazienti.add(paz);
+        }
+      }
+      return pazienti.stream().toList();
+    }
+
+    if (paziente.getNome() != "" && paziente.getCognome() != "") {
+      return schedaPazienteRepository.findByNomeAndAndCognome(paziente.getNome(), paziente.getCognome());
+    }
+
+    if (paziente.getNome() != "") {
+      return schedaPazienteRepository.findByNome(paziente.getNome());
+    }
+
+    if (paziente.getCognome() != "") {
+      return schedaPazienteRepository.findByCognome(paziente.getCognome());
+    }
+
+    if (paziente.getFarmaci().size() > 0 ) {
+      Set<String> codici = paziente.getFarmaci().keySet();
+      Set<SchedaPaziente> pazienti = new HashSet<>();
+      for (String c: codici) {
+        List<SchedaPaziente> p = schedaPazienteRepository.findByFarmaco(c);
+        for (SchedaPaziente paz : p) {
+          pazienti.add(paz);
+        }
+      }
+      return pazienti.stream().toList();
+    }
+
+    return schedaPazienteRepository.findAll();
   }
 }

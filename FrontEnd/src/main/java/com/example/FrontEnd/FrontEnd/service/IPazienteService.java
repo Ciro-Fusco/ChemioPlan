@@ -11,4 +11,5 @@ public interface IPazienteService {
   String eliminaPaziente(String cf);
   HashMap<String, Double> getFarmaci(String cf);
 
+  SchedaPaziente[] getPazientiByFiltri(SchedaPaziente filtri);
 }

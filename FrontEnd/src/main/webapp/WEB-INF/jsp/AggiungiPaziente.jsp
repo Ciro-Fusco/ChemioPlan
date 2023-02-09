@@ -28,13 +28,15 @@
     <h2>${message}</h2>
 
     <h1>Aggiungi Paziente ${cf}</h1>
+    <h2>${nome} ${cognome}</h2>
 
     <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm" --%>
         <form:form action="/pazienti/add-paziente" method="post" modelAttribute="scheda">
             <div class="page_content">
                 <div class="filter_content">
                     <form:hidden class="inp_filter" path="codiceFiscale" value="${cf}" readonly="true" />
-
+                    <form:hidden class="inp_filter" path="nome" value="${nome}" readonly="true" />
+                    <form:hidden class="inp_filter" path="cognome" value="${cognome}" readonly="true" />
                     <div class="filter_screen" id="farmaci">
                         <h4>Farmaci <br> Dosaggio</h4>
                         <input type="text" id="inFarmaci" onkeyup="myFunction('inFarmaci', 'FarmaciTable')" placeholder="Cerca per nome..">

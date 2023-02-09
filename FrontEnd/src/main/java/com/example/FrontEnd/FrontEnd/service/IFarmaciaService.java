@@ -8,6 +8,8 @@ public interface IFarmaciaService {
 
     SchedaFarmaco[] getAllFarmaci();
 
+    SchedaFarmaco[] getAllFarmaciDisponibili();
+
     String addFarmaco(SchedaFarmaco scheda);
 
     String nuovoLotto(String codice, Lotto lotto);
@@ -23,4 +25,6 @@ public interface IFarmaciaService {
     Ordine[] getAllOrdini();
 
     String eliminaFarmaco(String codice);
+
+    String eliminaLotto(String codice, Lotto lotto);
 }

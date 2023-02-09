@@ -1,20 +1,16 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import jakarta.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import jakarta.validation.constraints.Pattern;
 
 /**
- * <p>
- * Questa classe rappresenta l'entità Paziente
- * </p>
+ * <p>Questa classe rappresenta l'entità Paziente.</p>
  *
  * @author vitco
  * @version 0.1
@@ -25,24 +21,30 @@ import jakarta.validation.constraints.Pattern;
 @Data
 public class SchedaPazienteForm {
   /**
-   * <p>
-   * CodiceFiscale dell paziente
-   * </p>
+   * <p></p>CodiceFiscale dell paziente.</p>
    */
   @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}|^.{0}", message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
   /**
-   * <p>
-   * Codice dei farmaci che il paziente assume
-   * </p>
+   * <p>Nome del paziente.</p>
+   */
+  @Pattern(regexp = "[A-z]{3,256}|^.{0}", message = "Nome non valido")
+  private String nome;
+
+  /**
+   * <p>Cognome del paziente.</p>
+   */
+  @Pattern(regexp = "[A-z]{3,256}|^.{0}", message = "Cognome non valido")
+  private String cognome;
+
+  /**
+   * <p>Codice dei farmaci che il paziente assume.</p>
    */
   private List<String> farmaci = new ArrayList<>();
 
   /**
-   * <p>
-   * nome delle malattie da cui è affetto il paziente
-   * </p>
+   * <p>Codici delle malattie da cui è affetto il paziente.</p>
    */
   private List<String> malattie = new ArrayList<>();
 
@@ -50,6 +52,8 @@ public class SchedaPazienteForm {
     SchedaPaziente scheda = new SchedaPaziente();
     scheda.setCodiceFiscale(this.codiceFiscale);
     scheda.setMalattie(this.malattie);
+    scheda.setNome(this.nome);
+    scheda.setCognome(this.cognome);
 
     int pos;
     HashMap<String, Double> map = new HashMap<>();
@@ -69,6 +73,8 @@ public class SchedaPazienteForm {
     SchedaPazienteForm scheda = new SchedaPazienteForm();
     scheda.setCodiceFiscale(s.getCodiceFiscale());
     scheda.setMalattie(s.getMalattie());
+    scheda.setNome(s.getNome());
+    scheda.setCognome(s.getCognome());
 
     List<String> list = new ArrayList<>();
     for (Object key : s.getFarmaci().keySet()) {
@@ -76,7 +82,6 @@ public class SchedaPazienteForm {
       Double dosaggio = s.getFarmaci().get(key);
       list.add(codice + "=" + dosaggio);
     }
-
     scheda.setFarmaci(list);
     return scheda;
   }

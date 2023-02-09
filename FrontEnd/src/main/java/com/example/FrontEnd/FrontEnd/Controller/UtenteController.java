@@ -81,11 +81,9 @@ public class UtenteController {
   @RequestMapping(value = {"/utente/verificaCredenziali"}, method = RequestMethod.POST)
   public String login(@ModelAttribute Credenziali credenziali, ModelMap model) {
     String response = service.verificaCrendenziali(credenziali);
-    System.out.println(response);
     if (response.equals("Login effettuato con successo!")) {
       model.addAttribute("message", response);
       model.addAttribute("ruolo", service.getRuoloByUser(credenziali.getUser()));
-      System.out.println(service.getRuoloByUser(credenziali.getUser()));
       return "Index";
     } else {
       model.addAttribute("message", "Credenziali non valide!");

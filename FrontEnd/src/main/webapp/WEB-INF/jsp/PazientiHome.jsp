@@ -29,8 +29,10 @@
             <div class="filter_content">
                 <a class="button button_outline menu" href="/pazienti/all">Visualizza Pazienti</a>
                 <a class="button button_outline menu" href="/pazienti/ricerca-paziente-page">Aggiungi Paziente</a>
-                <a class="button button_outline menu" href="/pazienti/cerca-paziente-page"
-                    style="max-width:200px;min-width:200px;">Modifica Trattamento</a>
+                <div style="width:100%;"></div>
+                <a class="button button_outline menu" href="/pazienti/cerca-pazienti-page"
+                   style="max-width:200px;min-width:200px;">Modifica Trattamento</a>
+                <a class="button button_outline menu" href="/pazienti/cerca-pazienti-page">Cerca scheda</a>
             </div>
         </div>
 

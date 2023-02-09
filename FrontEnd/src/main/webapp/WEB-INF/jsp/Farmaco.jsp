@@ -56,6 +56,9 @@
                             <a href="/farmacia/modifica-lotto-page/${Farmaco.codice}/${lotto.numeroLotto}">
                                 <span class="material-symbols-outlined">edit_square</span>
                             </a>
+                            <a href="/farmacia/elimina-lotto/${Farmaco.codice}/${lotto.numeroLotto}" class="tablink">
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>

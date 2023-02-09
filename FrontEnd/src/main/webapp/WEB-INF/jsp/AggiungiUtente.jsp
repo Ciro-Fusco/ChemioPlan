@@ -34,7 +34,7 @@
     <div class="page_content">
         <div class="filter_content">
             <div class="filter_screen">
-                <h4>ID</h4>
+                <h4>Matricola</h4>
                 <form:input class="inp_filter" path="id"/>
                 <form:errors path="id" cssClass="error" />
             </div>

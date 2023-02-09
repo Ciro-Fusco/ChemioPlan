@@ -7,6 +7,9 @@ import com.example.FrontEnd.FrontEnd.service.IPazienteService;
 import com.example.FrontEnd.FrontEnd.service.IPazienteStub;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -101,6 +104,8 @@ public class PazientiController {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
     model.addAttribute("scheda", new SchedaPazienteForm());
     model.addAttribute("cf", cf);
+    model.addAttribute("nome", pazienteStub.findByCf(cf).getNome());
+    model.addAttribute("cognome", pazienteStub.findByCf(cf).getCognome());
     model.addAttribute("Malattie", malattiaStub.getAll());
     return "AggiungiPaziente";
   }
@@ -201,10 +206,11 @@ public class PazientiController {
    * @param model utilizzato per comunicare con le jsp
    * @return nome della pagina jsp CercaPaziente
    */
-  @RequestMapping(value = { "/cerca-paziente-page" }, method = RequestMethod.GET)
+  @RequestMapping(value = { "/cerca-pazienti-page" }, method = RequestMethod.GET)
   public String cercaPazientePage(ModelMap model) {
-    model.addAttribute("scheda", new SchedaPaziente());
-    return "CercaPaziente";
+    model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
+    model.addAttribute("scheda", new SchedaPazienteForm());
+    return "CercaSchedaPaziente";
   }
 
   /**
@@ -216,21 +222,23 @@ public class PazientiController {
    * @return nome della pagina jsp Paziente se la ricerca va a buon fine,
    *      altrimenti nome della pagina jsp CercaPaziente
    */
-  @RequestMapping(value = { "/cerca-paziente" }, method = RequestMethod.POST)
-  public String cercaPaziente(ModelMap model, @Valid @ModelAttribute("scheda") SchedaPaziente scheda,
+  @RequestMapping(value = { "/cerca-pazienti" }, method = RequestMethod.POST)
+  public String cercaPaziente(ModelMap model, @Valid @ModelAttribute("scheda") SchedaPazienteForm scheda,
       BindingResult bindingResult) {
-    SchedaPaziente s = pazienteService.getPaziente(scheda.getCodiceFiscale());
+
     if (bindingResult.hasErrors()) {
+      scheda.setFarmaci(new ArrayList<>());
+      model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
       model.addAttribute("scheda", scheda);
-      return "CercaPaziente";
+      return "CercaSchedaPaziente";
     }
-    if (s == null) {
-      model.addAttribute("scheda", new SchedaPaziente());
-      model.addAttribute("message", "Codice fiscale " + scheda.getCodiceFiscale() + " errato");
-      return "CercaPaziente";
+    SchedaPaziente filtri = scheda.mapToSchedaPaziente();
+    SchedaPaziente[] pazienti = pazienteService.getPazientiByFiltri(filtri);
+    for (SchedaPaziente p: pazienti) {
+      System.out.println(p);
     }
-    model.addAttribute("Paziente", s);
-    return "Paziente";
+    model.addAttribute("Pazienti", pazienti);
+    return "Pazienti";
   }
 
   /**

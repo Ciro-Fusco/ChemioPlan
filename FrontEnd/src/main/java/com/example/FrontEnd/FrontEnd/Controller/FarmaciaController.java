@@ -50,6 +50,18 @@ public class FarmaciaController {
   }
 
   /**
+   * <p>Metodo che mostra la pagina con tutti i farmaci disponibili presenti nel magazzino.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @return nome della pagina jsp Magazzino
+   */
+  @GetMapping(value = { "/disponibili" })
+  public String showMagazzinoDisponibiliPage(ModelMap model) {
+    model.addAttribute("Farmaci", service.getAllFarmaciDisponibili());
+    return "Magazzino";
+  }
+
+  /**
    * <p>Mostra il farmaco con uno specifico id.</p>
    *
    * @param model utilizzato per comunicare con le jsp
@@ -280,5 +292,12 @@ public class FarmaciaController {
     model.addAttribute("message", service.eliminaFarmaco(codice));
     model.addAttribute("Farmaci", service.getAllFarmaci());
     return "Magazzino";
+  }
+
+  @GetMapping(value = { "/elimina-lotto/{codice}/{num}" })
+  public String eliminaLotto(ModelMap model, @PathVariable String codice, @PathVariable Integer num) {
+    model.addAttribute("message", service.eliminaLotto(codice, service.getLotto(codice, num)));
+    model.addAttribute("Farmaco", service.getFarmaco(codice));
+    return "Farmaco";
   }
 }

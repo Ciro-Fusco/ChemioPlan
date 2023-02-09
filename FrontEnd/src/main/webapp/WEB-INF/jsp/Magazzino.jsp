@@ -28,6 +28,7 @@
     <h2>${ruolo}</h2>
 
         <h1>Magazzino</h1>
+        <h2><a class="button button_fill" href="/farmacia/disponibili">Visualizza Disponibili</a></h2>
         <table>
             <thead>
                 <tr>

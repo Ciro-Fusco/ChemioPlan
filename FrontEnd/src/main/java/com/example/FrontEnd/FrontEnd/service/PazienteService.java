@@ -1,6 +1,5 @@
 package com.example.FrontEnd.FrontEnd.service;
 
-import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
 import java.util.HashMap;
 import org.springframework.http.*;
@@ -74,5 +73,10 @@ public class PazienteService implements IPazienteService {
   public HashMap<String, Double> getFarmaci(String cf) {
     SchedaPaziente paziente = restTemplate.getForObject(pazienteResourceUrl +"/" + cf, SchedaPaziente.class);
     return paziente.getFarmaci();
+  }
+
+  @Override
+  public SchedaPaziente[] getPazientiByFiltri(SchedaPaziente filtri) {
+    return restTemplate.postForObject(pazienteResourceUrl + "/byPaziente", filtri, SchedaPaziente[].class);
   }
 }

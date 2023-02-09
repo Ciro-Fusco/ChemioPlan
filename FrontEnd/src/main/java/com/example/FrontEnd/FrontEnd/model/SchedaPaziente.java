@@ -31,6 +31,18 @@ public class SchedaPaziente {
   private String codiceFiscale;
 
   /**
+   * <p>Nome del paziente.</p>
+   */
+  @Pattern(regexp = "[A-z]{3,256}|^.{0}", message = "Nome non valido")
+  private String nome;
+
+  /**
+   * <p>Cognome del paziente.</p>
+   */
+  @Pattern(regexp = "[A-z]{3,256}|^.{0}", message = "Cognome non valido")
+  private String cognome;
+
+  /**
    * <p>
    * Codice dei farmaci che il paziente assume
    * </p>

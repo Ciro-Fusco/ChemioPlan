@@ -27,7 +27,7 @@
         <!-- Content -->
         <h2>${message}</h2>
 
-        <h1>Modifica Trattamento per ${cf}</h1>
+        <h1>Modifica Trattamento</h1>
 
         <%--@elvariable id="map" type="java.util.HashMap" --%>
         <c:set var="map" value="${schedaMap.farmaci}" />
@@ -35,8 +35,14 @@
         <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm" --%>
         <form:form action="/pazienti/modifica-paziente" method="post" modelAttribute="scheda">
             <div class="page_content">
+                <h2>${scheda.codiceFiscale}</h2>
+                <h2>${scheda.nome} ${scheda.cognome}</h2>
                 <div class="filter_content">
-                    <form:hidden class="inp_filter" path="codiceFiscale" placeholder="Codice" readonly="true" />
+                    <form:hidden class="inp_filter" path="codiceFiscale"/>
+                    <form:errors path="codiceFiscale" />
+                    <form:hidden class="inp_filter" path="nome"/>
+                    <form:errors path="codiceFiscale" />
+                    <form:hidden class="inp_filter" path="cognome"/>
                     <form:errors path="codiceFiscale" />
 
                     <div class="filter_screen" id="farmaci">

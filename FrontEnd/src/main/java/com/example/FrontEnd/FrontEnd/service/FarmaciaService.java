@@ -1,9 +1,6 @@
 package com.example.FrontEnd.FrontEnd.service;
 
-import com.example.FrontEnd.FrontEnd.model.Lotto;
-import com.example.FrontEnd.FrontEnd.model.Ordine;
-import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
-import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
+import com.example.FrontEnd.FrontEnd.model.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +21,13 @@ public class FarmaciaService implements IFarmaciaService {
         SchedaFarmaco[] s = restTemplate.getForObject(farmaciaResourceUrl , SchedaFarmaco[].class);
         return s;
     }
+
+    @Override
+    public SchedaFarmaco[] getAllFarmaciDisponibili() {
+        SchedaFarmaco[] s = restTemplate.getForObject(farmaciaResourceUrl + "/disponibili", SchedaFarmaco[].class);
+        return s;
+    }
+
 
     @Override
     public String addFarmaco(SchedaFarmaco scheda) {
@@ -121,6 +125,17 @@ public class FarmaciaService implements IFarmaciaService {
         try {
             restTemplate.delete(farmaciaResourceUrl + "/" + codice, getFarmaco(codice));
             return "Scheda " + codice + " eliminata";
+        } catch (Exception e){
+            return e.getMessage();
+        }
+    }
+
+    @Override
+    public String eliminaLotto(String codice, Lotto lotto) {
+        //System.out.println(farmaciaResourceUrl + "/lotto/" + codice + "/" + lotto.getNumeroLotto());
+        try {
+            restTemplate.delete(farmaciaResourceUrl + "/lotto/" + codice + "/" + lotto.getNumeroLotto(), getFarmaco(codice));
+            return "Lotto eliminato";
         } catch (Exception e){
             return e.getMessage();
         }

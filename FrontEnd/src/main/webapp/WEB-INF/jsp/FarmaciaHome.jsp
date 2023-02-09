@@ -25,7 +25,7 @@
 
         <!-- Content -->
 
-        <h1>Farmaci</h1>
+        <h1>Farmacia</h1>
         <div class="wrapper">
             <div class="filter_content">
                 <a class="button button_outline menu" href="/farmacia/magazzino">Magazzino</a>

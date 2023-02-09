@@ -8,6 +8,7 @@ import com.farmacia.model.SchedaFarmaco;
 import com.farmacia.repository.FarmaciaRepository;
 import com.farmacia.repository.OrdineRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +50,29 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   @Override
   public List<SchedaFarmaco> ottieniFarmaci() {
     return repo.findAll();
+  }
+
+  /**
+   * <p>Questo metodo restituisce tutti i farmaci disponibili,
+   * con quantità di alemeno un lotto maggiore 0 presenti nel database.</p>
+   *
+   * @return lista di farmaci
+   */
+  @Override
+  public List<SchedaFarmaco> ottieniFarmaciDisponibili() {
+    List<SchedaFarmaco> disponibili = new ArrayList<>();
+
+    List<SchedaFarmaco> farmaci = repo.findAll();
+    for (SchedaFarmaco f : farmaci) {
+      List<Lotto> lotti = f.getLotti();
+      for (Lotto l: lotti) {
+        if (l.getQuantita() > 0) {
+          disponibili.add(f);
+          break;
+        }
+      }
+    }
+    return disponibili;
   }
 
   /**
@@ -230,6 +254,23 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     s.replaceLotto(lotto);
     repo.save(s);
   }
+
+  @Override
+  public void eliminaLotto(String codice, Lotto lotto) {
+    var optional = repo.findById(codice);
+    if (optional.isEmpty()) {
+      throw new SchedaFarmacoNotFoundException("Scheda farmaco " + codice + " non trovata");
+    }
+    SchedaFarmaco s = optional.get();
+    System.out.println(s.getLotti());
+    if (!(s.lottiContains(lotto))) {
+      throw new LottoNotFoundException("Lotto numero " + lotto.getNumeroLotto() + " non trovato");
+    }
+    s.removeLotto(lotto);
+    repo.save(s);
+  }
+
+
 
   /**
    * <p>Questo metodo inserisce un nuovo Ordine nel database.

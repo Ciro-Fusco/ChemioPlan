@@ -21,6 +21,14 @@ public interface FarmaciaService {
   List<SchedaFarmaco> ottieniFarmaci();
 
   /**
+   * <p>Questo metodo restituisce tutti i farmaci disponibili,
+   * con quantità di alemeno un lotto maggiore 0 presenti nel database.</p>
+   *
+   * @return lista di farmaci
+   */
+  List<SchedaFarmaco> ottieniFarmaciDisponibili();
+
+  /**
    * <p>Questo metodo restituisce un farmaco con uno specifico codice.</p>
    *
    * @param codice codice del farmaco da cercare
@@ -84,6 +92,14 @@ public interface FarmaciaService {
    * @param lotto lotto con le modifiche
    */
   void modificaLotto(String codiceFarmaco, Integer numeroLotto, Lotto lotto);
+
+  /**
+   * <p>Questo metodo elimina un lotto da una scheda farmaco.</p>
+   *
+   * @param codice codice del farmaco
+   * @param lotto lotto da eliminare
+   */
+  void eliminaLotto(String codice, Lotto lotto);
 
   /**
    * <p>Questo metodo inserisce un nuovo Ordine nel database.</p>

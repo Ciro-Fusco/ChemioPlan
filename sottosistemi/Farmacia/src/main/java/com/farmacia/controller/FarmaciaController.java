@@ -45,6 +45,16 @@ public class FarmaciaController {
   }
 
   /**
+   * <p>Questo metodo restituisce tutti i farmaci disponibili, con quantità di alemeno un lotto maggiore 0.</p>
+   *
+   * @return lista di farmaci
+   */
+  @GetMapping("/disponibili")
+  public List<SchedaFarmaco> ottieniFarmaciDisponibili() {
+    return service.ottieniFarmaciDisponibili();
+  }
+
+  /**
    * <p>Questo metodo, con chiamata GET,
    * restituisce un determinato farmaco con un codice, presente nell'url.</p>
    *
@@ -130,6 +140,18 @@ public class FarmaciaController {
   public ResponseEntity<?> modificaLotto(@PathVariable String codice, @RequestBody Lotto lotto) {
     service.modificaLotto(codice, lotto.getNumeroLotto(), lotto);
     return ResponseEntity.ok("Lotto scheda farmaco modificata correttamente" + codice);
+  }
+
+  /**
+   * <p>Questo metodo elimina un lotto da una scheda farmaco.</p>
+   *
+   * @param codice codice del farmaco
+   * @param num numero del lotto da eliminare
+   */
+  @DeleteMapping("/lotto/{codice}/{num}")
+  public ResponseEntity<?> eliminaLotto(@PathVariable String codice, @PathVariable Integer num) {
+    service.eliminaLotto(codice, service.ottieniLotto(codice, num));
+    return ResponseEntity.ok("Lotto eliminato");
   }
 
   /**

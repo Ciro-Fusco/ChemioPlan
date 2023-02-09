@@ -5,12 +5,12 @@ import com.example.prenotazione.dto.PrenotazioneRequest;
 import com.example.prenotazione.dto.PrenotazioneResponse;
 import com.example.prenotazione.exception.PrenotazioneNotFoundException;
 import com.example.prenotazione.model.Prenotazione;
-import com.example.prenotazione.model.SchedaPaziente;
 import com.example.prenotazione.repository.PrenotazioneRepository;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
 
 
 
@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
  * @version n.1 (10-01-2023)
  */
 @Service
+@AllArgsConstructor
 public class PrenotazioneService  implements  PrenotazioneServiceInterface {
 
   @Autowired
@@ -33,7 +34,7 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    * @param prenotazione oggetto che rappresenta una prenotazione
    * @return restituisce l'oggetto prenotazione trasformato in un oggetto prenotazioneResponse
    */
-  private PrenotazioneResponse mapToPrenotazioneResponse(Prenotazione prenotazione) {
+  public PrenotazioneResponse mapToPrenotazioneResponse(Prenotazione prenotazione) {
     return PrenotazioneResponse.builder().codiceFiscale(prenotazione.getCodiceFiscale())
         .codice(prenotazione.getCodice())
         .data(prenotazione.getData())
@@ -52,11 +53,6 @@ public class PrenotazioneService  implements  PrenotazioneServiceInterface {
    */
   @Override
   public void addPrenotazione(PrenotazioneRequest prenotazioneRequest) {
-    RestTemplate restTemplate = new RestTemplate();
-    String uri = "http://localhost:8084/pazienti/";
-    SchedaPaziente  response = restTemplate.getForObject(
-        uri + prenotazioneRequest.getCodiceFiscale(), SchedaPaziente.class);
-
     Prenotazione p = Prenotazione.builder().codiceFiscale(prenotazioneRequest.getCodiceFiscale())
         .data(prenotazioneRequest.getData())
         .sala(prenotazioneRequest.getSala())

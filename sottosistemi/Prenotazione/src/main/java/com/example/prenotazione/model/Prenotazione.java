@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)
  */
-@Document(value = "prenotazioni")
+@Document(value = "prenotazione")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

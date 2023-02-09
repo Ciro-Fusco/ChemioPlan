@@ -134,79 +134,69 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
   @Override
   public List<SchedaPaziente> ottieniSchedePazientiByPaziente(SchedaPaziente paziente) {
     //caso in cui il codice fiscale è stato inserito
-    if (paziente.getCodiceFiscale() != "") {
-      System.out.println("3");
+    if (paziente.getCodiceFiscale() != null && paziente.getCodiceFiscale() != "") {
       List<SchedaPaziente> pazienti = new ArrayList<>();
-      var optional = schedaPazienteRepository.findById(paziente.getCodiceFiscale());
-      if (optional.isPresent()) {
-        pazienti.add(optional.get());
-      }
+      pazienti.add(this.ottieniSchedaPazientePerCodiceFiscale(paziente.getCodiceFiscale()));
       return pazienti;
     }
 
     //ricerca per nome cognome e farmaci
-    if (paziente.getNome() != "" && paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
-      Set<String> codici = paziente.getFarmaci().keySet();
-      Set<SchedaPaziente> pazienti = new HashSet<>();
-      for (String c: codici) {
+    if (paziente.getNome() != null && paziente.getCognome() != null && paziente.getFarmaci() != null) {
+      if (paziente.getNome() != "" && paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
+        List<String> codici = paziente.getFarmaci().keySet().stream().toList();
+        String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByNomeAndCognomeAndFarmaci(
-                paziente.getNome(), paziente.getCognome(), c);
-        for (SchedaPaziente paz : p) {
-          pazienti.add(paz);
+                  paziente.getNome(), paziente.getCognome(), c);
+        return p;
         }
-      }
-      return pazienti.stream().toList();
     }
 
     //ricerca per nome e farmaci
-    if (paziente.getNome() != "" && paziente.getFarmaci().size() > 0) {
-      Set<String> codici = paziente.getFarmaci().keySet();
-      Set<SchedaPaziente> pazienti = new HashSet<>();
-      for (String c: codici) {
+    if (paziente.getNome() != null && paziente.getFarmaci() != null) {
+      if (paziente.getNome() != "" &&  paziente.getFarmaci().size() > 0) {
+        List<String> codici = paziente.getFarmaci().keySet().stream().toList();
+        String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByNomeAndFarmaci(
                 paziente.getNome(), c);
-        for (SchedaPaziente paz : p) {
-          pazienti.add(paz);
-        }
+        return p;
       }
-      return pazienti.stream().toList();
     }
 
-    if (paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
-      Set<String> codici = paziente.getFarmaci().keySet();
-      Set<SchedaPaziente> pazienti = new HashSet<>();
-      for (String c: codici) {
+    if (paziente.getCognome() != null && paziente.getFarmaci() != null) {
+      if (paziente.getCognome() != "" &&  paziente.getFarmaci().size() > 0) {
+        List<String> codici = paziente.getFarmaci().keySet().stream().toList();
+        String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByCognomeAndFarmaci(
                 paziente.getCognome(), c);
-        for (SchedaPaziente paz : p) {
-          pazienti.add(paz);
-        }
+        return p;
       }
-      return pazienti.stream().toList();
     }
 
-    if (paziente.getNome() != "" && paziente.getCognome() != "") {
-      return schedaPazienteRepository.findByNomeAndAndCognome(paziente.getNome(), paziente.getCognome());
+    if (paziente.getNome() != null && paziente.getCognome() != null) {
+      if (paziente.getNome() != "" && paziente.getCognome() != "") {
+        return schedaPazienteRepository.findByNomeAndAndCognome(paziente.getNome(), paziente.getCognome());
+      }
     }
 
-    if (paziente.getNome() != "") {
-      return schedaPazienteRepository.findByNome(paziente.getNome());
+    if (paziente.getNome() != null) {
+      if (paziente.getNome() != "") {
+        return schedaPazienteRepository.findByNome(paziente.getNome());
+      }
     }
 
-    if (paziente.getCognome() != "") {
-      return schedaPazienteRepository.findByCognome(paziente.getCognome());
+    if (paziente.getCognome() != null) {
+      if (paziente.getCognome() != "") {
+        return schedaPazienteRepository.findByCognome(paziente.getCognome());
+      }
     }
 
-    if (paziente.getFarmaci().size() > 0 ) {
-      Set<String> codici = paziente.getFarmaci().keySet();
-      Set<SchedaPaziente> pazienti = new HashSet<>();
-      for (String c: codici) {
+    if (paziente.getFarmaci() != null) {
+      if (paziente.getFarmaci().size() > 0 ) {
+        List<String> codici = paziente.getFarmaci().keySet().stream().toList();
+        String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByFarmaco(c);
-        for (SchedaPaziente paz : p) {
-          pazienti.add(paz);
-        }
+        return p;
       }
-      return pazienti.stream().toList();
     }
 
     return schedaPazienteRepository.findAll();

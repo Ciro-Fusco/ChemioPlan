@@ -250,7 +250,12 @@ public class FarmaciaServiceImpl implements FarmaciaService {
       throw new LottoNotFoundException("Lotto numero " + numeroLotto + " non trovato");
     }
     Date today = new Date(System.currentTimeMillis());
-    System.out.println(today);
+    if (lotto.getScadenzaLotto().before(today)) {
+      throw new OldDateException("Data nel passato");
+    }
+    if (lotto.getQuantita() < 0) {
+      throw new FormatoQuantitaNonCorrettaException("Quantità negativa");
+    }
     s.replaceLotto(lotto);
     repo.save(s);
   }

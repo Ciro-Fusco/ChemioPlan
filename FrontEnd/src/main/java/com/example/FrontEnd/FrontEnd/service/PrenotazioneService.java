@@ -2,11 +2,9 @@ package com.example.FrontEnd.FrontEnd.service;
 
 
 import com.example.FrontEnd.FrontEnd.model.*;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,10 +16,9 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- * <p>Questa classe </p>
+ * <p>Questa classe implementa le funzionalità di IPrenotazioneService.</p>
  *
- * @author Alessandro Clericuzio
- * @version n.1 (26-01-2023)
+ * @version 0.1
  */
 @Service
 public class PrenotazioneService implements IPrenotazioneService {
@@ -33,9 +30,9 @@ public class PrenotazioneService implements IPrenotazioneService {
   private String prenotazioneResourceUrl = "http://localhost:8083/prenotazioni";
 
   /**
-   * <p>Questo .</p>
+   * <p>Questo metodo viene utilizzato per ottenere tutte le prenotazioni presenti nel Database.</p>
    *
-   * @return retistuisce una lista di PrenotazioniResponse
+   * @return retistuisce una lista di Prenotazioni
    */
   @Override
   public Prenotazione[] getAllPrenotazioni() {
@@ -58,15 +55,27 @@ public class PrenotazioneService implements IPrenotazioneService {
     }
   }
 
+  /**
+   * <p>Questo metodo restituisce una lista di prenotazioni con una determinata data.</p>
+   *
+   * @param data data delle prenotazioni
+   * @return lista di prenotazione
+   */
   @Override
   public Prenotazione[] getByData(Date data) {
     try {
-      return restTemplate.getForObject(prenotazioneResourceUrl + "/getByData/" + data, Prenotazione[].class);
+      return restTemplate.getForObject(prenotazioneResourceUrl
+              + "/getByData/" + data, Prenotazione[].class);
     } catch (Exception e) {
       return null;
     }
   }
 
+  /**
+   * <p>Questo metodo viene utilizzato per inserire una nuova prenotazione nel Database.</p>
+   *
+   * @param prenotazione oggetto che rappresenta una prenotazione
+   */
   @Override
   public String addPrenotazione(Prenotazione prenotazione) {
     HttpHeaders headers = new HttpHeaders();
@@ -83,6 +92,11 @@ public class PrenotazioneService implements IPrenotazioneService {
     }
   }
 
+  /**
+   * <p>Questo metodo serve per modificare una prenotazione</p>.
+   *
+   * @param prenotazione prenotazione da modificare
+   */
   @Override
   public String updatePrenotazione(Prenotazione prenotazione) {
     HttpHeaders headers = new HttpHeaders();
@@ -91,7 +105,8 @@ public class PrenotazioneService implements IPrenotazioneService {
     HttpEntity<Prenotazione> entity = new HttpEntity<>(prenotazione, headers);
     ResponseEntity<String> response = null;
     try {
-      response = restTemplate.exchange(prenotazioneResourceUrl + "/" + prenotazione.getCodice(), HttpMethod.PUT, entity, String.class);
+      response = restTemplate.exchange(prenotazioneResourceUrl
+              + "/" + prenotazione.getCodice(), HttpMethod.PUT, entity, String.class);
       return response.getBody();
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -99,6 +114,13 @@ public class PrenotazioneService implements IPrenotazioneService {
     }
   }
 
+  /**
+   * <p>Questo metodo viene utilizzato per eliminare una prenotazione dal Database.
+   * Cerca una corrispodeza tramite il codice. Se non la trova manda un eccezione. Altrimenti la
+   * elimina dal Database.</p>
+   *
+   * @param codice codice relativo alla prenotazione da eliminare
+   */
   @Override
   public String deletePrenotazione(String codice) {
     try {
@@ -109,6 +131,12 @@ public class PrenotazioneService implements IPrenotazioneService {
     }
   }
 
+  /**
+   * <p>Questo metodo va a ridurre la quantità del farmaco destinato a quel paziente
+   * dalla quantità di farmaco disponibile e conferma la prenotazione.</p>
+   *
+   * @param p
+   */
   @Override
   public boolean confermaPrenotazione(SchedaPaziente p) {
     HashMap<String, Double> farmaci = p.getFarmaci();
@@ -121,7 +149,7 @@ public class PrenotazioneService implements IPrenotazioneService {
 
       //verifica della disponibilità del farmaco
       int quantitaDisponibile = 0;
-      for (Lotto l: lotti) {
+      for (Lotto l : lotti) {
         quantitaDisponibile += l.getQuantita();
       }
 

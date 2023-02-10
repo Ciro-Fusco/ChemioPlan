@@ -4,9 +4,7 @@ import com.chemioplan.SchedaPaziente.exception.SchedaPazienteAlredyExistExceptio
 import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
 import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
 import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
-
 import java.util.*;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,14 +142,16 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
     }
 
     //ricerca per nome cognome e farmaci
-    if (paziente.getNome() != null && paziente.getCognome() != null && paziente.getFarmaci() != null) {
-      if (paziente.getNome() != "" && paziente.getCognome() != "" && paziente.getFarmaci().size() > 0) {
+    if (paziente.getNome() != null && paziente.getCognome() != null
+            && paziente.getFarmaci() != null) {
+      if (paziente.getNome() != "" && paziente.getCognome() != ""
+              && paziente.getFarmaci().size() > 0) {
         List<String> codici = paziente.getFarmaci().keySet().stream().toList();
         String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByNomeAndCognomeAndFarmaci(
                   paziente.getNome(), paziente.getCognome(), c);
         return p;
-        }
+      }
     }
 
     //ricerca per nome e farmaci
@@ -177,7 +177,8 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
 
     if (paziente.getNome() != null && paziente.getCognome() != null) {
       if (paziente.getNome() != "" && paziente.getCognome() != "") {
-        return schedaPazienteRepository.findByNomeAndAndCognome(paziente.getNome(), paziente.getCognome());
+        return schedaPazienteRepository.findByNomeAndAndCognome(paziente.getNome(),
+                paziente.getCognome());
       }
     }
 
@@ -194,7 +195,7 @@ public class SchedaPazienteService implements SchedaPazienteServiceInterface {
     }
 
     if (paziente.getFarmaci() != null) {
-      if (paziente.getFarmaci().size() > 0 ) {
+      if (paziente.getFarmaci().size() > 0) {
         List<String> codici = paziente.getFarmaci().keySet().stream().toList();
         String c = codici.get(0);
         List<SchedaPaziente> p = schedaPazienteRepository.findByFarmaco(c);

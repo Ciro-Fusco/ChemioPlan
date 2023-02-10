@@ -50,23 +50,12 @@
                 </div>
                 <div class="filter_screen" id="farmaci">
                     <h4>Farmaci <br> Dosaggio</h4>
-                    <input type="text" id="inFarmaci" onkeyup="myFunction('inFarmaci', 'FarmaciTable')" placeholder="Cerca per nome..">
-                    <table id="FarmaciTable">
+                    <form:select path="farmaci">
+                        <form:option value="">SELECT</form:option>
                         <c:forEach items="${farmaci}" var="f">
-                            <tr>
-                                <td>
-                                    <div class="checkcontainer">
-                                        <form:hidden path="farmaci" id="${f.codice}" />
-                                        <c:set var="check" value="check${f.codice}"/>
-                                        <input type="checkbox" class="checkbox"
-                                               onclick="checkboxSelected(${f.codice}, ${check}, ${input})"
-                                               id="check${f.codice}" />
-                                        <label class="checktext">${f.nome}</label>
-                                    </div>
-                                </td>
-                            </tr>
+                            <form:option value="${f.codice}=0">${f.nome}</form:option>
                         </c:forEach>
-                    </table>
+                    </form:select>
                 </div>
             </div>
             <form:button class="button button_fill menu" href="">Cerca</form:button>
@@ -75,45 +64,6 @@
 
     <!-- Footer -->
     <%@include file="/Content/footer.jsp" %>
-
-    <script>
-
-        function checkboxSelected(key, check, input) {
-            console.log(key);
-            console.log(check);
-            console.log(input);
-
-            if (check.checked) {
-                key.value = "";
-                key.value += key.id + "=0";
-                console.log(key.value);
-            } else {
-                key.value = "";
-            }
-        }
-
-        function myFunction(idIn, idTab) {
-            var td, i, txtValue;
-            var input = document.getElementById(idIn);
-            var filter = input.value.toUpperCase();
-            var table = document.getElementById(idTab);
-            var tr = table.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-
 </body>
 
 </html>

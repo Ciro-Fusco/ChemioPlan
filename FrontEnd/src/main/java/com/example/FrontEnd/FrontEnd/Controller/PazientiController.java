@@ -233,10 +233,11 @@ public class PazientiController {
       return "CercaSchedaPaziente";
     }
     SchedaPaziente filtri = scheda.mapToSchedaPaziente();
+    System.out.println(filtri);
     SchedaPaziente[] pazienti = pazienteService.getPazientiByFiltri(filtri);
-    for (SchedaPaziente p: pazienti) {
+    /*for (SchedaPaziente p: pazienti) {
       System.out.println(p);
-    }
+    }*/
     model.addAttribute("Pazienti", pazienti);
     return "Pazienti";
   }

@@ -20,18 +20,36 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 public class PrenotazioneResponse {
 
+  /**
+   * <p>Codice.</p>
+   */
   @Id
   private String codice;
 
+  /**
+   * <p>CodceFiscale.</p>
+   */
   private String codiceFiscale;
 
+  /**
+   * <p>Data Prenotazione.</p>
+   */
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   private Date data;
 
+  /**
+   * <p>Sala.</p>
+   */
   private String sala;
 
+  /**
+   * <p>Poltrona.</p>
+   */
   private String poltrona;
 
+  /**
+   * <p>Confermata.</p>
+   */
   private boolean confermata;
 
 }

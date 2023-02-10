@@ -24,23 +24,40 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 @Data
 public class Prenotazione {
-
+  /**
+   * <p>Codice.</p>
+   */
   @Id
   private String codice;
 
+  /**
+   * <p>CodceFiscale.</p>
+   */
   @Field(name = "codiceFiscale")
   private String codiceFiscale;
 
+  /**
+   * <p>Data Prenotazione.</p>
+   */
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   @Field(name = "data")
   private Date data;
 
+  /**
+   * <p>Sala.</p>
+   */
   @Field(name = "sala")
   private String sala;
 
+  /**
+   * <p>Poltrona.</p>
+   */
   @Field(name = "poltrona")
   private String poltrona;
 
+  /**
+   * <p>Confermata.</p>
+   */
   @Field(name = "confermata")
   private boolean confermata;
 

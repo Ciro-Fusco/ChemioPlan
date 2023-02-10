@@ -14,14 +14,40 @@ import java.util.List;
  */
 public interface PrenotazioneServiceInterface {
 
+  /**
+   * <p>Questo metodo viene utilizzato per inserire una nuova prenotazione nel Database.</p>
+   *
+   * @param prenotazioneRequest
+   */
   void addPrenotazione(PrenotazioneRequest prenotazioneRequest);
 
+  /**
+   * <p>Questo metodo viene utilizzato per ottenere tutte le prenotazioni presenti nel Database.</p>
+   *
+   * @return retistuisce una lista di Prenotazioni
+   */
   List<PrenotazioneResponse> getAllPrenotazioni();
 
+  /**
+   * <p>Questo metodo serve per modificare una prenotazione.</p>.
+   *
+   * @param prenotazione prenotazione da modificare
+   */
   void updatePrenotazione(String codice, Prenotazione prenotazione);
 
+  /**
+   * <p>Questo metodo elimina una Prenotazione nel database.</p>
+   *
+   * @param codice il codice della scheda da eliminare
+   */
   void deletePrenotazione(String codice);
 
+  /**
+   * <p>Questo metodo restituisce una prenotazione con un determinato codice.</p>
+   *
+   * @param codice identificativo della prenotazione
+   * @return una prenotazione
+   */
   PrenotazioneResponse getById(String codice);
 
 

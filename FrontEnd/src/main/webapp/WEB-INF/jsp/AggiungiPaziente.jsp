@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>
                                         <div class="checkcontainer">
-                                            <form:hidden path="farmaci" id="${f.codice}" />
+                                            <form:input path="farmaci" id="${f.codice}" />
                                             <c:set var="check" value="check${f.codice}"/>
                                             <c:set var="input" value="in${f.codice}"/>
                                             <input type="checkbox" class="checkbox"
@@ -98,14 +98,27 @@
             console.log(key);
             console.log(check);
             console.log(input);
-
-            if (check.checked) {
+            var a = typeof key;
+            if(a == "number") {
+                var field = document.getElementById(key);
+              if (check.checked) {
+                field.value = "";
+                field.value += key + "=";
+                field.value += input.value;
+                console.log(field.value);
+              } else {
+                field.value = "";
+              }
+            }
+            else {
+              if (check.checked) {
                 key.value = "";
                 key.value += key.id + "=";
                 key.value += input.value;
                 console.log(key.value);
-            } else {
+              } else {
                 key.value = "";
+              }
             }
         }
 

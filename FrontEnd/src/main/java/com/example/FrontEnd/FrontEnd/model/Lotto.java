@@ -49,6 +49,7 @@ public class Lotto {
    * Quantità di farmaco presente in farmacia per il relativo lotto.
    * </p>
    */
+
   @Min(value = 1, message = "Quantita lotto invalida")
   @NotNull(message = "Inserire Quantita Lotto")
   private Integer quantita;

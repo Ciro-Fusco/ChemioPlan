@@ -1,5 +1,6 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import jakarta.validation.constraints.Future;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,12 +36,16 @@ public class Prenotazione {
   @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}", message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") @NotNull(message = "Data obbligatorio")
+  @Future(message = "la data non puo essere nel passato")
+  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+  @NotNull(message = "Inserire Data Scadena")
   private Date data;
 
+  @Pattern(regexp = "[A-z0-9]{3,256}|^.{0}", message = "Sala non valida")
   @NotEmpty(message = "Sala obbligatorio")
   private String sala;
 
+  @Pattern(regexp = "[A-z0-9]{3,256}|^.{0}", message = "Poltrona non valida")
   @NotEmpty(message = "Poltrona obbligatorio")
   private String poltrona;
 

@@ -1,22 +1,15 @@
 package com.example.FrontEnd.FrontEnd.model;
 
-<<<<<<< HEAD
 import jakarta.validation.constraints.Future;
-=======
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
->>>>>>> 5c462da5ae4061335b8181a47b01cca8286e1aaf
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * <p>
@@ -43,35 +36,27 @@ public class Prenotazione {
           message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
-<<<<<<< HEAD
+  /**
+   * <p>Data.</p>
+   */
   @Future(message = "la data non puo essere nel passato")
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   @NotNull(message = "Inserire Data Scadena")
   private Date data;
 
+  /**
+   * <p>Sala.</p>
+   */
   @Pattern(regexp = "[A-z0-9]{3,256}|^.{0}", message = "Sala non valida")
   @NotEmpty(message = "Sala obbligatorio")
   private String sala;
 
-  @Pattern(regexp = "[A-z0-9]{3,256}|^.{0}", message = "Poltrona non valida")
-=======
-  /**
-   * <p>Data.</p>
-   */
-  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-  @NotNull(message = "Data obbligatorio")
-  private Date data;
-
-  /**
-   * <p>Sala.</p>
-   */
-  @NotEmpty(message = "Sala obbligatorio")
-  private String sala;
   /**
    * <p>Poltrona.</p>
    */
->>>>>>> 5c462da5ae4061335b8181a47b01cca8286e1aaf
+  @Pattern(regexp = "[A-z0-9]{3,256}|^.{0}", message = "Poltrona non valida")
   @NotEmpty(message = "Poltrona obbligatorio")
   private String poltrona;
+
   private boolean confermata = false;
 }

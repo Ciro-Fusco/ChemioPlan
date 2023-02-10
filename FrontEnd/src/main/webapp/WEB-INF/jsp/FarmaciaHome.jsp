@@ -20,24 +20,24 @@
 </c:choose>
 <body>
 
-    <!-- Header -->
-    <%@include file="/Content/header.jsp" %>
+<!-- Header -->
+<%@include file="/Content/header.jsp" %>
 
-        <!-- Content -->
+<!-- Content -->
 
-        <h1>Farmacia</h1>
-        <div class="wrapper">
-            <div class="filter_content">
-                <a class="button button_outline menu" href="/farmacia/magazzino">Magazzino</a>
-                <a class="button button_outline menu" href="/farmacia/add-farmaco-page">Aggiungi Farmco</a>
-                <div style="width:100%;"></div>
-                <a class="button button_outline menu" href="/farmacia/nuovo-ordine-page">Ordina Farmaco</a>
-                <a class="button button_outline menu" href="/farmacia/ordini-page">Tutti gli ordini</a>
-            </div>
-        </div>
+<h1>Farmacia</h1>
+<div class="wrapper">
+    <div class="filter_content">
+        <a class="button button_outline menu" href="/farmacia/magazzino">Magazzino</a>
+        <a class="button button_outline menu" href="/farmacia/add-farmaco-page">Aggiungi Farmaco</a>
+        <div style="width:100%;"></div>
+        <a class="button button_outline menu" href="/farmacia/nuovo-ordine-page">Ordina Farmaco</a>
+        <a class="button button_outline menu" href="/farmacia/ordini-page">Tutti gli ordini</a>
+    </div>
+</div>
 
-        <!-- Header -->
-        <%@include file="/Content/footer.jsp" %>
+<!-- Header -->
+<%@include file="/Content/footer.jsp" %>
 
 </body>
 

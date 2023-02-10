@@ -20,46 +20,58 @@
     </c:when>
 </c:choose>
 <body>
-    <!-- Header -->
-    <%@include file="/Content/header.jsp" %>
+<!-- Header -->
+<%@include file="/Content/header.jsp" %>
 
-        <!-- Content -->
-        <h2>${message}</h2>
-    <h2>${ruolo}</h2>
+<!-- Content -->
+<h2>${message}</h2>
+<h2>${ruolo}</h2>
 
-        <h1>Magazzino</h1>
-        <h2><a class="button button_fill" href="/farmacia/disponibili">Visualizza Disponibili</a></h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Dimensione</th>
-                    <th>Lotti</th>
-                </tr>
-            </thead>
-            <tbody>
+<h1>Magazzino</h1>
+<h2><a class="button button_fill" href="/farmacia/disponibili">Visualizza Disponibili</a></h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Dimensione</th>
+        <th>Lotti</th>
+    </tr>
+    </thead>
+    <tbody>
 
-                <c:forEach items="${Farmaci}" var="farmaco">
-                    <tr>
-                        <td data-label="Nome">${farmaco.nome}</td>
-                        <td data-label="Dimensione">${farmaco.dimensioneFlacone}</td>
-                        <td data-label="Lotti"><c:forEach items="${farmaco.lotti}" var="lotto">${lotto.numeroLotto}<br></c:forEach></td>
-                        <td>
-                            <a href="/farmacia/magazzino/${farmaco.codice}">
-                                <span class="material-symbols-outlined">open_in_new</span>
-                            </a>
+    <c:forEach items="${Farmaci}" var="farmaco">
+
+        <tr>
+            <td data-label="Nome">${farmaco.nome}</td>
+            <td data-label="Dimensione">${farmaco.dimensioneFlacone}</td>
+            <td data-label="Lotti">
+                <c:set var="i" value="${0}"/>
+                <c:forEach items="${farmaco.lotti}" var="lotto">
+                    <c:set var="i" value="${i+1}"/>
+                    ${lotto.numeroLotto} |
+                    <c:choose>
+                        <c:when test="${i%3 == 0}">
                             <br>
-                            <a href="/farmacia/elimina/${farmaco.codice}" class="tablink">
-                                <span class="material-symbols-outlined">delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
+                        </c:when>
+                    </c:choose>
 
-            </tbody>
-        </table>
-        <!-- Header -->
-        <%@include file="/Content/footer.jsp" %>
+                </c:forEach></td>
+            <td>
+                <a href="/farmacia/magazzino/${farmaco.codice}">
+                    <span class="material-symbols-outlined">open_in_new</span>
+                </a>
+                <br>
+                <a href="/farmacia/elimina/${farmaco.codice}" class="tablink">
+                    <span class="material-symbols-outlined">delete</span>
+                </a>
+            </td>
+        </tr>
+    </c:forEach>
+
+    </tbody>
+</table>
+<!-- Header -->
+<%@include file="/Content/footer.jsp" %>
 
 </body>
 

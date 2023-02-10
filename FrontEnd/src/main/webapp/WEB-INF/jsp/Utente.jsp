@@ -33,5 +33,4 @@
     <%@include file="/Content/footer.jsp"%>
 
 </body>
-
 </html>

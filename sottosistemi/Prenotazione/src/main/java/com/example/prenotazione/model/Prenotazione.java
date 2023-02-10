@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 /**
- * <p>uesta classe modella l'entità Prenotazione.</p>
+ * <p>Questa classe modella l'entità Prenotazione.</p>
  *
  * @author Alessandro Clericuzio
  * @version n.1 (10-01-2023)

@@ -7,6 +7,8 @@ import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
 
 import java.util.*;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,8 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class SchedaPazienteService implements SchedaPazienteServiceInterface {
 
   /**

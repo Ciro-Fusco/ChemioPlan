@@ -1,24 +1,20 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-
-import java.util.Date;
 
 /**
  * <p>
  * Questa classe modella il lotto della scheda farmaco.
  * </p>
  *
- * @author Francesco Pio di Pippa
  * @version 0.1
  */
 @AllArgsConstructor

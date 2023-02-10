@@ -1,20 +1,18 @@
 package com.example.FrontEnd.FrontEnd.model;
 
+import jakarta.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  * <p>
- * Questa classe rappresenta l'entità Paziente
+ * Questa classe rappresenta l'entità Paziente.
  * </p>
  *
- * @author vitco
  * @version 0.1
  */
 
@@ -24,10 +22,11 @@ import lombok.NoArgsConstructor;
 public class SchedaPaziente {
   /**
    * <p>
-   * CodiceFiscale dell paziente
+   * CodiceFiscale dell paziente.
    * </p>
    */
-  @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}", message = "Codice Fiscale Invalido")
+  @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}",
+          message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
   /**
@@ -44,14 +43,14 @@ public class SchedaPaziente {
 
   /**
    * <p>
-   * Codice dei farmaci che il paziente assume
+   * Codice dei farmaci che il paziente assume.
    * </p>
    */
   private HashMap<String, Double> farmaci = new HashMap<>();
 
   /**
    * <p>
-   * nome delle malattie da cui è affetto il paziente
+   * nome delle malattie da cui è affetto il paziente.
    * </p>
    */
   private List<String> malattie = new ArrayList<>();

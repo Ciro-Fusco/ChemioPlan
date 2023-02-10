@@ -23,7 +23,8 @@ public class SchedaPazienteForm {
   /**
    * <p></p>CodiceFiscale dell paziente.</p>
    */
-  @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}|^.{0}", message = "Codice Fiscale Invalido")
+  @Pattern(regexp = "[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}|^.{0}",
+          message = "Codice Fiscale Invalido")
   private String codiceFiscale;
 
   /**
@@ -48,6 +49,11 @@ public class SchedaPazienteForm {
    */
   private List<String> malattie = new ArrayList<>();
 
+  /**
+   * <p>Trasforma l'oggetto schediaPazienteForm in una schedaPaziente.</p>
+   *
+   * @return scheda
+   */
   public SchedaPaziente mapToSchedaPaziente() {
     SchedaPaziente scheda = new SchedaPaziente();
     scheda.setCodiceFiscale(this.codiceFiscale);
@@ -69,6 +75,11 @@ public class SchedaPazienteForm {
     return scheda;
   }
 
+  /**
+   * <p>Trasforma l'oggetto schediaPaziente in una schedaPazienteForm.</p>
+   *
+   * @return scheda
+   */
   public static SchedaPazienteForm mapToSchedaPazienteForm(SchedaPaziente s) {
     SchedaPazienteForm scheda = new SchedaPazienteForm();
     scheda.setCodiceFiscale(s.getCodiceFiscale());

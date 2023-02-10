@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 /**
  * <p>Questa classe modella il DTO ordine per le richieste.</p>
  *
- * @author Francesco Pio di Pippa
  * @version 0.1
  */
 @AllArgsConstructor
@@ -22,14 +21,14 @@ public class OrdineRequest {
   /**
    * <p>Codice della scheda farmaco.</p>
    */
-  @Size(min = 1,max=10,message = "Formato Codice Farmaco Errato")
+  @Size(min = 1, max = 10, message = "Formato Codice Farmaco Errato")
   @NotNull(message = "Inserire Codice Farmaco")
   private String codiceFarmaco;
 
   /**
    * <p>Quantità da ordinare.</p>
    */
-  @Min(value = 1,message = "Quantita ordine errata")
+  @Min(value = 1, message = "Quantita ordine errata")
   @NotNull(message = "Quantita obligatoria")
   private Integer quantita;
 }

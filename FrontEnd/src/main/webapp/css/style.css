@@ -497,3 +497,25 @@ table td {
 .info:empty {
     display: none;
 }
+
+/* select_pazienti */
+.select_pazienti {
+    /* height: 34px; */
+    height: auto;
+    padding: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    font-family: var(--font);
+    font-size: 14px;
+    min-height: 100px;
+    max-height: 100px;
+    margin: 10px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 236px;
+    min-width: 236px;
+    max-width: 236px;
+}

@@ -6,12 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * <p>Questa classe rappresenta l'entità Malattia.</p>
+ *
+ * @version 0.1
+ */
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Malattia {
-    private String codiceMalattia;
-    private String nomeMalattia;
-    private String parteCorpo;
+
+  private String codiceMalattia;
+  private String nomeMalattia;
+  private String parteCorpo;
 }

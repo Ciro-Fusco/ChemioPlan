@@ -2,7 +2,8 @@ package com.example.FrontEnd.FrontEnd.Controller;
 
 import com.example.FrontEnd.FrontEnd.model.Prenotazione;
 import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
-import com.example.FrontEnd.FrontEnd.service.*;
+import com.example.FrontEnd.FrontEnd.service.IPazienteService;
+import com.example.FrontEnd.FrontEnd.service.IPrenotazioneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,7 +94,8 @@ public class PrenotazioneController {
    *      altrimenti nome della pagina jsp AggiungiPrenotazione
    */
   @RequestMapping(value = { "/add-prenotazione" }, method = RequestMethod.POST)
-  public String insertPrenotazione(ModelMap model, @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
+  public String insertPrenotazione(ModelMap model,
+                                   @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
       BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("prenotazione", prenotazione);
@@ -137,7 +139,8 @@ public class PrenotazioneController {
    *      altrimenti nome della pagina jsp ModificaPrenotazione
    */
   @RequestMapping(value = { "/modifica-prenotazione" }, method = RequestMethod.POST)
-  public String modificaPrenotazione(ModelMap model, @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
+  public String modificaPrenotazione(
+          ModelMap model, @Valid @ModelAttribute("prenotazione") Prenotazione prenotazione,
       BindingResult bindingResult) {
 
     if (bindingResult.hasErrors()) {

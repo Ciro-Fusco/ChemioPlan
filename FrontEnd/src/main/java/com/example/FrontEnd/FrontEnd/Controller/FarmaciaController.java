@@ -10,7 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
 
 /**
  * <p>Classe controller che gestisce tutte le chiamate dal browser riferite alla farmacia.</p>
@@ -131,7 +137,8 @@ public class FarmaciaController {
    *      altrimenti nome della pagina jsp AggiungiLotto
    */
   @PostMapping(value = { "/add-lotto/{codice}" })
-  public String insertLotto(ModelMap model, @PathVariable String codice, @Valid @ModelAttribute("lotto") Lotto lotto,
+  public String insertLotto(ModelMap model, @PathVariable String codice,
+                            @Valid @ModelAttribute("lotto") Lotto lotto,
       BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("codice", codice);
@@ -142,7 +149,8 @@ public class FarmaciaController {
     if (msg.indexOf('"') != -1) {
       model.addAttribute("codice", codice);
       model.addAttribute("lotto", lotto);
-      model.addAttribute("msg", msg.substring(msg.indexOf('"')).replace('"', ' ').replace('|', ' '));
+      model.addAttribute("msg",
+              msg.substring(msg.indexOf('"')).replace('"', ' ').replace('|', ' '));
       return "AggiungiLotto";
     }
 
@@ -160,7 +168,8 @@ public class FarmaciaController {
    * @return nome della pagina ModificaFarmaco
    */
   @GetMapping(value = { "/modifica-farmaco-page/{codice}" })
-  public String modificaFarmacoPage(ModelMap model, @PathVariable String codice, @ModelAttribute SchedaFarmaco scheda) {
+  public String modificaFarmacoPage(ModelMap model, @PathVariable String codice,
+                                    @ModelAttribute SchedaFarmaco scheda) {
     scheda = service.getFarmaco(codice);
     model.addAttribute("codice", codice);
     model.addAttribute("scheda", scheda);
@@ -200,7 +209,8 @@ public class FarmaciaController {
    * @return nome della pagina jsp ModifcaLotto
    */
   @GetMapping(value = { "/modifica-lotto-page/{codice}/{num}" })
-  public String modificaLottoPage(ModelMap model, @PathVariable Integer num, @PathVariable String codice) {
+  public String modificaLottoPage(ModelMap model,
+                                  @PathVariable Integer num, @PathVariable String codice) {
     Lotto lotto = service.getLotto(codice, num);
     model.addAttribute("codice", codice);
     model.addAttribute("lotto", lotto);
@@ -218,7 +228,8 @@ public class FarmaciaController {
    *      altrimenti il nome della pagina jsp ModificaLotto
    */
   @PostMapping(value = { "/modifica-lotto/{codice}" })
-  public String modificaLotto(ModelMap model, @PathVariable String codice, @Valid @ModelAttribute("lotto") Lotto lotto,
+  public String modificaLotto(ModelMap model, @PathVariable String codice,
+                              @Valid @ModelAttribute("lotto") Lotto lotto,
       BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("codice", codice);
@@ -294,8 +305,16 @@ public class FarmaciaController {
     return "Magazzino";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di eliminazione del farmaco con un determinato codice.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param codice codice del farmaco da eliminare
+   * @return nome della pagina jsp Magazzino
+   */
   @GetMapping(value = { "/elimina-lotto/{codice}/{num}" })
-  public String eliminaLotto(ModelMap model, @PathVariable String codice, @PathVariable Integer num) {
+  public String eliminaLotto(ModelMap model, @PathVariable String codice,
+                             @PathVariable Integer num) {
     model.addAttribute("message", service.eliminaLotto(codice, service.getLotto(codice, num)));
     model.addAttribute("Farmaco", service.getFarmaco(codice));
     return "Farmaco";

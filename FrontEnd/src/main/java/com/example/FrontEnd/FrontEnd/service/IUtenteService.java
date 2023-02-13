@@ -2,8 +2,8 @@ package com.example.FrontEnd.FrontEnd.service;
 
 import com.example.FrontEnd.FrontEnd.model.Credenziali;
 import com.example.FrontEnd.FrontEnd.model.Utente;
-import org.springframework.http.ResponseEntity;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 /**
  * <p>Questa interfaccia fornisce le funzionalità per il controller.</p>

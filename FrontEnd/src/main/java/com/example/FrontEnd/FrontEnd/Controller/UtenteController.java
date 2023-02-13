@@ -9,7 +9,12 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 /**
  * <p>Classe controller che gestisce tutte le chiamate dal browser riferite alle prenotazioni.</p>
@@ -143,8 +148,15 @@ public class UtenteController {
     return "AggiungiUtente";
   }
 
+  /**
+   * <p>Metodo che catture l'evento di aggiungi paziente.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param utente utente da inserire
+   */
   @RequestMapping(value = {"/utenti/add-utente"}, method = RequestMethod.POST)
-  public String nuovoUtente(ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
+  public String nuovoUtente(
+          ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
     if (result.hasErrors()) {
       model.addAttribute("utennte", utente);
       return "AggiungiUtente";
@@ -153,13 +165,19 @@ public class UtenteController {
     utente.getCredenziali().setPass(hash);
     String response = service.aggiungiUtente(utente);
     if (!response.contains("Utente salvato")) {
-      model.addAttribute("message", response.substring(response.indexOf('"') + 1, response.length() -1));
+      model.addAttribute("message",
+              response.substring(response.indexOf('"') + 1, response.length() - 1));
       model.addAttribute("utennte", utente);
       return "AggiungiUtente";
     }
     return "redirect:/utenti/" + utente.getId();
   }
 
+  /**
+   * <p>Metodo che inizializza l'evento di modifica utente.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   */
   @RequestMapping(value = {"/utenti/modifica-utente-page/{id}"}, method = RequestMethod.GET)
   public String modificaUtentePage(ModelMap model, @PathVariable Integer id) {
     Utente u = service.getUtente(id);
@@ -167,8 +185,15 @@ public class UtenteController {
     return "ModificaUtente";
   }
 
+  /**
+   * <p>Metodo che cattura l'evento di modifica dell'utente.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param utente utente da modificare
+   */
   @RequestMapping(value = {"/utenti/modifica-utente"}, method = RequestMethod.POST)
-  public String modificaUtente(ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
+  public String modificaUtente(
+          ModelMap model, @Valid @ModelAttribute Utente utente, BindingResult result) {
     if (result.hasErrors()) {
       model.addAttribute("utente", utente);
       return "ModificaUtente";
@@ -181,6 +206,12 @@ public class UtenteController {
     return "redirect:/utenti/" + utente.getId();
   }
 
+  /**
+   * <p>Metodo che inizializza la l'evento di eliminzione utente.</p>
+   *
+   * @param model utilizzato per comunicare con le jsp
+   * @param id id utente da eliminare
+   */
   @RequestMapping(value = {"/utenti/elimina/{id}"}, method = RequestMethod.GET)
   public String eliminaUtente(ModelMap model, @PathVariable Integer id) {
     model.addAttribute("message", service.elimina(id));

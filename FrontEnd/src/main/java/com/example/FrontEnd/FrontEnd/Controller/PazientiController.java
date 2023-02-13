@@ -1,6 +1,8 @@
 package com.example.FrontEnd.FrontEnd.Controller;
 
-import com.example.FrontEnd.FrontEnd.model.*;
+import com.example.FrontEnd.FrontEnd.model.Paziente;
+import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
+import com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm;
 import com.example.FrontEnd.FrontEnd.service.IFarmaciaService;
 import com.example.FrontEnd.FrontEnd.service.IMalattiaStub;
 import com.example.FrontEnd.FrontEnd.service.IPazienteService;
@@ -9,12 +11,16 @@ import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 /**
@@ -184,7 +190,8 @@ public class PazientiController {
       model.addAttribute("pazienti", pazienteStub.findPazienti(p));
       return "PazientiTrovati";
     }
-    if ((p.getNome() != "" || p.getCognome() != "" || p.getDataNascita() != "" || p.getLuogoNascita() != "")
+    if ((p.getNome() != "" || p.getCognome() != ""
+            || p.getDataNascita() != "" || p.getLuogoNascita() != "")
         && (p.getNome() == "" || p.getCognome() == "")) {
       model.addAttribute("pazienti", p);
       if (p.getNome() == "") {
@@ -223,7 +230,8 @@ public class PazientiController {
    *      altrimenti nome della pagina jsp CercaPaziente
    */
   @RequestMapping(value = { "/cerca-pazienti" }, method = RequestMethod.POST)
-  public String cercaPaziente(ModelMap model, @Valid @ModelAttribute("scheda") SchedaPazienteForm scheda,
+  public String cercaPaziente(ModelMap model,
+                              @Valid @ModelAttribute("scheda") SchedaPazienteForm scheda,
       BindingResult bindingResult) {
 
     if (bindingResult.hasErrors()) {
@@ -252,7 +260,8 @@ public class PazientiController {
   @RequestMapping(value = { "/modifica-paziente-page/{cf}" }, method = RequestMethod.GET)
   public String modificaPazientePage(ModelMap model, @PathVariable String cf) {
     model.addAttribute("farmaci", farmaciaService.getAllFarmaci());
-    SchedaPazienteForm scheda = SchedaPazienteForm.mapToSchedaPazienteForm(pazienteService.getPaziente(cf));
+    SchedaPazienteForm scheda =
+            SchedaPazienteForm.mapToSchedaPazienteForm(pazienteService.getPaziente(cf));
 
     scheda.setFarmaci(new ArrayList<>());
     model.addAttribute("schedaMap", pazienteService.getPaziente(cf));
@@ -272,7 +281,8 @@ public class PazientiController {
    *      altrimenti nome della pagina jsp ModificaPaziente
    */
   @RequestMapping(value = { "/modifica-paziente" }, method = RequestMethod.POST)
-  public String modificaPaziente(ModelMap model, @Valid @ModelAttribute("scheda") SchedaPazienteForm scheda,
+  public String modificaPaziente(ModelMap model,
+                                 @Valid @ModelAttribute("scheda") SchedaPazienteForm scheda,
       BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("scheda", scheda);

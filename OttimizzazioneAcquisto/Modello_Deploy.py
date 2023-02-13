@@ -12,6 +12,15 @@ url = "http://localhost:8080/"
 
 
 def stima(medicinale):
+    """Esegue la stima di acquisto in flaconi di un medicinale
+
+    Args:
+      medicinale: codice del medicinale
+
+    Returns:
+      Stima del numero di flaconi da acquistare
+    """
+
     # Ottieni pazienti
     response = requests.get(url+"pazienti")
 

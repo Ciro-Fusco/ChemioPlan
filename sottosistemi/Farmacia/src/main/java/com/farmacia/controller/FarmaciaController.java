@@ -45,7 +45,8 @@ public class FarmaciaController {
   }
 
   /**
-   * <p>Questo metodo restituisce tutti i farmaci disponibili, con quantità di alemeno un lotto maggiore 0.</p>
+   * <p>Questo metodo restituisce tutti i farmaci disponibili,
+   * con quantità di alemeno un lotto maggiore 0.</p>
    *
    * @return lista di farmaci
    */
@@ -76,18 +77,21 @@ public class FarmaciaController {
   @PostMapping
   public ResponseEntity<?> aggiungiFarmaco(@RequestBody SchedaFarmaco schedaFarmaco) {
     service.aggiungiFarmaco(schedaFarmaco);
-    return new ResponseEntity<String>("Scheda Farmaco salvata " + schedaFarmaco.getCodice(), HttpStatus.CREATED);
+    return new ResponseEntity<String>(
+            "Scheda Farmaco salvata " + schedaFarmaco.getCodice(), HttpStatus.CREATED);
   }
 
   /**
-   * <p>Questo metodo modifica una scheda farmaco presente nel databaase con uno specifico codice.</p>
+   * <p>Questo metodo modifica una scheda farmaco
+   * presente nel databaase con uno specifico codice.</p>
    *
    * @param codice il codice della scheda farmaco passato nel'url
    * @param schedaFarmaco la scheda farmaco con le modifiche passata nel body della richiesta
    * @return un ResponseEntity con un messaggio e lo status HTTP
    */
   @PutMapping("/{codice}")
-  public ResponseEntity<?> modificaFarmaco(@PathVariable String codice, @RequestBody SchedaFarmaco schedaFarmaco) {
+  public ResponseEntity<?> modificaFarmaco(
+          @PathVariable String codice, @RequestBody SchedaFarmaco schedaFarmaco) {
     service.modificaFarmaco(codice, schedaFarmaco);
     return ResponseEntity.ok("Scheda Farmaco modificata correttamente" + schedaFarmaco.getCodice());
   }
@@ -163,7 +167,8 @@ public class FarmaciaController {
   @PostMapping("/nuovo-ordine")
   public ResponseEntity<?> nuovoOrdine(@RequestBody OrdineRequest ordine) {
     Ordine o = service.nuovoOrdine(ordine);
-    return new ResponseEntity("Nuovo ordine effettuato correttamente ID " + o.getId(), HttpStatus.CREATED);
+    return new ResponseEntity(
+            "Nuovo ordine effettuato correttamente ID " + o.getId(), HttpStatus.CREATED);
   }
 
   /**

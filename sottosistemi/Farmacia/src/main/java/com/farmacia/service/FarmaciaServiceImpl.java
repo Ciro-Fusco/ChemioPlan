@@ -1,17 +1,23 @@
 package com.farmacia.service;
 
 import com.farmacia.dto.OrdineRequest;
-import com.farmacia.exception.*;
+import com.farmacia.exception.CodiceSchedaFarmacoLengthException;
+import com.farmacia.exception.FormatoQuantitaNonCorrettaException;
+import com.farmacia.exception.LottoAlreadyExistException;
+import com.farmacia.exception.LottoNotFoundException;
+import com.farmacia.exception.NomeSchedaFarmacoLenghtException;
+import com.farmacia.exception.OldDateException;
+import com.farmacia.exception.OrdineNotFoundException;
+import com.farmacia.exception.SchedaFarmacoAlreadyExistException;
+import com.farmacia.exception.SchedaFarmacoNotFoundException;
 import com.farmacia.model.Lotto;
 import com.farmacia.model.Ordine;
 import com.farmacia.model.SchedaFarmaco;
 import com.farmacia.repository.FarmaciaRepository;
 import com.farmacia.repository.OrdineRepository;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -65,7 +71,7 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     List<SchedaFarmaco> farmaci = repo.findAll();
     for (SchedaFarmaco f : farmaci) {
       List<Lotto> lotti = f.getLotti();
-      for (Lotto l: lotti) {
+      for (Lotto l : lotti) {
         if (l.getQuantita() > 0) {
           disponibili.add(f);
           break;
@@ -85,7 +91,8 @@ public class FarmaciaServiceImpl implements FarmaciaService {
   @Override
   public SchedaFarmaco ottieniFarmacoPerCodice(String codice) {
     return repo.findById(codice).orElseThrow(
-            () -> new SchedaFarmacoNotFoundException("Scheda Farmaco con CODICE: |" + codice + "| non trovato")
+            () -> new SchedaFarmacoNotFoundException(
+                    "Scheda Farmaco con CODICE: |" + codice + "| non trovato")
     );
   }
 
@@ -176,7 +183,8 @@ public class FarmaciaServiceImpl implements FarmaciaService {
     var scheda = optional.get();
 
     if (scheda.lottiContains(lotto)) {
-      throw new LottoAlreadyExistException("Lotto numero |" + lotto.getNumeroLotto() + "| già presente nella lista");
+      throw new LottoAlreadyExistException(
+              "Lotto numero |" + lotto.getNumeroLotto() + "| già presente nella lista");
     }
 
     if (lotto.getNumeroLotto() != null && lotto.getScadenzaLotto() != null) {

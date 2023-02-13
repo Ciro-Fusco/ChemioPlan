@@ -15,52 +15,62 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ErrorHandler {
 
   @ExceptionHandler(SchedaFarmacoNotFoundException.class)
-  public ResponseEntity<String> handleSchedaFarmacoNotFoundException(SchedaFarmacoNotFoundException exception) {
+  public ResponseEntity<String> handleSchedaFarmacoNotFoundException(
+          SchedaFarmacoNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(SchedaFarmacoAlreadyExistException.class)
-  public ResponseEntity<String> handleSchedaFarmacoAlreadyExistException(SchedaFarmacoAlreadyExistException exception) {
+  public ResponseEntity<String> handleSchedaFarmacoAlreadyExistException(
+          SchedaFarmacoAlreadyExistException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(OrdineAlreadyExistException.class)
-  public ResponseEntity<String> handleOrdineAlreadyExistException(OrdineAlreadyExistException exception) {
+  public ResponseEntity<String> handleOrdineAlreadyExistException(
+          OrdineAlreadyExistException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(FormatoQuantitaNonCorrettaException.class)
-  public ResponseEntity<String> handleFormatoQuantitaNonCorrettaException(FormatoQuantitaNonCorrettaException exception) {
+  public ResponseEntity<String> handleFormatoQuantitaNonCorrettaException(
+          FormatoQuantitaNonCorrettaException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(OrdineNotFoundException.class)
-  public ResponseEntity<String> handleOrdineNotFoundException(OrdineNotFoundException exception) {
+  public ResponseEntity<String> handleOrdineNotFoundException(
+          OrdineNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(LottoAlreadyExistException.class)
-  public ResponseEntity<String> handleLottoArleadyExistException(LottoAlreadyExistException exception) {
+  public ResponseEntity<String> handleLottoArleadyExistException(
+          LottoAlreadyExistException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(LottoNotFoundException.class)
-  public ResponseEntity<String> handleLottoNotFoundException(LottoNotFoundException exception) {
+  public ResponseEntity<String> handleLottoNotFoundException(
+          LottoNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(CodiceSchedaFarmacoLengthException.class)
-  public ResponseEntity<String> handleCodiceSchedaFarmacoLengthException(CodiceSchedaFarmacoLengthException exception) {
+  public ResponseEntity<String> handleCodiceSchedaFarmacoLengthException(
+          CodiceSchedaFarmacoLengthException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(NomeSchedaFarmacoLenghtException.class)
-  public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(NomeSchedaFarmacoLenghtException exception) {
+  public ResponseEntity<String> handleNomeSchedaFarmacoLenghtException(
+          NomeSchedaFarmacoLenghtException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(OldDateException.class)
-  public ResponseEntity<String> handleOldDateException(OldDateException exception) {
+  public ResponseEntity<String> handleOldDateException(
+          OldDateException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 }

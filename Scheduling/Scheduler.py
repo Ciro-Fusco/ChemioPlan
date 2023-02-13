@@ -16,6 +16,12 @@ Medicinali_Richiesti = []
 
 
 def popola_magazzino():
+    """Popola il magazzino di tutti i farmaci nel sistema
+
+    Returns:
+      Magazzino popolato con i farmaci
+
+    """
     response = requests.get(url+"farmacia")
     if response.status_code == 200:
         farmacia = response.json()
@@ -28,6 +34,11 @@ def popola_magazzino():
 
 
 def popola_pazienti():
+    """Popola Pazienti con tutti i pazienti nel sistema
+
+    Returns:
+      Pazienti popolato con i pazienti.
+    """
     response = requests.get(url+"pazienti")
     if response.status_code == 200:
         pazienti = response.json()
@@ -45,10 +56,26 @@ def popola_pazienti():
 
 
 def reshape_eval(array):
+    """Esegui il reshape di un array con le dimensioni (Giorni, Ore, Poltrone)
+
+    Args:
+      array: Array con un individuo
+
+    Returns:
+      Array rimodellato con le nuove dimensioni
+    """
     return array.reshape((Giorni, Ore, Poltrone))
 
 
 def getSuggetimenti(Best):
+    """Restituisce la stringa i suggerimenti per giorno e ora
+
+    Args:
+      Best: Miglior risultato dell'algoritmo genetico
+
+    Returns:
+      Stringa con i suggerimenti
+    """
     suggerimenti = ""
     for medicinale in Medicinali_Richiesti:
         med_str = medicinale.split("-")[0]
@@ -62,16 +89,33 @@ def getSuggetimenti(Best):
                     if Best[day, ora, poltrona] == Index:
                         suggerimenti += Giorni_Map[day] + \
                             " ore "+Ore_Map[ora]+"<br>"
-    return suggerimenti.replace("<br>","",1)
+    return suggerimenti.replace("<br>", "", 1)
 
 
 def get_population(size):
+    """Restituisce la popolazione per il GA di dimensioni size
+
+    Args:
+      size: numero di individui da generare
+
+    Returns:
+      Popolazione iniziale per il GA di dimensioni size
+    """
     population = [Pazienti.getIndividual(
         Giorni*Ore*Poltrone) for _ in range(size)]
     return population
 
 
 def fitness(individuo, index):
+    """Funzione che restituisce la fitness del individuo
+
+    Args:
+      individuo: individuo generato dal GA
+      index: indice utile a pygad per funzionare
+
+    Returns:
+      Valore di fitness del individuo
+    """
     Magazzino.azzera()
     Resh = reshape_eval(individuo)
 
@@ -120,7 +164,6 @@ if Pazienti.allInfo() == Loaded_Pazienti:
     Scheduling = pd.read_csv("scheduling.csv", header=None)
     Scheduling = reshape_eval(Scheduling.to_numpy())
     Out = getSuggetimenti(Scheduling)
-#     print("LOADED")
     print(Out)
 else:
     # Ottieni popolazione GA
@@ -152,7 +195,4 @@ else:
     f = open("pazienti.txt", "w")
     f.write(Pazienti.allInfo())
     f.close()
-#     print("SAVED")
     print(Out)
-
-# cls && python Scheduler.py RSSMRC75R13F839Q

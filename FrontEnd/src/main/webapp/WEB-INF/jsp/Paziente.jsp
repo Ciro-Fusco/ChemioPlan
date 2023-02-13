@@ -24,14 +24,14 @@
 
     <!-- Content -->
     <h3>${message}</h3>
-    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
-    <jsp:useBean id="malattie" class="com.example.FrontEnd.FrontEnd.service.MalattiaService"/>
+    <jsp:useBean id="farmacia" class="com.example.frontend.service.FarmaciaService"/>
+    <jsp:useBean id="malattie" class="com.example.frontend.service.MalattiaService"/>
     <table>
         <tr>
             <td>Codice Fiscale: ${Paziente.codiceFiscale}</td>
         </tr>
         <tr>
-            <%--@elvariable id="paz" type="com.example.FrontEnd.FrontEnd.model.Paziente"--%>
+            <%--@elvariable id="paz" type="com.example.frontend.model.Paziente"--%>
             <td>${Paziente.nome} ${Paziente.cognome}</td>
         </tr>
         <tr>

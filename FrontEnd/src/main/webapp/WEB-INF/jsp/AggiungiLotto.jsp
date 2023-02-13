@@ -33,7 +33,7 @@
 
                 <h1>Aggiungi Lotto</h1>
 
-                <%--@elvariable id="lotto" type="com.example.FrontEnd.FrontEnd.model.Lotto" --%>
+            <%--@elvariable id="lotto" type="com.example.frontend.model.Lotto" --%>
                     <div class="wrapper">
                         <form:form action="/farmacia/add-lotto/${codice}" method="post" modelAttribute="lotto">
                             <div class="page_content">

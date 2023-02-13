@@ -33,7 +33,7 @@
 
                     <h1>Modifica Farmaco ${codice}</h1>
 
-                    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaFarmaco" --%>
+                <%--@elvariable id="scheda" type="com.example.frontend.model.SchedaFarmaco" --%>
                         <form:form action="/farmacia/modifica-farmaco/${codice}" method="post" modelAttribute="scheda">
                             <div class="page_content">
                                 <div class="filter_content">

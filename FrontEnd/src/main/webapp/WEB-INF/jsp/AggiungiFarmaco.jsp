@@ -30,7 +30,7 @@
 
                 <h1>Aggiungi Farmaco</h1>
 
-                <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaFarmaco" --%>
+            <%--@elvariable id="scheda" type="com.example.frontend.model.SchedaFarmaco" --%>
                     <form:form action="/farmacia/add-farmaco" method="post" modelAttribute="scheda">
                         <div class="page_content">
                             <div class="filter_content">

@@ -41,13 +41,13 @@
     </thead>
     <tbody>
 
-    <%--@elvariable id="paziente" type="com.example.FrontEnd.FrontEnd.model.Paziente" --%>
+    <%--@elvariable id="paziente" type="com.example.frontend.model.Paziente" --%>
     <c:forEach items="${pazienti}" var="paziente">
         <tr>
             <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>
             <td data-label="Nome">${paziente.nome}</td>
             <td data-label="Cognome">${paziente.cognome}</td>
-                <%--@elvariable id="indirizzo" type="com.example.FrontEnd.FrontEnd.model.Indirizzo" --%>
+                <%--@elvariable id="indirizzo" type="com.example.frontend.model.Indirizzo" --%>
             <c:set var="indirizzo" value="${paziente.indirizzo}"></c:set>
             <td data-label="Indirizzo">${indirizzo.via}, ${indirizzo.citta}<br>
                     ${indirizzo.cap}, ${indirizzo.paese}</td>

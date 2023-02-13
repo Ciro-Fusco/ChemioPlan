@@ -29,7 +29,7 @@
 
     <h1>Cerca pazienti</h1>
 
-    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm" --%>
+    <%--@elvariable id="scheda" type="com.example.frontend.model.SchedaPazienteForm" --%>
     <form:form action="/pazienti/cerca-pazienti" method="post" modelAttribute="scheda">
         <div class="page_content">
             <div class="filter_content">

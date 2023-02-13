@@ -44,7 +44,7 @@
     </thead>
     <tbody>
 
-    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
+    <jsp:useBean id="farmacia" class="com.example.frontend.service.FarmaciaService"/>
     <c:forEach items="${Prenotazioni}" var="prenotazione">
         <tr>
             <td data-label="codiceFiscale"><a href="/pazienti/${prenotazione.codiceFiscale}">${prenotazione.codiceFiscale}</a></td>

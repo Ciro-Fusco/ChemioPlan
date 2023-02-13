@@ -30,7 +30,7 @@
                     <h2>${message}</h2>
                     <h1>Nuovo Ordine</h1>
                     <div class="wrapper">
-                        <%--@elvariable id="ordine" type="com.example.FrontEnd.FrontEnd.model.OrdineRequest" --%>
+                        <%--@elvariable id="ordine" type="com.example.frontend.model.OrdineRequest" --%>
                             <form:form action="/farmacia/nuovo-ordine" method="post" modelAttribute="ordine">
                                 <div class="page_content">
                                     <div class="filter_content">

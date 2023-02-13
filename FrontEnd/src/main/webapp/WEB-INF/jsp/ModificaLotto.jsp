@@ -32,7 +32,7 @@
                     </h1>
 
 
-                    <%--@elvariable id="lotto" type="com.example.FrontEnd.FrontEnd.model.Lotto" --%>
+                <%--@elvariable id="lotto" type="com.example.frontend.model.Lotto" --%>
                         <form:form action="/farmacia/modifica-lotto/${codice}" method="post" modelAttribute="lotto">
 
                             <div class="page_content">

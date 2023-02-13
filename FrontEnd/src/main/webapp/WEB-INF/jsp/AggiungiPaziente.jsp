@@ -30,7 +30,7 @@
     <h1>Aggiungi Paziente ${cf}</h1>
     <h2>${nome} ${cognome}</h2>
 
-    <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm" --%>
+    <%--@elvariable id="scheda" type="com.example.frontend.model.SchedaPazienteForm" --%>
         <form:form action="/pazienti/add-paziente" method="post" modelAttribute="scheda">
             <div class="page_content">
                 <div class="filter_content">

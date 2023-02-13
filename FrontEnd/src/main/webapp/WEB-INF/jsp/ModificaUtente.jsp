@@ -30,7 +30,7 @@
 
     <h1>Modifica utente</h1>
 
-    <%--@elvariable id="utente" type="com.example.FrontEnd.FrontEnd.model.Utente" --%>
+    <%--@elvariable id="utente" type="com.example.frontend.model.Utente" --%>
     <form:form action="/utenti/modifica-utente" method="post" modelAttribute="utente">
         <div class="page_content">
             <div class="filter_content">

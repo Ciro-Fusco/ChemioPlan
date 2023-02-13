@@ -25,7 +25,7 @@
     <%@include file="/Content/header.jsp"%>
 
     <!-- Content -->
-    <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
+    <jsp:useBean id="farmacia" class="com.example.frontend.service.FarmaciaService"/>
     <h3>${message}</h3>
     <table>
         <tr>

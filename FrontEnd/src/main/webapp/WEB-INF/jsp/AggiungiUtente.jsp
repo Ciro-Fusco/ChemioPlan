@@ -29,7 +29,7 @@
 
     <h1>Aggiungi Utente</h1>
 
-    <%--@elvariable id="utente" type="com.example.FrontEnd.FrontEnd.model.Utente" --%>
+    <%--@elvariable id="utente" type="com.example.frontend.model.Utente" --%>
     <form:form action="/utenti/add-utente" method="post" modelAttribute="utente">
     <div class="page_content">
         <div class="filter_content">

@@ -32,7 +32,7 @@
         <%--@elvariable id="map" type="java.util.HashMap" --%>
         <c:set var="map" value="${schedaMap.farmaci}" />
 
-        <%--@elvariable id="scheda" type="com.example.FrontEnd.FrontEnd.model.SchedaPazienteForm" --%>
+    <%--@elvariable id="scheda" type="com.example.frontend.model.SchedaPazienteForm" --%>
         <form:form action="/pazienti/modifica-paziente" method="post" modelAttribute="scheda">
             <div class="page_content">
                 <h2>${scheda.codiceFiscale}</h2>
@@ -51,7 +51,7 @@
                             onkeyup="myFunction('inFarmaci', 'FarmaciTable')"
                             placeholder="Cerca per nome..">
                         <table id="FarmaciTable">
-                            <%--@elvariable id="f" type="com.example.FrontEnd.FrontEnd.model.SchedaFarmaco" --%>
+                                <%--@elvariable id="f" type="com.example.frontend.model.SchedaFarmaco" --%>
                             <c:forEach items="${farmaci}" var="f">
                                 <c:set var="check" value="check${f.codice}"/>
                                 <c:set var="input" value="in${f.codice}"/>

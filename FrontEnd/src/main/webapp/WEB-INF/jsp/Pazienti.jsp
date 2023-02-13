@@ -37,8 +37,8 @@
         </thead>
         <tbody>
 
-        <jsp:useBean id="farmacia" class="com.example.FrontEnd.FrontEnd.service.FarmaciaService"/>
-        <jsp:useBean id="malattie" class="com.example.FrontEnd.FrontEnd.service.MalattiaService"/>
+        <jsp:useBean id="farmacia" class="com.example.frontend.service.FarmaciaService"/>
+        <jsp:useBean id="malattie" class="com.example.frontend.service.MalattiaService"/>
         <c:forEach items="${Pazienti}" var="paziente">
             <tr>
                 <td data-label="Codice Fiscale"><a href="/pazienti/${paziente.codiceFiscale}" class="tablink">${paziente.codiceFiscale}</a></td>

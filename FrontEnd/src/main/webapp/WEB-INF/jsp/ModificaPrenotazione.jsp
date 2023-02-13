@@ -30,7 +30,7 @@
 
                     <h1>Modifica Prenotazione di ${cf}</h1>
 
-                    <%--@elvariable id="prenotazione" type="com.example.FrontEnd.FrontEnd.model.Prenotazione" --%>
+                <%--@elvariable id="prenotazione" type="com.example.frontend.model.Prenotazione" --%>
                         <form:form action="/prenotazioni/modifica-prenotazione" method="post"
                             modelAttribute="prenotazione">
                             <div class="page_content">

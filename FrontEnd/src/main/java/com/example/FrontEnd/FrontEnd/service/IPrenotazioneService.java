@@ -62,7 +62,7 @@ public interface IPrenotazioneService {
    * <p>Questo metodo va a rideurre la quantità del farmaco destinato a quel paziente
    * dalla quantità di farmaco disponibile e conferma la prenotazione.</p>
    *
-   * @param p
+   * @param p scheda paziente usata per prendere il codice della prenotazione.
    */
   boolean confermaPrenotazione(SchedaPaziente p);
 }

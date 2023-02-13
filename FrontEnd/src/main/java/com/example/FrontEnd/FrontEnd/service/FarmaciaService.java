@@ -1,7 +1,15 @@
 package com.example.FrontEnd.FrontEnd.service;
 
-import com.example.FrontEnd.FrontEnd.model.*;
-import org.springframework.http.*;
+
+import com.example.FrontEnd.FrontEnd.model.Lotto;
+import com.example.FrontEnd.FrontEnd.model.Ordine;
+import com.example.FrontEnd.FrontEnd.model.OrdineRequest;
+import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -210,7 +218,6 @@ public class FarmaciaService implements IFarmaciaService {
    */
   @Override
   public String eliminaLotto(String codice, Lotto lotto) {
-    //System.out.println(farmaciaResourceUrl + "/lotto/" + codice + "/" + lotto.getNumeroLotto());
     try {
       restTemplate.delete(farmaciaResourceUrl
               + "/lotto/" + codice + "/" + lotto.getNumeroLotto(), getFarmaco(codice));

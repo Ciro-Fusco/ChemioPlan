@@ -1,10 +1,15 @@
 package com.example.FrontEnd.FrontEnd.service;
 
 
-import com.example.FrontEnd.FrontEnd.model.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
+import com.example.FrontEnd.FrontEnd.model.Lotto;
+import com.example.FrontEnd.FrontEnd.model.Prenotazione;
+import com.example.FrontEnd.FrontEnd.model.SchedaFarmaco;
+import com.example.FrontEnd.FrontEnd.model.SchedaPaziente;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -135,7 +140,7 @@ public class PrenotazioneService implements IPrenotazioneService {
    * <p>Questo metodo va a ridurre la quantità del farmaco destinato a quel paziente
    * dalla quantità di farmaco disponibile e conferma la prenotazione.</p>
    *
-   * @param p
+   * @param p scheda paziente
    */
   @Override
   public boolean confermaPrenotazione(SchedaPaziente p) {

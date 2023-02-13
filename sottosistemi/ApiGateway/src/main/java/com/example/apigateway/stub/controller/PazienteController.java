@@ -2,13 +2,14 @@ package com.example.apigateway.stub.controller;
 
 import com.example.apigateway.stub.archivio.ArchivioPazienti;
 import com.example.apigateway.stub.model.Paziente;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import io.netty.handler.codec.json.JsonObjectDecoder;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 /**

@@ -1,18 +1,22 @@
 package com.example.apigateway.stub.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.util.Date;
-import java.util.Objects;
 
+
+/**
+ * <p>Questa classe rappresenta l'entità Paziente.</p>
+ *
+ * @version 0.1
+ */
 @Data
 @AllArgsConstructor
 public class Paziente {
-    private String codiceFiscale;
-    private String nome;
-    private String cognome;
-    private String dataNascita;
-    private Indirizzo indirizzo;
-    private String luogoNascita;
+
+  private String codiceFiscale;
+  private String nome;
+  private String cognome;
+  private String dataNascita;
+  private Indirizzo indirizzo;
+  private String luogoNascita;
 }

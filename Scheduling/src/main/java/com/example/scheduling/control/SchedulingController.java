@@ -1,6 +1,6 @@
-package com.example.Scheduling.control;
+package com.example.scheduling.control;
 
-import com.example.Scheduling.service.IschedulingService;
+import com.example.scheduling.service.IschedulingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

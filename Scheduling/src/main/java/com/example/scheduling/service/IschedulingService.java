@@ -1,4 +1,4 @@
-package com.example.Scheduling.service;
+package com.example.scheduling.service;
 
 /**
  * <p>

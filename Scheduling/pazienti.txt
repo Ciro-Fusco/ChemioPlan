@@ -3,13 +3,28 @@ Dosaggio:0
 Dimensione:0
 Medicinale:{'nome': 0, 'dosaggio': 0, 'scadenza': 0, 'rimanente': 0, 'aperto': 0}
 
-Gruppo:111-150
-Dosaggio:150.0
-Dimensione:1
-Medicinale:{'nome': '111', 'dosaggio': 300.0, 'scadenza': 30, 'rimanente': 0, 'aperto': 0}
+Gruppo:FRM1-10
+Dosaggio:10.0
+Dimensione:2
+Medicinale:{'nome': 'FRM1', 'dosaggio': 500.0, 'scadenza': 2, 'rimanente': 0, 'aperto': 0}
 
-Gruppo:123-50
-Dosaggio:50.0
+Gruppo:FRM2-15
+Dosaggio:15.0
 Dimensione:1
-Medicinale:{'nome': '123', 'dosaggio': 150.0, 'scadenza': 5, 'rimanente': 0, 'aperto': 0}
+Medicinale:{'nome': 'FRM2', 'dosaggio': 1500.0, 'scadenza': 1, 'rimanente': 0, 'aperto': 0}
+
+Gruppo:FRM15-10
+Dosaggio:10.0
+Dimensione:1
+Medicinale:{'nome': 'FRM15', 'dosaggio': 1000.0, 'scadenza': 3, 'rimanente': 0, 'aperto': 0}
+
+Gruppo:FRM2-12
+Dosaggio:12.0
+Dimensione:1
+Medicinale:{'nome': 'FRM2', 'dosaggio': 1500.0, 'scadenza': 1, 'rimanente': 0, 'aperto': 0}
+
+Gruppo:FRM1-15
+Dosaggio:15.0
+Dimensione:1
+Medicinale:{'nome': 'FRM1', 'dosaggio': 500.0, 'scadenza': 2, 'rimanente': 0, 'aperto': 0}
 

@@ -5,21 +5,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * <p>Gestione degli errori delle eccezioni.</p>
+ *
+ * @version 1.0
+ */
 @ControllerAdvice
 public class ErrorHandler {
 
   @ExceptionHandler(UtenteAlreadyExistException.class)
-  public ResponseEntity<String> handleUtenteAlreadyExistException(UtenteAlreadyExistException exception) {
+  public ResponseEntity<String> handleUtenteAlreadyExistException(
+          UtenteAlreadyExistException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(UtenteNotFoundException.class)
-  public ResponseEntity<String> handleUtenteNotFoundException(UtenteNotFoundException exception) {
+  public ResponseEntity<String> handleUtenteNotFoundException(
+          UtenteNotFoundException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
   }
 
   @ExceptionHandler(CredenzialiNonValideException.class)
-  public ResponseEntity<String> handleCredenzialiNonValideException(CredenzialiNonValideException exception) {
+  public ResponseEntity<String> handleCredenzialiNonValideException(
+          CredenzialiNonValideException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 }

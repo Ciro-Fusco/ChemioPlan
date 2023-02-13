@@ -1,6 +1,6 @@
-package com.chemioplan.SchedaPaziente.service;
+package com.chemioplan.schedapaziente.service;
 
-import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
+import com.chemioplan.schedapaziente.model.SchedaPaziente;
 import java.util.HashMap;
 import java.util.List;
 

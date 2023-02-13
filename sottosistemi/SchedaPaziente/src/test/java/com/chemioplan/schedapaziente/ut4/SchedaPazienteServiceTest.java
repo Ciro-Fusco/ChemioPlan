@@ -1,9 +1,9 @@
-package com.chemioplan.SchedaPaziente.ut4;
+package com.chemioplan.schedapaziente.ut4;
 
-import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
-import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
-import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
-import com.chemioplan.SchedaPaziente.service.SchedaPazienteService;
+import com.chemioplan.schedapaziente.exception.SchedaPazienteNotFoundException;
+import com.chemioplan.schedapaziente.model.SchedaPaziente;
+import com.chemioplan.schedapaziente.repository.SchedaPazienteRepository;
+import com.chemioplan.schedapaziente.service.SchedaPazienteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

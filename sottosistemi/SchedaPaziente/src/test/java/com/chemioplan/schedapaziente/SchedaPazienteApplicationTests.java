@@ -1,4 +1,4 @@
-package com.chemioplan.SchedaPaziente;
+package com.chemioplan.schedapaziente;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

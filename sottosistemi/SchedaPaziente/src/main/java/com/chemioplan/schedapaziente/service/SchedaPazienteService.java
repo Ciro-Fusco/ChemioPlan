@@ -1,10 +1,12 @@
-package com.chemioplan.SchedaPaziente.service;
+package com.chemioplan.schedapaziente.service;
 
-import com.chemioplan.SchedaPaziente.exception.SchedaPazienteAlredyExistException;
-import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
-import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
-import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
-import java.util.*;
+import com.chemioplan.schedapaziente.exception.SchedaPazienteAlredyExistException;
+import com.chemioplan.schedapaziente.exception.SchedaPazienteNotFoundException;
+import com.chemioplan.schedapaziente.model.SchedaPaziente;
+import com.chemioplan.schedapaziente.repository.SchedaPazienteRepository;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

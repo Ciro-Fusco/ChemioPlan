@@ -1,7 +1,7 @@
-package com.chemioplan.SchedaPaziente.controller;
+package com.chemioplan.schedapaziente.controller;
 
-import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
-import com.chemioplan.SchedaPaziente.service.SchedaPazienteService;
+import com.chemioplan.schedapaziente.model.SchedaPaziente;
+import com.chemioplan.schedapaziente.service.SchedaPazienteService;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -110,13 +109,15 @@ public class SchedaPazienteController {
   }
 
   /**
-   * <p>Questo metodo , con chiamata Post, restituisce i pazienti dato un paziente presente nel body.</p>
+   * <p>Questo metodo , con chiamata Post,
+   * restituisce i pazienti dato un paziente presente nel body.</p>
    *
    * @param paziente paziente che contiene i filtri
    * @return la lista dei pazienti trovati nel Database in base ai filtri
    */
   @PostMapping("/byPaziente")
-  public List<SchedaPaziente> ottieniSchedePazientiByPaziente(@RequestBody SchedaPaziente paziente) {
+  public List<SchedaPaziente> ottieniSchedePazientiByPaziente(
+          @RequestBody SchedaPaziente paziente) {
     return schedaPazienteService.ottieniSchedePazientiByPaziente(paziente);
   }
 }

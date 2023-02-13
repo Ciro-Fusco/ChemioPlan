@@ -1,7 +1,7 @@
-com.chemioplan.SchedaPaziente
-com.chemioplan.SchedaPaziente.controller
-com.chemioplan.SchedaPaziente.dto
-com.chemioplan.SchedaPaziente.exception
-com.chemioplan.SchedaPaziente.model
-com.chemioplan.SchedaPaziente.repository
-com.chemioplan.SchedaPaziente.service
+com.chemioplan.schedapaziente
+com.chemioplan.schedapaziente.controller
+com.chemioplan.schedapaziente.dto
+com.chemioplan.schedapaziente.exception
+com.chemioplan.schedapaziente.model
+com.chemioplan.schedapaziente.repository
+com.chemioplan.schedapaziente.service

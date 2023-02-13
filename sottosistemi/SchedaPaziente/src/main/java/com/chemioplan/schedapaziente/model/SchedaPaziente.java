@@ -1,4 +1,4 @@
-package com.chemioplan.SchedaPaziente.model;
+package com.chemioplan.schedapaziente.model;
 
 import java.util.HashMap;
 import java.util.List;

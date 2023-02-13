@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2023-02-08">
-<meta name="description" content="declaration: package: com.chemioplan.SchedaPaziente.service, class: SchedaPazienteService">
+<meta name="description" content="declaration: package: com.chemioplan.schedapaziente.service, class: SchedaPazienteService">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -83,22 +83,22 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.chemioplan.SchedaPaziente.service</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.chemioplan.schedapaziente.service</a></div>
 <h1 title="Class SchedaPazienteService" class="title">Class SchedaPazienteService</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">com.chemioplan.SchedaPaziente.service.SchedaPazienteService</div>
+<div class="inheritance">com.chemioplan.schedapaziente.service.SchedaPazienteService</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="annotations">@Service
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">SchedaPazienteService</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></span></div>
+implements <a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></span></div>
 <div class="block"><p>Questa classe implementa l'interfaccia SchedaPazienteServiceInterface.</p></div>
 </section>
 <section class="summary">
@@ -128,7 +128,7 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">aggiungiSchedaPaziente</a><wbr>(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">aggiungiSchedaPaziente</a><wbr>(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"> Questo metodo inserisce una nuova schedaPaziente nel DB.</div>
 </div>
@@ -139,7 +139,7 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">modificaSchedaPaziente</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale,
- <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
+ <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Questo metodo modifica una schedaPaziente presente nel DB.</div>
 </div>
@@ -148,12 +148,12 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"> Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ottieniSchedaPazientePerCodiceFiscale(java.lang.String)" class="member-name-link">ottieniSchedaPazientePerCodiceFiscale</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block"> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#ottieniSchedePazienti()" class="member-name-link">ottieniSchedePazienti</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Questo metodo restituisce tutti le schedePazienti presenti nel database.</div>
@@ -192,11 +192,11 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <li>
 <section class="detail" id="ottieniSchedePazienti()">
 <h3>ottieniSchedePazienti</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&gt;</span>&nbsp;<span class="element-name">ottieniSchedePazienti</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&gt;</span>&nbsp;<span class="element-name">ottieniSchedePazienti</span>()</div>
 <div class="block"><p>Questo metodo restituisce tutti le schedePazienti presenti nel database.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniSchedePazienti()">ottieniSchedePazienti</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniSchedePazienti()">ottieniSchedePazienti</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Returns:</dt>
 <dd>lista di SchedaPazienti</dd>
 </dl>
@@ -205,11 +205,11 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <li>
 <section class="detail" id="ottieniSchedaPazientePerCodiceFiscale(java.lang.String)">
 <h3>ottieniSchedaPazientePerCodiceFiscale</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a></span>&nbsp;<span class="element-name">ottieniSchedaPazientePerCodiceFiscale</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a></span>&nbsp;<span class="element-name">ottieniSchedaPazientePerCodiceFiscale</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</span></div>
 <div class="block"><p> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniSchedaPazientePerCodiceFiscale(java.lang.String)">ottieniSchedaPazientePerCodiceFiscale</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniSchedaPazientePerCodiceFiscale(java.lang.String)">ottieniSchedaPazientePerCodiceFiscale</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>codiceFiscale</code> - il CodiceFiscale della schedaPaziente da cercare</dd>
 <dt>Returns:</dt>
@@ -220,11 +220,11 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <li>
 <section class="detail" id="aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)">
 <h3>aggiungiSchedaPaziente</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">aggiungiSchedaPaziente</span><wbr><span class="parameters">(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">aggiungiSchedaPaziente</span><wbr><span class="parameters">(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
 <div class="block"><p> Questo metodo inserisce una nuova schedaPaziente nel DB.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)">aggiungiSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)">aggiungiSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>schedaPaziente</code> - la schedaPaziente da inserire</dd>
 </dl>
@@ -234,11 +234,11 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <section class="detail" id="modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)">
 <h3>modificaSchedaPaziente</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">modificaSchedaPaziente</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale,
- <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
+ <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
 <div class="block"><p>Questo metodo modifica una schedaPaziente presente nel DB.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)">modificaSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)">modificaSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>codiceFiscale</code> - il codiceFiscale della schedaPaziente da modificare</dd>
 <dd><code>schedaPaziente</code> - la schedaPaziente con le modifiche</dd>
@@ -252,7 +252,7 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <div class="block"><p> Questo metodo elimina una schedaPaziente presente nel DB.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#eliminaSchedaPaziente(java.lang.String)">eliminaSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#eliminaSchedaPaziente(java.lang.String)">eliminaSchedaPaziente</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>codiceFiscale</code> - il codiceFiscale della schedaPaziente da eliminare</dd>
 </dl>
@@ -266,7 +266,7 @@ implements <a href="SchedaPazienteServiceInterface.html" title="interface in com
 <div class="block"><p> Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniFarmaciPerCodiceFiscale(java.lang.String)">ottieniFarmaciPerCodiceFiscale</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.SchedaPaziente.service">SchedaPazienteServiceInterface</a></code></dd>
+<dd><code><a href="SchedaPazienteServiceInterface.html#ottieniFarmaciPerCodiceFiscale(java.lang.String)">ottieniFarmaciPerCodiceFiscale</a></code>&nbsp;in interface&nbsp;<code><a href="SchedaPazienteServiceInterface.html" title="interface in com.chemioplan.schedapaziente.service">SchedaPazienteServiceInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>codiceFiscale</code> - il codiceFiscale della schedaPaziente da eliminare</dd>
 </dl>

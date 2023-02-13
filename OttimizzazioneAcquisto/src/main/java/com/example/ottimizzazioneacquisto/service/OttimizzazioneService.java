@@ -1,7 +1,6 @@
-package com.example.OttimizzazioneAcquisto.service;
+package com.example.ottimizzazioneacquisto.service;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import org.springframework.stereotype.Service;
 

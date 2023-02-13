@@ -1,4 +1,4 @@
-package com.example.OttimizzazioneAcquisto;
+package com.example.ottimizzazioneacquisto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

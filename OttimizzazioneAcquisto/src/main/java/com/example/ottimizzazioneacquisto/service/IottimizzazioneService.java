@@ -1,4 +1,4 @@
-package com.example.OttimizzazioneAcquisto.service;
+package com.example.ottimizzazioneacquisto.service;
 
 /**
  * <p>

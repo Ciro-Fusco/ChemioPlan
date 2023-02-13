@@ -37,7 +37,7 @@ public class PrenotazioneController {
   /**
    * <p>Questo metodo inserisce una nuova prenotazione nel database.</p>
    *
-   * @param prenotazioneRequest
+   * @param prenotazioneRequest parametro contenuto nel body
    */
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
@@ -49,7 +49,7 @@ public class PrenotazioneController {
    * <p>Questo metodo restituisce tutti le prenotazioni presenti nel database con una chiamata
    * GET.</p>
    *
-   * @return
+   * @return lista di prenotazioni response
    */
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
@@ -73,7 +73,7 @@ public class PrenotazioneController {
   /**
    * <p>Questo metodo elimina la prenotazione con un determinato codice.</p>
    *
-   * @param codice
+   * @param codice codice della pronotazione
    */
   @DeleteMapping("/elimina/{codice}")
   @ResponseStatus(HttpStatus.NO_CONTENT)

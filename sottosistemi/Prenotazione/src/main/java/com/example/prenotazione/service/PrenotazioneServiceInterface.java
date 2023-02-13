@@ -17,7 +17,7 @@ public interface PrenotazioneServiceInterface {
   /**
    * <p>Questo metodo viene utilizzato per inserire una nuova prenotazione nel Database.</p>
    *
-   * @param prenotazioneRequest
+   * @param prenotazioneRequest prenotazione da aggiungere
    */
   void addPrenotazione(PrenotazioneRequest prenotazioneRequest);
 

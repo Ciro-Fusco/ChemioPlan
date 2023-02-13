@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2023-02-08">
-<meta name="description" content="declaration: package: com.chemioplan.schedapaziente.service, interface: SchedaPazienteServiceInterface">
+<meta name="description" content="declaration: package: com.chemioplan.SchedaPaziente.service, interface: SchedaPazienteServiceInterface">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -83,13 +83,13 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.chemioplan.schedapaziente.service</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.chemioplan.SchedaPaziente.service</a></div>
 <h1 title="Interface SchedaPazienteServiceInterface" class="title">Interface SchedaPazienteServiceInterface</h1>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="SchedaPazienteService.html" title="class in com.chemioplan.schedapaziente.service">SchedaPazienteService</a></code></dd>
+<dd><code><a href="SchedaPazienteService.html" title="class in com.chemioplan.SchedaPaziente.service">SchedaPazienteService</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">SchedaPazienteServiceInterface</span></div>
@@ -109,7 +109,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">aggiungiSchedaPaziente</a><wbr>(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">aggiungiSchedaPaziente</a><wbr>(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block"> Questo metodo inserisce una nuova schedaPaziente nel DB.</div>
 </div>
@@ -120,7 +120,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)" class="member-name-link">modificaSchedaPaziente</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale,
- <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
+ <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Questo metodo modifica una schedaPaziente presente nel DB.</div>
 </div>
@@ -129,12 +129,12 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block"> Questo metodo resituisce i farmaci ed il dosaggio relativo ad un certo codiceFiscale.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#ottieniSchedaPazientePerCodiceFiscale(java.lang.String)" class="member-name-link">ottieniSchedaPazientePerCodiceFiscale</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block"> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#ottieniSchedePazienti()" class="member-name-link">ottieniSchedePazienti</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block"> Questo metodo restituisce tutte le schedePaziente presenti nel DB.</div>
@@ -156,14 +156,14 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="ottieniSchedePazienti()">
 <h3>ottieniSchedePazienti</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&gt;</span>&nbsp;<span class="element-name">ottieniSchedePazienti</span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&gt;</span>&nbsp;<span class="element-name">ottieniSchedePazienti</span>()</div>
 <div class="block"><p> Questo metodo restituisce tutte le schedePaziente presenti nel DB.</p></div>
 </section>
 </li>
 <li>
 <section class="detail" id="ottieniSchedaPazientePerCodiceFiscale(java.lang.String)">
 <h3>ottieniSchedaPazientePerCodiceFiscale</h3>
-<div class="member-signature"><span class="return-type"><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a></span>&nbsp;<span class="element-name">ottieniSchedaPazientePerCodiceFiscale</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</span></div>
+<div class="member-signature"><span class="return-type"><a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a></span>&nbsp;<span class="element-name">ottieniSchedaPazientePerCodiceFiscale</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale)</span></div>
 <div class="block"><p> Questo metodo restituisce una schedaPaziente con un determinato codiceFiscale.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -176,7 +176,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="aggiungiSchedaPaziente(com.chemioplan.SchedaPaziente.model.SchedaPaziente)">
 <h3>aggiungiSchedaPaziente</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">aggiungiSchedaPaziente</span><wbr><span class="parameters">(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">aggiungiSchedaPaziente</span><wbr><span class="parameters">(<a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
 <div class="block"><p> Questo metodo inserisce una nuova schedaPaziente nel DB.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -188,7 +188,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="modificaSchedaPaziente(java.lang.String,com.chemioplan.SchedaPaziente.model.SchedaPaziente)">
 <h3>modificaSchedaPaziente</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">modificaSchedaPaziente</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;codiceFiscale,
- <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.schedapaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
+ <a href="../model/SchedaPaziente.html" title="class in com.chemioplan.SchedaPaziente.model">SchedaPaziente</a>&nbsp;schedaPaziente)</span></div>
 <div class="block"><p>Questo metodo modifica una schedaPaziente presente nel DB.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>

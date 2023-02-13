@@ -1,7 +1,7 @@
-package com.chemioplan.schedapaziente.controller;
+package com.chemioplan.SchedaPaziente.controller;
 
-import com.chemioplan.schedapaziente.model.SchedaPaziente;
-import com.chemioplan.schedapaziente.service.SchedaPazienteService;
+import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
+import com.chemioplan.SchedaPaziente.service.SchedaPazienteService;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

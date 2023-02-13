@@ -1,4 +1,4 @@
-package com.chemioplan.schedapaziente.exception;
+package com.chemioplan.SchedaPaziente.exception;
 
 /**
  * <p>Questa classe crea un eccezione per una scheda paziente già esistente.</p>

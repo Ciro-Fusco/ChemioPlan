@@ -1,9 +1,9 @@
-package com.chemioplan.schedapaziente.service;
+package com.chemioplan.SchedaPaziente.service;
 
-import com.chemioplan.schedapaziente.exception.SchedaPazienteAlredyExistException;
-import com.chemioplan.schedapaziente.exception.SchedaPazienteNotFoundException;
-import com.chemioplan.schedapaziente.model.SchedaPaziente;
-import com.chemioplan.schedapaziente.repository.SchedaPazienteRepository;
+import com.chemioplan.SchedaPaziente.exception.SchedaPazienteAlredyExistException;
+import com.chemioplan.SchedaPaziente.exception.SchedaPazienteNotFoundException;
+import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
+import com.chemioplan.SchedaPaziente.repository.SchedaPazienteRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

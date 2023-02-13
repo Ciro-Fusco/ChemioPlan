@@ -1,6 +1,6 @@
-package com.chemioplan.schedapaziente.repository;
+package com.chemioplan.SchedaPaziente.repository;
 
-import com.chemioplan.schedapaziente.model.SchedaPaziente;
+import com.chemioplan.SchedaPaziente.model.SchedaPaziente;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

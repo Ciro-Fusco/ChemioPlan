@@ -1,4 +1,4 @@
-package com.chemioplan.schedapaziente.exception;
+package com.chemioplan.SchedaPaziente.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

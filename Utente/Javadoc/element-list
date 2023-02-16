@@ -1,0 +1,6 @@
+com.example.utente
+com.example.utente.controller
+com.example.utente.exception
+com.example.utente.model
+com.example.utente.repository
+com.example.utente.service

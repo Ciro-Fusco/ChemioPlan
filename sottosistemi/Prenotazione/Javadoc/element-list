@@ -1,0 +1,7 @@
+com.example.prenotazione
+com.example.prenotazione.controller
+com.example.prenotazione.dto
+com.example.prenotazione.exception
+com.example.prenotazione.model
+com.example.prenotazione.repository
+com.example.prenotazione.service

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.prenotazione"},{"l":"com.example.prenotazione.controller"},{"l":"com.example.prenotazione.dto"},{"l":"com.example.prenotazione.exception"},{"l":"com.example.prenotazione.model"},{"l":"com.example.prenotazione.repository"},{"l":"com.example.prenotazione.service"}];updateSearchResults();

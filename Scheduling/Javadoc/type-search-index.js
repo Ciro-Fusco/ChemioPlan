@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.example.scheduling.service","l":"IschedulingService"},{"p":"com.example.scheduling","l":"SchedulingApplication"},{"p":"com.example.scheduling.control","l":"SchedulingController"},{"p":"com.example.scheduling.service","l":"SchedulingService"}];updateSearchResults();

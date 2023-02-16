@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.ottimizzazioneacquisto"},{"l":"com.example.ottimizzazioneacquisto.control"},{"l":"com.example.ottimizzazioneacquisto.service"}];updateSearchResults();

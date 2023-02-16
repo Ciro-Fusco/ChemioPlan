@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.apigateway"},{"l":"com.example.apigateway.stub.archivio"},{"l":"com.example.apigateway.stub.controller"},{"l":"com.example.apigateway.stub.model"}];updateSearchResults();
